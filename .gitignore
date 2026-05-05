@@ -1,0 +1,28 @@
+# Environments
+venv/
+env/
+.env
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Databases
+*.sqlite3
+*.db
+ai_assistant/memory.db
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+dist/
+build/
+*.spec
+
+# OS files
+.DS_Store
+Thumbs.db
