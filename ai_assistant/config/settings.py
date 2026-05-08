@@ -5,11 +5,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # API Keys
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+# Removed Gemini API Key, using local Ollama model
 
 # App Configuration
 APP_NAME = "Botbro AI Assistant"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 # Voice Configuration
 VOICE_RATE = 175 # Speech rate (words per minute)

@@ -1,14 +1,13 @@
 # Botbro AI Desktop Assistant
 
-A complete, production-ready AI desktop assistant built with a robust decoupled architecture. Botbro combines cloud intelligence (Google Gemini) with local AI fallbacks (Ollama) to guarantee reliability and execution speed.
+A complete, production-ready AI desktop assistant built with a robust decoupled architecture. Botbro uses local AI (Ollama) to guarantee privacy, reliability, and execution speed.
 
 ## 🌟 Key Features
 
 - **Decoupled Service Architecture**: Clean separation between `GUI`, `Services`, `Core`, and `Automation`.
-- **Intelligent Fallback Engine**:
-  - **Primary**: Google Gemini API (with smart 3x retry on rate limits).
-  - **Secondary**: Local Ollama Model (`llama3`).
-  - **Tertiary**: Naive offline rule-based parser.
+- **Intelligent Engine**:
+  - **Primary**: Local Ollama Model (`llama3`).
+  - **Fallback**: Naive offline rule-based parser.
 - **Content Generation Pipeline**: Not just app opening! Ask Botbro to *"write an essay on friendship in notepad"* and it will launch the app and type the content autonomously.
 - **Fuzzy Matching Integration**: Utilizes high-performance `rapidfuzz` to correct typos instantly (e.g., "esay" -> "essay", "chrom" -> "chrome").
 - **Voice Feedback**: Spoken feedback using `pyttsx3`.
@@ -26,22 +25,16 @@ A complete, production-ready AI desktop assistant built with a robust decoupled 
 1. **Install Python Dependencies**
    Ensure you are using your virtual environment and install the required modules:
    ```bash
-   pip install google-genai pygetwindow psutil pyautogui PyQt5 rapidfuzz ollama
+   pip install pygetwindow psutil pyautogui PyQt5 rapidfuzz ollama
    ```
 
 2. **Install Local AI (Ollama)**
-   To use the local fallback pipeline, install [Ollama](https://ollama.com/) and download a model:
+   Install [Ollama](https://ollama.com/) and download the required model:
    ```bash
    ollama pull llama3
    ```
 
-3. **Configuration**
-   Copy `.env.example` to `.env` and add your Gemini API Key.
-   ```bash
-   GEMINI_API_KEY=your_actual_api_key_here
-   ```
-
-4. **Run Botbro**
+3. **Run Botbro**
    ```bash
    python main.py
    ```
@@ -69,6 +62,4 @@ To package this application into a standalone executable:
    ```
    
    **Note**: If PyInstaller complains about missing hidden imports, explicitly include them:
-   `pyinstaller --onefile --windowed --hidden-import="google.generativeai" --hidden-import="ollama" --hidden-import="rapidfuzz" --name="Botbro" main.py`
-
-3. **Important**: You must place your `.env` file in the same directory as the generated `Botbro.exe` for it to read your API key properly!
+   `pyinstaller --onefile --windowed --hidden-import="ollama" --hidden-import="rapidfuzz" --name="Botbro" main.py`

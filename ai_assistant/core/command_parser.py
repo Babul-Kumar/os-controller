@@ -4,6 +4,48 @@ from core.security import validate_command_safety
 
 logger = setup_logger(__name__)
 
+
+def _fix_json_control_chars(s: str) -> str:
+    """
+    Escape literal control characters (newlines, carriage-returns, tabs)
+    that appear *inside* JSON string values.  phi3 (and other small LLMs)
+    often emit raw newlines in multi-line content fields, which makes the
+    string invalid JSON even though the overall structure is correct.
+    """
+    result = []
+    in_string = False
+    escape_next = False
+
+    for ch in s:
+        if escape_next:
+            result.append(ch)
+            escape_next = False
+            continue
+
+        if ch == "\\" and in_string:
+            result.append(ch)
+            escape_next = True
+            continue
+
+        if ch == '"':
+            in_string = not in_string
+            result.append(ch)
+            continue
+
+        if in_string:
+            if ch == "\n":
+                result.append("\\n")
+            elif ch == "\r":
+                result.append("\\r")
+            elif ch == "\t":
+                result.append("\\t")
+            else:
+                result.append(ch)
+        else:
+            result.append(ch)
+
+    return "".join(result)
+
 class CommandParser:
     @staticmethod
     def parse(llm_response: str) -> dict:
@@ -28,7 +70,14 @@ class CommandParser:
                 clean_str = clean_str[:-3]
                 
             clean_str = clean_str.strip()
+            # Remove literal line continuations (backslash followed by newline)
+            import re
+            clean_str = re.sub(r'\\\r?\n', '\n', clean_str)
             
+            # Fix literal control characters inside JSON string values
+            # (phi3 / small LLMs emit raw newlines in multi-line content)
+            clean_str = _fix_json_control_chars(clean_str)
+
             # Find the first '{' and the last '}' just in case
             # Try to extract JSON using regex
             import re

@@ -1,0 +1,498 @@
+{"timestamp": "2026-05-05T17:57:41.367925", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T17:57:41.372463", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T17:57:41.379075", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T17:57:43.312775", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T17:57:43.315294", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T17:57:43.755630", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T17:57:44.660752", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T17:57:54.517579", "level": "INFO", "logger": "main", "message": "User text input: open camera"}
+{"timestamp": "2026-05-05T17:57:54.518570", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open camera"}
+{"timestamp": "2026-05-05T17:57:56.717144", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "camera"}
+{"timestamp": "2026-05-05T17:57:56.717651", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: camera"}
+{"timestamp": "2026-05-05T17:57:56.717651", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: camera"}
+{"timestamp": "2026-05-05T17:57:56.778639", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "camera", "pid": 29232, "status": "success"}
+{"timestamp": "2026-05-05T17:57:56.786196", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ camera launched successfully."}
+{"timestamp": "2026-05-05T17:58:10.671864", "level": "INFO", "logger": "main", "message": "User text input: open notepad"}
+{"timestamp": "2026-05-05T17:58:10.672871", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open notepad"}
+{"timestamp": "2026-05-05T17:58:12.774512", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "notepad"}
+{"timestamp": "2026-05-05T17:58:12.775975", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: notepad"}
+{"timestamp": "2026-05-05T17:58:12.775975", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-05T17:58:12.895215", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "pid": 13716, "status": "success"}
+{"timestamp": "2026-05-05T17:58:12.901307", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ notepad launched successfully."}
+{"timestamp": "2026-05-05T17:58:24.021887", "level": "INFO", "logger": "main", "message": "User text input: open word"}
+{"timestamp": "2026-05-05T17:58:24.023010", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open word"}
+{"timestamp": "2026-05-05T17:58:26.070070", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "word"}
+{"timestamp": "2026-05-05T17:58:26.070070", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: word"}
+{"timestamp": "2026-05-05T17:58:26.071314", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: word"}
+{"timestamp": "2026-05-05T17:58:26.132129", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "word", "pid": 27468, "status": "success"}
+{"timestamp": "2026-05-05T17:58:26.139845", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ word launched successfully."}
+{"timestamp": "2026-05-05T17:58:44.966510", "level": "INFO", "logger": "main", "message": "User text input: open whatsapp web"}
+{"timestamp": "2026-05-05T17:58:44.967512", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open whatsapp web"}
+{"timestamp": "2026-05-05T17:58:47.584177", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini API error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+{"timestamp": "2026-05-05T17:58:47.591441", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: API Error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+{"timestamp": "2026-05-05T18:00:39.762094", "level": "ERROR", "logger": "voice.speech_to_text", "message": "Microphone error: Could not find PyAudio; check installation"}
+{"timestamp": "2026-05-05T18:00:54.864448", "level": "INFO", "logger": "main", "message": "User text input: open whatsapp web"}
+{"timestamp": "2026-05-05T18:00:54.866814", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open whatsapp web"}
+{"timestamp": "2026-05-05T18:00:57.692631", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "whatsapp web"}
+{"timestamp": "2026-05-05T18:00:57.692631", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: whatsapp web"}
+{"timestamp": "2026-05-05T18:00:57.692631", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: whatsapp web"}
+{"timestamp": "2026-05-05T18:00:57.736214", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "whatsapp web", "status": "not_found"}
+{"timestamp": "2026-05-05T18:00:57.743882", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ❌ Could not find 'whatsapp web'."}
+{"timestamp": "2026-05-05T18:01:47.389883", "level": "INFO", "logger": "main", "message": "User text input: open whatsapp web"}
+{"timestamp": "2026-05-05T18:01:47.389883", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open whatsapp web"}
+{"timestamp": "2026-05-05T18:01:49.507637", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "whatsapp web"}
+{"timestamp": "2026-05-05T18:01:49.507637", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: whatsapp web"}
+{"timestamp": "2026-05-05T18:01:49.507637", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: whatsapp web"}
+{"timestamp": "2026-05-05T18:01:49.523628", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "whatsapp web", "status": "not_found"}
+{"timestamp": "2026-05-05T18:01:49.530666", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ❌ Could not find 'whatsapp web'."}
+{"timestamp": "2026-05-05T18:02:06.459291", "level": "INFO", "logger": "main", "message": "User text input: open youtube"}
+{"timestamp": "2026-05-05T18:02:06.460305", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open youtube"}
+{"timestamp": "2026-05-05T18:02:08.591220", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome youtube.com"}
+{"timestamp": "2026-05-05T18:02:08.592848", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: chrome youtube.com"}
+{"timestamp": "2026-05-05T18:02:08.592848", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: chrome youtube.com"}
+{"timestamp": "2026-05-05T18:02:08.610740", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "chrome youtube.com", "status": "not_found"}
+{"timestamp": "2026-05-05T18:02:08.617321", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ❌ Could not find 'chrome youtube.com'."}
+{"timestamp": "2026-05-05T18:07:40.323319", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T18:07:40.325125", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T18:07:40.331126", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:07:42.917120", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T18:07:42.919133", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:07:43.363285", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T18:07:44.478158", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T18:07:52.486370", "level": "INFO", "logger": "main", "message": "User text input: open youtube"}
+{"timestamp": "2026-05-05T18:07:52.486370", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open youtube"}
+{"timestamp": "2026-05-05T18:07:54.430233", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-05-05T18:07:54.431450", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: chrome"}
+{"timestamp": "2026-05-05T18:07:54.431450", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: chrome"}
+{"timestamp": "2026-05-05T18:07:54.435567", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "chrome", "method": "activate", "status": "success"}
+{"timestamp": "2026-05-05T18:07:54.436074", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "chrome", "status": "already_running"}
+{"timestamp": "2026-05-05T18:07:54.443455", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚡ chrome is already running (focused)."}
+{"timestamp": "2026-05-05T18:08:08.331329", "level": "INFO", "logger": "main", "message": "User text input: open youtube"}
+{"timestamp": "2026-05-05T18:08:08.332338", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open youtube"}
+{"timestamp": "2026-05-05T18:08:11.041115", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T18:08:13.622223", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "youtube"}
+{"timestamp": "2026-05-05T18:08:13.623089", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: youtube"}
+{"timestamp": "2026-05-05T18:08:13.623089", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: youtube"}
+{"timestamp": "2026-05-05T18:08:13.701240", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "youtube", "pid": 24152, "status": "success"}
+{"timestamp": "2026-05-05T18:08:13.711576", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ youtube launched successfully."}
+{"timestamp": "2026-05-05T18:08:30.397925", "level": "INFO", "logger": "main", "message": "User text input: open whatsapp web"}
+{"timestamp": "2026-05-05T18:08:30.398929", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open whatsapp web"}
+{"timestamp": "2026-05-05T18:08:33.777027", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-05-05T18:08:33.778037", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: chrome"}
+{"timestamp": "2026-05-05T18:08:33.778548", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: chrome"}
+{"timestamp": "2026-05-05T18:08:33.782221", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "chrome", "method": "activate", "status": "success"}
+{"timestamp": "2026-05-05T18:08:33.782221", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "chrome", "status": "already_running"}
+{"timestamp": "2026-05-05T18:08:33.793534", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚡ chrome is already running (focused)."}
+{"timestamp": "2026-05-05T18:08:48.466632", "level": "INFO", "logger": "main", "message": "User text input: open whatsapp web"}
+{"timestamp": "2026-05-05T18:08:48.467824", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open whatsapp web"}
+{"timestamp": "2026-05-05T18:08:50.564924", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "whatsapp web"}
+{"timestamp": "2026-05-05T18:08:50.564924", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: whatsapp web"}
+{"timestamp": "2026-05-05T18:08:50.564924", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: whatsapp web"}
+{"timestamp": "2026-05-05T18:08:50.592333", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "whatsapp web", "pid": 19536, "status": "success"}
+{"timestamp": "2026-05-05T18:08:50.601467", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ whatsapp web launched successfully."}
+{"timestamp": "2026-05-05T18:09:33.227182", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:09:33.227182", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:09:40.711025", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T18:09:47.714388", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-05T18:09:50.938555", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini API error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}. Falling back to offline parser."}
+{"timestamp": "2026-05-05T18:09:50.949102", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: API Error: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+{"timestamp": "2026-05-05T18:14:03.304796", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:14:03.305807", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:14:12.860359", "level": "WARNING", "logger": "core.security", "message": "Security blocked unknown action: task"}
+{"timestamp": "2026-05-05T18:14:12.860359", "level": "ERROR", "logger": "core.command_parser", "message": "Command failed safety check: Action 'task' is not allowed."}
+{"timestamp": "2026-05-05T18:14:12.868944", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Security block: Action 'task' is not allowed."}
+{"timestamp": "2026-05-05T18:16:25.844193", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:16:25.845700", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:16:37.367798", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "notepad"}
+{"timestamp": "2026-05-05T18:16:37.367798", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: notepad"}
+{"timestamp": "2026-05-05T18:16:37.369306", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-05T18:16:37.378473", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "notepad", "method": "activate", "status": "success"}
+{"timestamp": "2026-05-05T18:16:37.378473", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "status": "already_running"}
+{"timestamp": "2026-05-05T18:16:37.392421", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚡ notepad is already running (focused)."}
+{"timestamp": "2026-05-05T18:17:31.337613", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:17:31.338785", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:17:36.399192", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T18:17:41.128715", "level": "WARNING", "logger": "core.security", "message": "Security blocked unknown action: task"}
+{"timestamp": "2026-05-05T18:17:41.128715", "level": "ERROR", "logger": "core.command_parser", "message": "Command failed safety check: Action 'task' is not allowed."}
+{"timestamp": "2026-05-05T18:17:41.139089", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Security block: Action 'task' is not allowed."}
+{"timestamp": "2026-05-05T18:17:51.220710", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T18:17:51.223368", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T18:17:51.225847", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:17:53.403620", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T18:17:53.406140", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:17:53.791678", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T18:17:54.572125", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T18:18:01.019388", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:18:01.020389", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:18:01.032719", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T18:18:03.503093", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "notepad"}
+{"timestamp": "2026-05-05T18:18:03.503093", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: notepad"}
+{"timestamp": "2026-05-05T18:18:03.503093", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-05T18:18:03.544126", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "notepad", "method": "activate", "status": "success"}
+{"timestamp": "2026-05-05T18:18:03.545632", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "status": "already_running"}
+{"timestamp": "2026-05-05T18:18:03.555715", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚡ notepad is already running (focused)."}
+{"timestamp": "2026-05-05T18:18:08.255547", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:18:08.257066", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friend in notepad"}
+{"timestamp": "2026-05-05T18:18:08.268759", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T18:18:10.135669", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "task", "target": "notepad"}
+{"timestamp": "2026-05-05T18:18:10.136176", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Unknown task: write essay on friend"}
+{"timestamp": "2026-05-05T18:23:08.151854", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T18:23:08.153093", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T18:23:08.157295", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:23:10.118440", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T18:23:10.119439", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:23:10.343450", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T18:23:10.904834", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T18:23:29.240883", "level": "INFO", "logger": "main", "message": "User text input: write an esay on friend in notepad"}
+{"timestamp": "2026-05-05T18:23:29.240883", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an esay on friend in notepad"}
+{"timestamp": "2026-05-05T18:23:29.252769", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T18:23:30.335561", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T18:23:31.938132", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-05T18:23:34.404315", "level": "ERROR", "logger": "core.command_parser", "message": "Error parsing command: 'NoneType' object has no attribute 'strip'"}
+{"timestamp": "2026-05-05T18:23:34.412533", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: 'NoneType' object has no attribute 'strip'"}
+{"timestamp": "2026-05-05T18:28:18.156144", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T18:28:18.157177", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T18:28:18.159256", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:28:19.709011", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T18:28:19.711090", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:28:19.979118", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T18:28:20.518492", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T18:28:29.242440", "level": "INFO", "logger": "main", "message": "User text input: write an esay on friend in notepad"}
+{"timestamp": "2026-05-05T18:28:29.243465", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an esay on friend in notepad"}
+{"timestamp": "2026-05-05T18:28:29.255247", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T18:28:30.139415", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T18:28:31.614094", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-05T18:28:34.031290", "level": "ERROR", "logger": "core.command_parser", "message": "Invalid AI response received"}
+{"timestamp": "2026-05-05T18:28:34.039381", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚠️ I couldn't understand that. Please try again."}
+{"timestamp": "2026-05-05T18:36:53.700557", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T18:36:53.702619", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T18:36:53.706151", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:36:56.189259", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T18:36:56.191088", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T18:36:56.558194", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T18:36:57.243968", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T18:37:16.014978", "level": "INFO", "logger": "main", "message": "User text input: write an esay on friend in notepad"}
+{"timestamp": "2026-05-05T18:37:16.016010", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an esay on friend in notepad"}
+{"timestamp": "2026-05-05T18:37:16.020065", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T18:37:17.150562", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T18:37:18.617203", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-05T18:37:21.108502", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 39.348145705s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}"}
+{"timestamp": "2026-05-05T18:37:21.109011", "level": "WARNING", "logger": "services.ai_service", "message": "Switching to Ollama fallback..."}
+{"timestamp": "2026-05-05T18:37:21.133593", "level": "ERROR", "logger": "main", "message": "Text pipeline error: No module named 'ollama'"}
+{"timestamp": "2026-05-05T19:03:43.454690", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-05T19:03:43.458894", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-05T19:03:43.469442", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T19:03:47.378849", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-05T19:03:47.380967", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-05T19:03:48.305912", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-05T19:03:50.367062", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-05T19:04:13.928250", "level": "INFO", "logger": "main", "message": "User text input: write essay on friend in notepad"}
+{"timestamp": "2026-05-05T19:04:13.929968", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write essay on friend in notepad"}
+{"timestamp": "2026-05-05T19:04:13.943530", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T19:04:14.770361", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T19:04:16.191011", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-05T19:04:18.602355", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 41.874967118s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '41s'}]}}"}
+{"timestamp": "2026-05-05T19:04:18.602867", "level": "WARNING", "logger": "services.ai_service", "message": "Switching to Ollama fallback..."}
+{"timestamp": "2026-05-05T19:04:57.157038", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "notepad"}
+{"timestamp": "2026-05-05T19:04:57.157038", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: notepad"}
+{"timestamp": "2026-05-05T19:04:57.158617", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-05T19:04:57.231998", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "notepad", "method": "activate", "status": "error", "error": "Error code from Windows: 2 - The system cannot find the file specified."}
+{"timestamp": "2026-05-05T19:04:57.231998", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "status": "already_running"}
+{"timestamp": "2026-05-05T19:05:27.301584", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-05T19:05:52.360424", "level": "INFO", "logger": "main", "message": "User text input: open linkedin in chrome"}
+{"timestamp": "2026-05-05T19:05:52.361463", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open linkedin in chrome"}
+{"timestamp": "2026-05-05T19:05:52.381752", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-05T19:05:53.179806", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-05T19:05:54.801704", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-05T19:05:57.196710", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\\nPlease retry in 3.259275652s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '3s'}]}}"}
+{"timestamp": "2026-05-05T19:05:57.196710", "level": "WARNING", "logger": "services.ai_service", "message": "Switching to Ollama fallback..."}
+{"timestamp": "2026-05-05T19:06:02.039221", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_website", "target": "linkedin.com"}
+{"timestamp": "2026-05-05T19:06:02.040630", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_website on target: linkedin.com"}
+{"timestamp": "2026-05-05T19:06:09.365546", "level": "INFO", "logger": "automation.web_automation", "message": "WebDriver initialized successfully."}
+{"timestamp": "2026-05-05T19:06:12.883766", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Opened website: https://linkedin.com"}
+{"timestamp": "2026-05-06T12:42:54.256992", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-06T12:42:54.260000", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-06T12:42:54.262122", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T12:42:57.371341", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-06T12:42:57.372870", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T12:42:57.912214", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-06T12:42:58.621334", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-06T12:43:02.473376", "level": "INFO", "logger": "main", "message": "User text input: write an essay on topic friend in notepad launched successfully."}
+{"timestamp": "2026-05-06T12:43:02.474377", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on topic friend in notepad launched successfully."}
+{"timestamp": "2026-05-06T12:43:02.478424", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-06T12:43:06.415854", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "notepad"}
+{"timestamp": "2026-05-06T12:43:06.416974", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: notepad"}
+{"timestamp": "2026-05-06T12:43:06.416974", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-06T12:43:06.438533", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "notepad", "method": "activate", "status": "success"}
+{"timestamp": "2026-05-06T12:43:06.438533", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "status": "already_running"}
+{"timestamp": "2026-05-06T12:43:20.451330", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-06T14:54:56.780658", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-06T14:54:56.786758", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-06T14:54:56.806557", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T14:55:03.141946", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-06T14:55:03.147316", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T14:55:04.417239", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-06T14:55:06.875849", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-06T14:55:47.287191", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-06T14:55:47.290739", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-06T14:55:47.294661", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T14:55:51.607921", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured"}
+{"timestamp": "2026-05-06T14:55:51.611146", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T14:55:52.375778", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-06T14:55:54.056428", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-06T14:56:06.043010", "level": "INFO", "logger": "main", "message": "User text input: open youtube"}
+{"timestamp": "2026-05-06T14:56:06.044555", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open youtube"}
+{"timestamp": "2026-05-06T14:56:06.059795", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-06T14:56:12.224119", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-06T14:56:14.843761", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-06T14:56:19.287276", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+{"timestamp": "2026-05-06T14:56:19.289178", "level": "WARNING", "logger": "services.ai_service", "message": "Switching to Ollama fallback..."}
+{"timestamp": "2026-05-06T14:56:38.555676", "level": "ERROR", "logger": "services.ollama_service", "message": "Ollama error: llama runner process no longer running: 1 CUDA error (status code: 500)"}
+{"timestamp": "2026-05-06T14:56:38.556679", "level": "ERROR", "logger": "services.ai_service", "message": "Ollama fallback failed. Falling back to offline parser."}
+{"timestamp": "2026-05-06T14:56:38.556679", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: youtube"}
+{"timestamp": "2026-05-06T14:56:38.558006", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: youtube"}
+{"timestamp": "2026-05-06T14:56:38.688926", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "youtube", "pid": 27892, "status": "success"}
+{"timestamp": "2026-05-06T14:56:38.701109", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ youtube launched successfully."}
+{"timestamp": "2026-05-06T14:57:11.580287", "level": "INFO", "logger": "main", "message": "User text input: open notepad write an essay on friendship"}
+{"timestamp": "2026-05-06T14:57:11.581348", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open notepad write an essay on friendship"}
+{"timestamp": "2026-05-06T14:57:11.595001", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-06T14:57:14.088097", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-06T14:57:17.582277", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-06T14:57:21.124678", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+{"timestamp": "2026-05-06T14:57:21.125692", "level": "WARNING", "logger": "services.ai_service", "message": "Switching to Ollama fallback..."}
+{"timestamp": "2026-05-06T14:57:41.786669", "level": "ERROR", "logger": "core.command_parser", "message": "Failed to parse LLM response as JSON: Extra data: line 5 column 1 (char 50)\nResponse: {\n  \"intent\": \"open_app\",\n  \"target\": \"notepad\"\n}\n{\n  \"intent\": \"write_text\",\n  \"target\": \"notepad\",\n  \"content\": \"<fully generated essay text goes here>\"\n}"}
+{"timestamp": "2026-05-06T14:57:41.797037", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Failed to understand the command format."}
+{"timestamp": "2026-05-06T14:58:20.613714", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friendhip in notepad"}
+{"timestamp": "2026-05-06T14:58:20.614740", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friendhip in notepad"}
+{"timestamp": "2026-05-06T14:58:20.626703", "level": "INFO", "logger": "services.ai_service", "message": "Using Gemini"}
+{"timestamp": "2026-05-06T14:58:23.870879", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 1s..."}
+{"timestamp": "2026-05-06T14:58:27.226280", "level": "WARNING", "logger": "services.ai_service", "message": "Gemini API rate limit/unavailable. Retrying in 2s..."}
+{"timestamp": "2026-05-06T14:58:35.970273", "level": "ERROR", "logger": "services.ai_service", "message": "Gemini failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}"}
+{"timestamp": "2026-05-06T14:58:35.972351", "level": "WARNING", "logger": "services.ai_service", "message": "Switching to Ollama fallback..."}
+{"timestamp": "2026-05-06T14:59:16.995172", "level": "ERROR", "logger": "core.command_parser", "message": "Failed to parse LLM response as JSON: Invalid control character at: line 4 column 321 (char 371)\nResponse: {\n  \"intent\": \"write_text\",\n  \"target\": \"notepad\",\n  \"content\": \"Friendship is a bond that connects two or more individuals, fostering a sense of belonging and companionship. It's a relationship built on mutual trust, understanding, and shared experiences. A true friend is one who stands by your side through thick and thin, offering emotional support and encouragement.\n\nIn today's fast-paced world, it's easy to get caught up in our individual pursuits and forget the importance of nurturing meaningful relationships. However, having close friends can have a profound impact on our mental and emotional well-being. Friends provide us with a sense of belonging, helping to alleviate feelings of loneliness and isolation.\n\nA good friendship is like a treasure that requires effort and maintenance to grow. It's about being present in each other's lives, listening actively, and showing genuine interest in the other person's thoughts, feelings, and experiences. A true friend will always be there to lend a helping hand or offer a sympathetic ear when needed.\n\nIn conclusion, friendship is a precious gift that enriches our lives in countless ways. It's about building strong bonds with others, fostering a sense of community and connection. As we navigate the complexities of life, having close friends by our side can make all the difference.\"\n}"}
+{"timestamp": "2026-05-06T14:59:17.009615", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Failed to understand the command format."}
+{"timestamp": "2026-05-06T23:49:43.925039", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-06T23:49:43.930554", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-06T23:49:43.941194", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T23:49:43.950471", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-06T23:49:43.953646", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-06T23:49:45.217194", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-06T23:49:48.043801", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-06T23:49:54.506015", "level": "INFO", "logger": "main", "message": "User text input: open youtube"}
+{"timestamp": "2026-05-06T23:49:54.507702", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open youtube"}
+{"timestamp": "2026-05-06T23:49:54.514421", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-06T23:50:09.181054", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "youtube"}
+{"timestamp": "2026-05-06T23:50:09.181054", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: youtube"}
+{"timestamp": "2026-05-06T23:50:09.181054", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: youtube"}
+{"timestamp": "2026-05-06T23:50:09.273876", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "youtube", "pid": 33580, "status": "success"}
+{"timestamp": "2026-05-06T23:50:09.283365", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ youtube launched successfully."}
+{"timestamp": "2026-05-06T23:50:50.693343", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friendship in notepad"}
+{"timestamp": "2026-05-06T23:50:50.695358", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friendship in notepad"}
+{"timestamp": "2026-05-06T23:50:50.712371", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-06T23:53:53.739522", "level": "INFO", "logger": "main", "message": "User text input: write an essay on friendship in notepad"}
+{"timestamp": "2026-05-06T23:53:53.744076", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write an essay on friendship in notepad"}
+{"timestamp": "2026-05-06T23:53:53.808191", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-06T23:55:49.183865", "level": "ERROR", "logger": "core.command_parser", "message": "Failed to parse LLM response as JSON: Invalid control character at: line 4 column 268 (char 318)\nResponse: {\n  \"intent\": \"write_text\",\n  \"target\": \"notepad\",\n  \"content\": \"Friendship is a bond that transcends time and space. It's the unwavering support system that helps us navigate life's ups and downs. A true friend is someone who accepts you for who you are, flaws and all, and still manages to bring out the best in you.\n\nIn today's fast-paced world, it's easy to get caught up in our own lives and forget about the people around us. But a good friend never lets that happen. They're always there to lend an ear, offer advice when needed, or simply be present. Whether we need someone to share a joke with, a shoulder to cry on, or a partner in crime for our wild adventures, friends are always there to provide.\n\nWhat makes friendship truly special is the deep emotional connection we form with others. It's the ability to be vulnerable and open, knowing that our secrets are safe and our feelings will be understood. Friends have the power to bring out the best version of us, helping us grow and evolve as individuals.\n\nIn addition to the emotional support they provide, friends also play a crucial role in shaping our sense of identity. They're the ones who introduce us to new experiences, help us discover hidden talents, and show us that we're capable of achieving great things. Without friends, we might be missing out on opportunities to explore our passions and pursue our dreams.\n\nAs we grow older, friendships may evolve, but their importance never fades. Whether it's a childhood pal, a college roommate, or a colleague at work, true friends are always there to offer support, encouragement, and love.\n\nIn conclusion, friendship is the glue that holds us together. It's the foundation upon which we build our lives, the source of our strength and resilience. So let's cherish these bonds, nurture them with care, and celebrate the joy they bring to our lives.\"\n}"}
+{"timestamp": "2026-05-06T23:55:49.335027", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Failed to understand the command format."}
+{"timestamp": "2026-05-07T09:28:17.089095", "level": "ERROR", "logger": "services.ollama_service", "message": "Ollama error: an error was encountered while running the model: CUDA error (status code: 500)"}
+{"timestamp": "2026-05-07T09:28:17.090160", "level": "ERROR", "logger": "services.ai_service", "message": "Ollama failed to return response. Falling back to offline parser."}
+{"timestamp": "2026-05-07T09:28:17.098559", "level": "ERROR", "logger": "main", "message": "Text pipeline error: wrapped C/C++ object of type Signals has been deleted"}
+{"timestamp": "2026-05-07T10:13:07.398134", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-07T10:13:07.400838", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-07T10:13:07.407483", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-07T10:13:07.407483", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-07T10:13:07.408625", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-07T10:13:07.410981", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-05-07T10:13:07.415225", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-07T10:13:07.433571", "level": "ERROR", "logger": "services.ollama_service", "message": "Ollama error: model 'phi3' not found (status code: 404)"}
+{"timestamp": "2026-05-07T10:13:07.434078", "level": "ERROR", "logger": "services.ai_service", "message": "Ollama failed to return response. Falling back to offline parser."}
+{"timestamp": "2026-05-07T10:13:07.440819", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-05-07T10:13:07.440819", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "web_search", "target": "python programming"}
+{"timestamp": "2026-05-07T10:13:07.442093", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-07T10:13:07.442093", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-07T10:13:07.444821", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-07T10:13:07.444821", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-07T10:13:07.445993", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-07T11:57:10.879173", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-07T11:57:10.882226", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-07T11:57:10.889801", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-07T11:57:10.891001", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-07T11:57:10.892184", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-07T11:57:11.536194", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-07T11:57:12.697832", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-07T11:57:52.804250", "level": "INFO", "logger": "main", "message": "User text input: write a letter to my friend about asking his health condition in notepad"}
+{"timestamp": "2026-05-07T11:57:52.805257", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write a letter to my friend about asking his health condition in notepad"}
+{"timestamp": "2026-05-07T11:57:52.811413", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-07T11:58:36.110510", "level": "ERROR", "logger": "core.command_parser", "message": "Failed to parse LLM response as JSON: Invalid control character at: line 4 column 16 (char 66)\nResponse: ```json\n{\n  \"intent\": \"write_text\",\n  \"target\": \"notepad\",\n  \"content\": \"{\n    \\\"Dear [Friend'th Name],\\\\nI hope this message finds you well. I've been thinking a lot about how time flies and missing our last meet-up together, but nothing can compare to the health of my dear friend. Could your recent visits have led me across any unexpected twists with regard to your health? Please do share if there are things that concern or make you feel better; it's always good for friends like us to keep tabs on each other and know what weighs heavy in our hearts and minds, especially when one of the most beautiful people around is not feeling quite right.\\\\nLooking forward to hearing from you soon as I am genuinely concerned about your well-being.\\\\nWarm regards, \\\\[Your Name]\\\\\"\n  },\\\"confidence\\\": 0.95\n}\n```"}
+{"timestamp": "2026-05-07T11:58:36.115403", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Failed to understand the command format."}
+{"timestamp": "2026-05-08T22:07:30.795076", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T22:07:30.797228", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T22:07:30.803331", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:07:30.803331", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T22:07:30.803331", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:07:31.372290", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T22:07:32.564574", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T22:08:22.885177", "level": "INFO", "logger": "main", "message": "User text input: write a letter to my friend name Babul in notepad about asking his health condition"}
+{"timestamp": "2026-05-08T22:08:22.885754", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write a letter to my friend name Babul in notepad about asking his health condition"}
+{"timestamp": "2026-05-08T22:08:22.892724", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T22:08:36.572212", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "notepad"}
+{"timestamp": "2026-05-08T22:08:36.572212", "level": "INFO", "logger": "core.executor", "message": "Executing intent: open_app on target: notepad"}
+{"timestamp": "2026-05-08T22:08:36.573801", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-08T22:08:36.787490", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "pid": 27276, "status": "success"}
+{"timestamp": "2026-05-08T22:08:36.796859", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ notepad launched successfully."}
+{"timestamp": "2026-05-08T22:32:08.102100", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T22:32:08.105268", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T22:32:08.107765", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:32:08.107765", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T22:32:08.111558", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:32:08.635069", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T22:32:09.901313", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T22:32:54.760436", "level": "INFO", "logger": "main", "message": "User text input: write a letter to my friend in notepad about asking his health after accident"}
+{"timestamp": "2026-05-08T22:32:54.762436", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write a letter to my friend in notepad about asking his health after accident"}
+{"timestamp": "2026-05-08T22:32:54.778214", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T22:33:29.042496", "level": "ERROR", "logger": "core.command_parser", "message": "Failed to parse LLM response as JSON: Invalid control character at: line 1 column 69 (char 68)\nResponse: {\"intent\": \"write_text\", \"target\": \"notepad\", \"content\": \"Dear John,\n\nI hope this message finds you safe and recovering well from your recent mishap. I've been concerned since the incident occurred and would like to extend my thoughts towards ensuring that not only are you physically better but also emotionally supported during these times.\\n\\nPhysical health takes priority, of course, so if there's anything specific doctors recommend or at-home care strategies for your situation? Please share this with me. Remember to take all the necessary rest and avoid straining yourself too much as you recover from whatever happened on that day in February.\\n\\nOn a different note, I genuinely miss our catch-ups together – they always bring such joy into my life! Let's set up another meetup soon once this gets better. In the meantime, we can continue to connect through calls and texts or any other means you find comfortable at your end.\\n\\nTake good care of yourself as I will for us both!\\n\\nWith all love,\\nYour friend\", \"confidence\": 0.97}"}
+{"timestamp": "2026-05-08T22:33:29.053637", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Failed to understand the command format."}
+{"timestamp": "2026-05-08T22:40:37.602983", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T22:40:37.633971", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T22:40:37.645759", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:40:37.646771", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T22:40:37.648459", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:40:38.282889", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T22:40:39.027700", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T22:42:42.777768", "level": "INFO", "logger": "main", "message": "User text input: write a letter to my friend about asking his health condition after an accident in notepad"}
+{"timestamp": "2026-05-08T22:42:42.777768", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write a letter to my friend about asking his health condition after an accident in notepad"}
+{"timestamp": "2026-05-08T22:42:42.782776", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T22:42:44.833718", "level": "ERROR", "logger": "services.ollama_service", "message": "Ollama error: Failed to connect to Ollama. Please check that Ollama is downloaded, running and accessible. https://ollama.com/download"}
+{"timestamp": "2026-05-08T22:42:44.833718", "level": "ERROR", "logger": "services.ai_service", "message": "Ollama failed to return response. Falling back to offline parser."}
+{"timestamp": "2026-05-08T22:42:44.834728", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: notepad"}
+{"timestamp": "2026-05-08T22:42:44.834728", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-08T22:42:44.929130", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "pid": 7672, "status": "success"}
+{"timestamp": "2026-05-08T22:42:46.260716", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Error: No text provided to type."}
+{"timestamp": "2026-05-08T22:48:23.177003", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T22:48:23.178013", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T22:48:23.179844", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:48:23.179844", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T22:48:23.180853", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T22:48:23.418903", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T22:48:23.891225", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T22:48:28.434483", "level": "INFO", "logger": "main", "message": "User text input: write a letter to my friend about asking his health condition after an accident in notepad"}
+{"timestamp": "2026-05-08T22:48:28.434988", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write a letter to my friend about asking his health condition after an accident in notepad"}
+{"timestamp": "2026-05-08T22:48:28.441001", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T22:48:41.348092", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "notepad"}
+{"timestamp": "2026-05-08T22:48:41.348092", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: notepad"}
+{"timestamp": "2026-05-08T22:48:41.348092", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: notepad"}
+{"timestamp": "2026-05-08T22:48:41.358897", "level": "INFO", "logger": "automation.app_controller", "message": "Action: window_action", "action": "window_action", "app": "notepad", "method": "activate", "status": "error", "error": "Error code from Windows: 2 - The system cannot find the file specified."}
+{"timestamp": "2026-05-08T22:48:41.358897", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "notepad", "status": "already_running"}
+{"timestamp": "2026-05-08T22:48:51.488356", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-08T22:51:11.503214", "level": "INFO", "logger": "main", "message": "User text input: shutdown pc"}
+{"timestamp": "2026-05-08T22:51:11.503729", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: shutdown pc"}
+{"timestamp": "2026-05-08T22:51:11.509291", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T22:51:20.406987", "level": "ERROR", "logger": "core.command_parser", "message": "Command failed safety check: System operation 'None' is not allowed."}
+{"timestamp": "2026-05-08T22:51:20.412620", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Security block: System operation 'None' is not allowed."}
+{"timestamp": "2026-05-08T23:08:36.784696", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:08:36.786899", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:08:36.787431", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:08:36.787431", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:08:36.788776", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:08:37.119291", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:08:37.757083", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:17:23.484936", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:17:23.485946", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:17:23.486944", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:17:23.486944", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:17:23.487947", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:17:23.667721", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:17:24.104411", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:17:33.015027", "level": "INFO", "logger": "main", "message": "User text input: shutdown pc"}
+{"timestamp": "2026-05-08T23:17:33.016041", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: shutdown pc"}
+{"timestamp": "2026-05-08T23:17:33.022029", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:17:37.331656", "level": "ERROR", "logger": "core.command_parser", "message": "Command failed safety check: System operation 'PC shutdown command executed successfully.' is not allowed."}
+{"timestamp": "2026-05-08T23:17:37.336508", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Security block: System operation 'PC shutdown command executed successfully.' is not allowed."}
+{"timestamp": "2026-05-08T23:17:59.922247", "level": "INFO", "logger": "main", "message": "User text input: full form of jdbc"}
+{"timestamp": "2026-05-08T23:17:59.922247", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: full form of jdbc"}
+{"timestamp": "2026-05-08T23:17:59.930309", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:18:01.441129", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "chat_response", "target": "The full form of JDBC is Java Database Connectivity."}
+{"timestamp": "2026-05-08T23:18:01.441129", "level": "INFO", "logger": "core.executor", "message": "Executing intent: chat_response on target: The full form of JDBC is Java Database Connectivity."}
+{"timestamp": "2026-05-08T23:18:01.445670", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: The full form of JDBC is Java Database Connectivity."}
+{"timestamp": "2026-05-08T23:18:43.692846", "level": "INFO", "logger": "main", "message": "User text input: can make write a python code to print hello world in vs code"}
+{"timestamp": "2026-05-08T23:18:43.693362", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: can make write a python code to print hello world in vs code"}
+{"timestamp": "2026-05-08T23:18:43.698493", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:18:45.882252", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "Visual Studio Code"}
+{"timestamp": "2026-05-08T23:18:45.882252", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: Visual Studio Code"}
+{"timestamp": "2026-05-08T23:18:45.883252", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: Visual Studio Code"}
+{"timestamp": "2026-05-08T23:18:45.913416", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "mail", "pid": 12128, "status": "success"}
+{"timestamp": "2026-05-08T23:18:56.044629", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-08T23:32:02.689912", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:32:02.691265", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:32:02.693259", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:32:02.693259", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:32:02.694523", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:32:02.981763", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:32:03.596058", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:32:07.391876", "level": "INFO", "logger": "main", "message": "User text input: write a python code to print hello world in vs code"}
+{"timestamp": "2026-05-08T23:32:07.393382", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: write a python code to print hello world in vs code"}
+{"timestamp": "2026-05-08T23:32:07.398487", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:32:12.925720", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "VS Code"}
+{"timestamp": "2026-05-08T23:32:12.926237", "level": "WARNING", "logger": "services.ai_service", "message": "Ollama returned open_app for a write command — retrying with explicit prompt."}
+{"timestamp": "2026-05-08T23:32:15.037573", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "vscode"}
+{"timestamp": "2026-05-08T23:32:15.038086", "level": "INFO", "logger": "services.ai_service", "message": "Retry succeeded — using write_text intent."}
+{"timestamp": "2026-05-08T23:32:15.038086", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: vscode"}
+{"timestamp": "2026-05-08T23:32:15.038086", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: vscode"}
+{"timestamp": "2026-05-08T23:32:15.083002", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "vscode", "pid": 5960, "status": "success"}
+{"timestamp": "2026-05-08T23:32:25.207385", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-08T23:34:02.866719", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:34:02.869116", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:34:02.873058", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:34:02.873058", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:34:02.874096", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:34:03.268002", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:34:04.259706", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:36:25.729542", "level": "INFO", "logger": "main", "message": "User text input: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:36:25.730625", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:36:25.741835", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:36:34.272585", "level": "ERROR", "logger": "core.command_parser", "message": "Failed to parse LLM response as JSON: Invalid \\escape: line 4 column 17 (char 72)\nResponse: ```json\n{\n    \"intent\": \"write_text\",\n    \"target\": \"index.py\",\n    \"content\": \"\\\n# This script generates and prints the multiplication table for numbers from 1 to 20.\\n\\\nfor i in range(1, 21): # Iterate through each number starting with 1 up to (but not including) 21 \\n\\\n    for j in range(1, 21): # For each of these numbers, iterate from 1 up to 20 again\\n\\\n        print(f'{i} x {j} = {i*j}', end=' ')\\n\\\n    print() # After printing all products for a single number i, start a new line\\n\"\n}\n```"}
+{"timestamp": "2026-05-08T23:36:34.279452", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Failed to understand the command format."}
+{"timestamp": "2026-05-08T23:40:08.496367", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:40:08.498153", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:40:08.501936", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:40:08.502959", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:40:08.504008", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:40:08.834982", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:40:09.626397", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:40:19.153800", "level": "INFO", "logger": "main", "message": "User text input: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:40:19.154826", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:40:19.167475", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:40:23.675232", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "vscode"}
+{"timestamp": "2026-05-08T23:40:23.675232", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: vscode"}
+{"timestamp": "2026-05-08T23:40:23.675232", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: vscode"}
+{"timestamp": "2026-05-08T23:40:23.741344", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "vscode", "pid": 11536, "status": "success"}
+{"timestamp": "2026-05-08T23:40:33.910989", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-08T23:51:09.730061", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:51:09.732108", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:51:09.732108", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:51:09.732108", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:51:09.734035", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:51:10.095590", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:51:10.781072", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:52:01.336298", "level": "INFO", "logger": "main", "message": "User text input: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:52:01.337341", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:52:01.341860", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:52:09.795785", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": "index.py"}
+{"timestamp": "2026-05-08T23:52:09.795785", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: index.py"}
+{"timestamp": "2026-05-08T23:52:09.796815", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: index.py"}
+{"timestamp": "2026-05-08T23:52:09.891300", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 25500, "status": "success"}
+{"timestamp": "2026-05-08T23:52:20.052786", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Text written successfully"}
+{"timestamp": "2026-05-08T23:58:24.709800", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-08T23:58:24.711307", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-08T23:58:24.711852", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:58:24.712378", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-08T23:58:24.712905", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\money_tracker\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-08T23:58:24.910231", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-08T23:58:25.274682", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-08T23:58:41.718565", "level": "INFO", "logger": "main", "message": "User text input: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:58:41.719035", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open vs code make a file index.py in that write a python code to print table of 1 to 20"}
+{"timestamp": "2026-05-08T23:58:41.724335", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-08T23:58:48.012847", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "create_file", "target": "index.py"}
+{"timestamp": "2026-05-08T23:58:48.012847", "level": "INFO", "logger": "core.executor", "message": "Executing intent: create_file on target: index.py"}
+{"timestamp": "2026-05-08T23:58:48.014113", "level": "INFO", "logger": "core.executor", "message": "File 'C:\\Users\\babul\\Desktop\\index.py' created successfully."}
+{"timestamp": "2026-05-08T23:58:51.038863", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ File created at C:\\Users\\babul\\Desktop\\index.py and opened in code."}

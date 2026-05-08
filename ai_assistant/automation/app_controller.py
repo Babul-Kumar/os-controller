@@ -8,6 +8,7 @@ from typing import List, Dict, Any, Optional, Tuple
 
 import pygetwindow as gw
 from utils.helpers import setup_logger, json_log, fuzzy_match, get_close_suggestions
+from core.security import validate_shell_command
 
 logger = setup_logger(__name__)
 
@@ -21,6 +22,7 @@ class AppController:
         "calculator": "calc.exe",
         "explorer": "explorer.exe",
         "paint": "mspaint.exe",
+        "vscode": "code.cmd",
         # “start” protocols – they are launched via the shell
         "camera": "start microsoft.windows.camera:",
         "settings": "start ms-settings:",
@@ -42,6 +44,9 @@ class AppController:
         "photo editor": "paint",
         "camera app": "camera",
         "settings app": "settings",
+        "visual studio code": "vscode",
+        "vs code": "vscode",
+        "vscode": "vscode",
     }
 
     _app_path_cache: Dict[str, Optional[str]] = {}
@@ -52,8 +57,8 @@ class AppController:
         "calculator": "safe",
         "explorer": "safe",
         "paint": "safe",
-        "cmd": "restricted",
-        "powershell": "restricted",
+        "cmd": "safe",
+        "powershell": "safe",
     }
 
     LAST_APP: Optional[str] = None
@@ -62,6 +67,14 @@ class AppController:
     @staticmethod
     def normalize_name(name: str) -> str:
         return os.path.splitext(name.lower())[0]
+
+    @classmethod
+    def _validate_command(cls, cmd: str) -> Tuple[bool, Optional[str]]:
+        """
+        In safe‑mode we reject any command that contains shell‑control characters.
+        Returns (allowed, reason_if_blocked).
+        """
+        return validate_shell_command(cmd)
 
     @classmethod
     def _resolve_executable(cls, canonical: str) -> Optional[str]:
@@ -169,6 +182,11 @@ class AppController:
         cmd = cls._resolve_executable(canonical)
         if not cmd:
             cmd = raw
+
+        allowed, reason = cls._validate_command(cmd)
+        if not allowed:
+            json_log(logger, "open", app=canonical, status="blocked", reason=reason)
+            return {"status": "blocked", "message": f"🚫 Blocked: {reason}"}
 
         loop = asyncio.get_running_loop()
 

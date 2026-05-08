@@ -69,7 +69,19 @@ def validate_command_safety(command_data: dict) -> tuple[bool, str]:
             
     # Add more specific checks here (e.g. system control checks)
     if action == "system_control":
-        operation = command_data.get("operation")
+        operation = command_data.get("operation") or command_data.get("target", "")
+        op_lower = operation.lower() if isinstance(operation, str) else ""
+        if "shutdown" in op_lower:
+            operation = "shutdown"
+        elif "restart" in op_lower:
+            operation = "restart"
+        elif "sleep" in op_lower:
+            operation = "sleep"
+        elif "lock" in op_lower:
+            operation = "lock"
+            
+        command_data["operation"] = operation
+        
         if operation not in ("shutdown", "restart", "sleep", "lock"):
             return False, f"System operation '{operation}' is not allowed."
             
