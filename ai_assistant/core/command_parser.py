@@ -1,4 +1,5 @@
 import json
+import json_repair
 from utils.helpers import setup_logger, json_log
 from core.security import validate_command_safety
 
@@ -46,6 +47,49 @@ def _fix_json_control_chars(s: str) -> str:
 
     return "".join(result)
 
+
+def _extract_first_json_payload(s: str) -> str:
+    """
+    Extract the first balanced JSON object or array from a noisy LLM response.
+    This avoids greedy brace matching when the model emits multiple JSON blobs.
+    """
+    starts = [(s.find("{"), "{", "}"), (s.find("["), "[", "]")]
+    starts = [item for item in starts if item[0] != -1]
+    if not starts:
+        return s
+
+    start_index, opener, closer = min(starts, key=lambda item: item[0])
+    depth = 0
+    in_string = False
+    escape_next = False
+
+    for index in range(start_index, len(s)):
+        ch = s[index]
+
+        if escape_next:
+            escape_next = False
+            continue
+
+        if ch == "\\" and in_string:
+            escape_next = True
+            continue
+
+        if ch == '"':
+            in_string = not in_string
+            continue
+
+        if in_string:
+            continue
+
+        if ch == opener:
+            depth += 1
+        elif ch == closer:
+            depth -= 1
+            if depth == 0:
+                return s[start_index:index + 1]
+
+    return s[start_index:]
+
 class CommandParser:
     @staticmethod
     def parse(llm_response: str) -> dict:
@@ -78,17 +122,18 @@ class CommandParser:
             # (phi3 / small LLMs emit raw newlines in multi-line content)
             clean_str = _fix_json_control_chars(clean_str)
 
-            # Find the first '{' and the last '}' just in case
-            # Try to extract JSON using regex
-            import re
-            match = re.search(r"\{.*\}", clean_str, re.DOTALL)
-            if match:
-                clean_str = match.group(0)
-            else:
-                # If no braces found, maybe it's completely malformed
-                pass
+            clean_str = _extract_first_json_payload(clean_str)
                 
-            command_data = json.loads(clean_str)
+            command_data = json_repair.loads(clean_str)
+            
+            if isinstance(command_data, list):
+                command_data = next(
+                    (item for item in command_data if isinstance(item, dict)),
+                    command_data[0] if command_data else {}
+                )
+                
+            if not isinstance(command_data, dict):
+                command_data = {}
             
             # Normalization to new intent schema
             # If the old format 'action' is present, convert it to 'intent'

@@ -1,6 +1,8 @@
-import ollama
-import json
-import re
+import importlib
+import os
+from types import ModuleType
+from typing import Optional
+
 from utils.helpers import setup_logger
 
 logger = setup_logger(__name__)
@@ -15,7 +17,10 @@ Available intents:
 - create_file    : create a file at a given path and write code/content inside it, then open it in the specified editor
 - web_search     : search the web
 - open_website   : open a URL
-- system_control : system operations (shutdown, sleep, etc.)
+- system_control : ONLY use for system operations (shutdown, restart, sleep, lock) when explicitly requested by the user.
+- draw_shape     : use the mouse to draw a shape or image (target = what to draw, e.g., "indian flag", "circle", "anime girl")
+- find_file      : search the user's PC for a file (target = filename or keyword, e.g. "resume.pdf", "cat image")
+- screen_info    : take a screenshot and describe what is currently on the screen
 - chat_response  : answer a general question (target = the answer)
 
 JSON schema:
@@ -56,6 +61,48 @@ Output: {"intent": "chat_response", "target": "The capital of France is Paris.",
 Input: shutdown my pc
 Output: {"intent": "system_control", "target": "shutdown", "confidence": 0.99}
 
+Input: open paint and draw indian national flag
+Output: {"intent": "draw_shape", "target": "indian national flag", "confidence": 0.98}
+
+Input: draw a cat
+Output: {"intent": "draw_shape", "target": "cat", "confidence": 0.98}
+
+Input: open paint draw cat in it
+Output: {"intent": "draw_shape", "target": "cat", "confidence": 0.98}
+
+Input: draw a dog
+Output: {"intent": "draw_shape", "target": "dog", "confidence": 0.98}
+
+Input: draw a circle
+Output: {"intent": "draw_shape", "target": "circle", "confidence": 0.98}
+
+Input: draw a tree
+Output: {"intent": "draw_shape", "target": "tree", "confidence": 0.97}
+
+Input: draw a house
+Output: {"intent": "draw_shape", "target": "house", "confidence": 0.97}
+
+Input: draw a anime girl
+Output: {"intent": "draw_shape", "target": "anime girl", "confidence": 0.95}
+
+Input: open paint and draw a lion
+Output: {"intent": "draw_shape", "target": "lion", "confidence": 0.98}
+
+Input: draw a butterfly
+Output: {"intent": "draw_shape", "target": "butterfly", "confidence": 0.97}
+
+Input: find my resume on the pc
+Output: {"intent": "find_file", "target": "resume", "confidence": 0.97}
+
+Input: find cat.png on my computer
+Output: {"intent": "find_file", "target": "cat.png", "confidence": 0.98}
+
+Input: what is on my screen
+Output: {"intent": "screen_info", "target": "screen", "confidence": 0.96}
+
+Input: what can you see on the screen right now
+Output: {"intent": "screen_info", "target": "screen", "confidence": 0.96}
+
 --- RULES ---
 - ALWAYS produce ONLY valid JSON. No markdown, no explanation.
 - If the user says "make a file", "create a file", or "write code in a new file", use intent create_file.
@@ -66,27 +113,55 @@ Output: {"intent": "system_control", "target": "shutdown", "confidence": 0.99}
   - target = the application name (e.g. notepad)
   - content = the full text
 - The content field must NEVER be empty or a placeholder.
+- CRITICAL draw_shape RULE: For draw_shape, the "target" field MUST be the EXACT object/subject the user mentioned in their message. Copy it WORD FOR WORD from the user input. NEVER substitute or change it to something else. If the user says "draw cat", target must be "cat". If the user says "draw a dog", target must be "dog". Do NOT change "cat" to "anime girl" or any other word.
 """
 
+_ollama_module: Optional[ModuleType] = None
+_ollama_import_error: Optional[Exception] = None
+
+
+def _get_ollama() -> Optional[ModuleType]:
+    """Import Ollama lazily so the desktop app can boot even if the package is unhealthy."""
+    global _ollama_module, _ollama_import_error
+
+    if _ollama_module is not None:
+        return _ollama_module
+    if _ollama_import_error is not None:
+        return None
+
+    # Prevent Pydantic plugin discovery from scanning installed distributions.
+    os.environ.setdefault("PYDANTIC_DISABLE_PLUGINS", "__all__")
+
+    try:
+        _ollama_module = importlib.import_module("ollama")
+        return _ollama_module
+    except Exception as exc:
+        _ollama_import_error = exc
+        logger.error(f"Failed to import Ollama: {exc}")
+        return None
+
+
 def call_ollama(prompt):
+    ollama = _get_ollama()
+    if ollama is None:
+        return None
+
     try:
         response = ollama.chat(
             model="phi3",
             messages=[
                 {
                     "role": "system",
-                    "content": SYSTEM_PROMPT
+                    "content": SYSTEM_PROMPT,
                 },
                 {
                     "role": "user",
-                    "content": prompt
-                }
-            ]
+                    "content": prompt,
+                },
+            ],
         )
 
-        text = response["message"]["content"]
-        return text
-
-    except Exception as e:
-        logger.error(f"Ollama error: {e}")
+        return response["message"]["content"]
+    except Exception as exc:
+        logger.error(f"Ollama error: {exc}")
         return None

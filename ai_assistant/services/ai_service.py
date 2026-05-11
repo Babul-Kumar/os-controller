@@ -4,9 +4,22 @@ from typing import Dict, Any, Optional
 from utils.helpers import setup_logger, json_log
 from core.command_parser import CommandParser
 from core.memory import MemoryManager
+from core.pii_engine import PIIEngine
 from services.ollama_service import call_ollama
 
 logger = setup_logger(__name__)
+
+# Draw verbs to detect draw intent locally
+_DRAW_VERBS = re.compile(
+    r"\b(draw|sketch|paint|illustrate|doodle)\b", re.IGNORECASE
+)
+
+# Stop words to exclude when extracting draw subjects
+_DRAW_STOP_WORDS = {
+    "a", "an", "the", "in", "it", "on", "and", "or", "with",
+    "open", "paint", "draw", "sketch", "me", "please", "now",
+    "make", "create", "show",
+}
 
 # Apps that Botbro can type into
 _WRITABLE_APPS = {"notepad", "wordpad", "word", "microsoft word", "notepad++", "sublime", "vscode"}
@@ -51,17 +64,43 @@ def _detect_create_file_intent_locally(text: str):
 def _detect_write_intent_locally(text: str):
     """
     Local heuristic: if the command contains a write verb AND a known writable
-    app name, return a write_text intent with a placeholder content so the
-    executor knows to generate the text.  The actual content comes from Ollama;
-    this is only used when Ollama mis-classifies.
+    app name, return a write_text intent with a fallback content.
     """
     tl = text.lower()
     if not _WRITE_VERBS.search(tl):
         return None
     for app in _WRITABLE_APPS:
         if app in tl:
-            return {"intent": "write_text", "target": app, "content": "", "confidence": 0.6}
+            return {"intent": "write_text", "target": app, "content": "[Botbro Offline/Fallback] I am unable to generate the requested content.", "confidence": 0.6}
     return None
+def _detect_draw_intent_locally(text: str):
+    """
+    Local heuristic: if the user's text contains a draw verb, extract
+    the subject that follows it and return a draw_shape intent dict.
+    Returns None if no draw verb is found.
+    """
+    tl = text.lower()
+    if not _DRAW_VERBS.search(tl):
+        return None
+
+    # Try to extract the noun phrase after the draw verb
+    # Pattern: (draw/sketch/paint) [a/an/the] <subject words>
+    m = re.search(
+        r"\b(?:draw|sketch|paint|illustrate|doodle)\s+(?:a\s+|an\s+|the\s+)?(.+)",
+        tl, re.IGNORECASE
+    )
+    if m:
+        raw = m.group(1).strip()
+        # Remove trailing noise words like "in it", "in paint", etc.
+        raw = re.sub(r"\s+(in\s+\w+|for\s+\w+|on\s+\w+)$", "", raw).strip()
+        # Filter stop words from multi-word subjects
+        tokens = [w for w in raw.split() if w not in _DRAW_STOP_WORDS]
+        subject = " ".join(tokens).strip()
+        if subject:
+            return {"intent": "draw_shape", "target": subject, "confidence": 0.85}
+
+    return None
+
 
 
 class AIService:
@@ -98,9 +137,18 @@ class AIService:
 
         try:
             logger.info("Using Ollama")
-            ollama_raw = await loop.run_in_executor(None, call_ollama, user_text)
+            
+            # PII Tokenization Phase
+            engine = PIIEngine()
+            safe_text, pii_context = engine.tokenize(user_text)
+
+            ollama_raw = await loop.run_in_executor(None, call_ollama, safe_text)
 
             if ollama_raw:
+                # PII Restoration Phase
+                if pii_context.has_pii():
+                    ollama_raw = engine.restore(ollama_raw, pii_context)
+
                 self.memory.add_message("assistant", ollama_raw)
                 parsed = CommandParser.parse(ollama_raw)
 
@@ -111,10 +159,12 @@ class AIService:
                     nudge = (
                         f"The user wants to CREATE a new file and write code into it. "
                         f"Return create_file JSON with target=filename, editor=app, content=full code.\n"
-                        f"User command: {user_text}"
+                        f"User command: {safe_text}"
                     )
                     retry_raw = await loop.run_in_executor(None, call_ollama, nudge)
                     if retry_raw:
+                        if pii_context.has_pii():
+                            retry_raw = engine.restore(retry_raw, pii_context)
                         retry_parsed = CommandParser.parse(retry_raw)
                         if retry_parsed.get("intent") == "create_file" and retry_parsed.get("content"):
                             logger.info("Retry succeeded — using create_file intent.")
@@ -134,10 +184,12 @@ class AIService:
                     nudge = (
                         f"The user wants to write text inside an application. "
                         f"Generate the full text and return write_text JSON.\n"
-                        f"User command: {user_text}"
+                        f"User command: {safe_text}"
                     )
                     retry_raw = await loop.run_in_executor(None, call_ollama, nudge)
                     if retry_raw:
+                        if pii_context.has_pii():
+                            retry_raw = engine.restore(retry_raw, pii_context)
                         retry_parsed = CommandParser.parse(retry_raw)
                         if retry_parsed.get("intent") == "write_text" and retry_parsed.get("content"):
                             logger.info("Retry succeeded — using write_text intent.")
@@ -147,6 +199,28 @@ class AIService:
                     if local:
                         logger.info("Using local write_text heuristic as last resort.")
                         return local
+
+                # ── draw_shape sanity check ─────────────────────────────────
+                # phi3 sometimes hallucinates the draw target (e.g. returns
+                # "anime girl" when user said "cat").  Verify the parsed target
+                # actually appears in the user's text; if not, fall back to
+                # the locally extracted subject.
+                if parsed.get("intent") == "draw_shape":
+                    llm_target  = (parsed.get("target") or "").lower().strip()
+                    user_lower  = user_text.lower()
+                    target_words = llm_target.split()
+                    target_in_text = any(
+                        w in user_lower for w in target_words if len(w) > 2
+                    )
+                    if not target_in_text:
+                        logger.warning(
+                            f"draw_shape hallucination detected: LLM said '{llm_target}' "
+                            f"but user said '{user_text}'. Extracting target locally."
+                        )
+                        local_draw = _detect_draw_intent_locally(user_text)
+                        if local_draw:
+                            logger.info(f"Corrected draw target to: '{local_draw['target']}'")
+                            return local_draw
 
                 return parsed
 

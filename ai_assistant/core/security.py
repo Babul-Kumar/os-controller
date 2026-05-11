@@ -18,6 +18,9 @@ ALLOWED_ACTIONS = {
     "chat_response", # for casual conversation
     "task",
     "read_file",
+    "draw_shape",
+    "find_file",
+    "screen_info",
     "none",
     "error"
 }
@@ -69,8 +72,8 @@ def validate_command_safety(command_data: dict) -> tuple[bool, str]:
             
     # Add more specific checks here (e.g. system control checks)
     if action == "system_control":
-        operation = command_data.get("operation") or command_data.get("target", "")
-        op_lower = operation.lower() if isinstance(operation, str) else ""
+        operation = command_data.get("operation") or command_data.get("target") or ""
+        op_lower = str(operation).lower()
         if "shutdown" in op_lower:
             operation = "shutdown"
         elif "restart" in op_lower:
@@ -83,7 +86,8 @@ def validate_command_safety(command_data: dict) -> tuple[bool, str]:
         command_data["operation"] = operation
         
         if operation not in ("shutdown", "restart", "sleep", "lock"):
-            return False, f"System operation '{operation}' is not allowed."
+            display_op = operation if operation else "Unknown"
+            return False, f"System operation '{display_op}' is not allowed."
             
     return True, "Command is safe."
 

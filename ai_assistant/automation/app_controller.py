@@ -22,6 +22,9 @@ class AppController:
         "calculator": "calc.exe",
         "explorer": "explorer.exe",
         "paint": "mspaint.exe",
+        "powerpoint": "powerpnt.exe",
+        "word": "winword.exe",
+        "excel": "excel.exe",
         "vscode": "code.cmd",
         # “start” protocols – they are launched via the shell
         "camera": "start microsoft.windows.camera:",
@@ -47,6 +50,13 @@ class AppController:
         "visual studio code": "vscode",
         "vs code": "vscode",
         "vscode": "vscode",
+        "powerpoint": "powerpoint",
+        "power pnt": "powerpoint",
+        "ms word": "word",
+        "microsoft word": "word",
+        "word document": "word",
+        "ms excel": "excel",
+        "microsoft excel": "excel",
     }
 
     _app_path_cache: Dict[str, Optional[str]] = {}
@@ -159,14 +169,23 @@ class AppController:
 
         lc = raw.lower()
         canonical = cls.APP_ALIASES.get(lc, lc)
-        all_keys = list(cls.COMMON_APPS.keys()) + list(cls.APP_ALIASES.keys())
-        matched = fuzzy_match(canonical, all_keys)
-        if matched:
-            canonical = matched
-        else:
-            suggestions = get_close_suggestions(canonical, all_keys)
-            if suggestions:
-                return {"status": "not_found", "message": f"❌ Could not find '{raw}'. Did you mean: {', '.join(suggestions)}?"}
+        
+        # 1. Try to resolve directly
+        cmd = cls._resolve_executable(canonical)
+        
+        # 2. If not found, try fuzzy match
+        if not cmd:
+            all_keys = list(cls.COMMON_APPS.keys()) + list(cls.APP_ALIASES.keys())
+            matched = fuzzy_match(canonical, all_keys)
+            if matched:
+                canonical = matched
+                cmd = cls._resolve_executable(canonical)
+            else:
+                suggestions = get_close_suggestions(canonical, all_keys)
+                if suggestions:
+                    return {"status": "not_found", "message": f"❌ Could not find '{raw}'. Did you mean: {', '.join(suggestions)}?"}
+                else:
+                    cmd = raw # fallback
 
         perm = cls.APP_PERMISSIONS.get(canonical, "safe")
         if perm == "restricted":
@@ -178,10 +197,6 @@ class AppController:
             note = " (focused)" if focused["status"] == "success" else ""
             json_log(logger, "open", app=canonical, status="already_running")
             return {"status": "already_running", "message": f"⚡ {raw} is already running{note}."}
-
-        cmd = cls._resolve_executable(canonical)
-        if not cmd:
-            cmd = raw
 
         allowed, reason = cls._validate_command(cmd)
         if not allowed:

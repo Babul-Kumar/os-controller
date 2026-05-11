@@ -9,14 +9,22 @@ from utils.helpers import setup_logger, json_log
 
 logger = setup_logger(__name__)
 
+
+def _coerce_text(value, default: str = "") -> str:
+    if value is None:
+        return default
+    if isinstance(value, str):
+        return value
+    return str(value)
+
 class CommandExecutor:
     """The central Brain Router that acts on Intents."""
     def __init__(self):
         self.web_automator = WebAutomator()
 
     async def execute_intent(self, intent_data: dict) -> str:
-        intent = intent_data.get("intent", "none")
-        target = intent_data.get("target", "")
+        intent = _coerce_text(intent_data.get("intent"), "none").strip() or "none"
+        target = _coerce_text(intent_data.get("target", "")).strip()
 
         if intent in ("none", "error", "fallback"):
             return intent_data.get("message", "⚠️ I couldn't understand that. Please try again.")
@@ -33,11 +41,11 @@ class CommandExecutor:
                 return res.get("message", "Executed close_app")
 
             elif intent == "write_text":
-                content = intent_data.get("content", "").strip()
+                content = _coerce_text(intent_data.get("content", "")).strip()
                 if not content:
                     return "Error: No text provided to type."
 
-                app_target = intent_data.get("target")
+                app_target = target
 
                 if app_target and app_target != content and app_target != "none":
                     open_res = await AppController.open_app(app_target)
@@ -57,9 +65,9 @@ class CommandExecutor:
                 return "✅ Text written successfully"
 
             elif intent == "create_file":
-                content = intent_data.get("content", "").strip()
-                file_path = intent_data.get("target", "").strip()
-                editor   = intent_data.get("editor", "").strip().lower()
+                content = _coerce_text(intent_data.get("content", "")).strip()
+                file_path = target
+                editor = _coerce_text(intent_data.get("editor", "")).strip().lower()
 
                 if not file_path:
                     return "❌ No filename specified."
@@ -102,9 +110,54 @@ class CommandExecutor:
             elif intent == "open_website":
                 return self.web_automator.open_website(target)
 
+            elif intent == "draw_shape":
+                # Ensure paint is open for drawing
+                app_res = await AppController.open_app("paint")
+                if app_res.get("status") in ("error", "not_found", "blocked"):
+                    return f"❌ Failed to open paint: {app_res.get('message', 'Unknown error')}"
+                
+                self._wait_for_window_focus("paint", timeout=5)
+                
+                # Try to maximize the window for predictable drawing coordinates
+                import pygetwindow as gw
+                windows = [w for w in gw.getAllTitles() if "paint" in w.lower()]
+                if windows:
+                    try:
+                        win = gw.getWindowsWithTitle(windows[0])[0]
+                        if not win.isMaximized:
+                            win.maximize()
+                        time.sleep(0.5)
+                    except Exception as exc:
+                        logger.warning(f"Failed to maximize Paint window: {exc}")
+
+                from automation.mouse_automation import MouseAutomator
+                return MouseAutomator.draw_shape(target)
+
             elif intent == "system_control":
-                operation = intent_data.get("operation") or target
+                operation = _coerce_text(intent_data.get("operation") or target).strip()
                 return SystemController.execute(operation)
+
+            elif intent == "find_file":
+                from automation.file_finder import FileFinder
+                results = FileFinder.find_by_name(f"*{target}*")
+                if results:
+                    return "✅ Found these files:\n" + "\n".join(results[:10])
+                else:
+                    deep = FileFinder.search_deep(f"*{target}*")
+                    if deep:
+                        return "✅ Found (deep search):\n" + "\n".join(deep[:10])
+                    return f"❌ Could not find any file matching '{target}' on your PC."
+
+            elif intent == "screen_info":
+                from automation.screen_reader import ScreenReader
+                info = ScreenReader.describe_screen()
+                path = ScreenReader.take_screenshot("latest_screen.png")
+                return (
+                    f"👁️ Screen is {info['resolution']}, "
+                    f"{'dark' if info['mode'] == 'dark' else 'light'} mode, "
+                    f"brightness: {info['brightness']}/255. "
+                    f"Screenshot saved to: {path}"
+                )
 
             elif intent == "chat_response":
                 return target
@@ -112,6 +165,10 @@ class CommandExecutor:
             else:
                 return f"Unsupported intent: {intent}"
 
+        except ModuleNotFoundError as e:
+            logger.error(f"Execution failed for intent {intent}: {e}")
+            missing_name = e.name or "a required package"
+            return f"Missing dependency '{missing_name}'. Install the project requirements and try again."
         except Exception as e:
             logger.error(f"Execution failed for intent {intent}: {e}")
             return f"Execution error: {str(e)}"

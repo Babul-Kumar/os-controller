@@ -8,7 +8,7 @@ from rapidfuzz import process
 def fuzzy_match(query, choices):
     """Fuzzy match (best match) using rapidfuzz."""
     try:
-        result = process.extractOne(query, choices)
+        result = process.extractOne(query, choices, score_cutoff=60)
         return result[0] if result else None
     except Exception as e:
         logging.getLogger(__name__).error(f"Fuzzy match error: {e}")
