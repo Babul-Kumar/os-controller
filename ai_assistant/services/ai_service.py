@@ -125,6 +125,19 @@ class AIService:
                 return {"intent": "close_app", "target": text_lower[6:].strip(), "confidence": 0.5}
             elif text_lower.startswith("search "):
                 return {"intent": "web_search", "target": text_lower[7:].strip(), "confidence": 0.5}
+            elif text_lower.startswith("read file "):
+                return {"intent": "read_file", "target": text_lower[10:].strip(), "confidence": 0.5}
+            elif text_lower.startswith("delete file "):
+                return {"intent": "delete_file", "target": text_lower[12:].strip(), "confidence": 0.5}
+            elif text_lower.startswith("list directory ") or text_lower.startswith("list dir "):
+                target = text_lower.replace("list directory", "").replace("list dir", "").strip()
+                return {"intent": "list_directory", "target": target, "confidence": 0.5}
+            elif text_lower.startswith("modify file "):
+                return {"intent": "modify_file", "target": text_lower[12:].strip(), "content": "Updated content.", "confidence": 0.5}
+            elif text_lower.startswith("run command ") or text_lower.startswith("execute command "):
+                cmd = text_lower[12:].strip() if text_lower.startswith("run command ") else text_lower[16:].strip()
+                return {"intent": "execute_command", "target": cmd, "confidence": 0.5}
+            
             # Local create_file detection (higher priority than write_text)
             local_cf = _detect_create_file_intent_locally(text)
             if local_cf:

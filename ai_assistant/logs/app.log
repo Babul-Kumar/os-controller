@@ -2419,3 +2419,451 @@ _only"}
 {"timestamp": "2026-05-12T01:28:12.898754", "level": "WARNING", "logger": "core.security", "message": "Security: unknown action '', but allowing for future compatibility."}
 {"timestamp": "2026-05-12T01:28:12.899264", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "", "target": null}
 {"timestamp": "2026-05-12T01:28:12.909904", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚠️ I couldn't understand that. Please try again."}
+{"timestamp": "2026-05-13T22:56:22.649188", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-13T22:56:22.654098", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-13T22:56:22.660950", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T22:56:22.661952", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-13T22:56:22.662954", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T22:56:24.451548", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-13T22:56:24.630330", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-13T22:56:40.292871", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw lion"}
+{"timestamp": "2026-05-13T22:56:40.293880", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw lion"}
+{"timestamp": "2026-05-13T22:56:40.300670", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T22:56:40.300670", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T22:56:50.138268", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "lion"}
+{"timestamp": "2026-05-13T22:56:50.139329", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: lion"}
+{"timestamp": "2026-05-13T22:56:50.139329", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T22:56:50.354150", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 10636, "status": "success"}
+{"timestamp": "2026-05-13T22:56:57.519733", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: lion"}
+{"timestamp": "2026-05-13T22:57:08.457386", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='lion' primary_mode=SKETCH"}
+{"timestamp": "2026-05-13T22:57:09.080156", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['SKETCH', 'AUTO', 'LOGO']"}
+{"timestamp": "2026-05-13T22:57:09.080888", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T22:57:09.082440", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'lion' mode=SKETCH"}
+{"timestamp": "2026-05-13T22:57:09.083444", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T22:57:10.775357", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: saved remote asset to C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\lion_sketch_88bd625fffca_v10.png"}
+{"timestamp": "2026-05-13T22:57:10.844846", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: evaluating downloaded asset."}
+{"timestamp": "2026-05-13T22:57:10.918702", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.556 (max_dim=500)"}
+{"timestamp": "2026-05-13T22:57:10.925636", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-13T22:57:10.960297", "level": "INFO", "logger": "automation.image_tracer", "message": "150 contours after filtering."}
+{"timestamp": "2026-05-13T22:57:11.073898", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: mode=SKETCH Contours=150, Points=1923.51606388406, Est time=63.0s"}
+{"timestamp": "2026-05-13T22:57:11.075953", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\lion_sketch_88bd625fffca_v10_preprocessed_sketch.png"}
+{"timestamp": "2026-05-13T22:57:11.194815", "level": "INFO", "logger": "automation.image_tracer", "message": "Using screen-centre canvas fallback (960, 540)."}
+{"timestamp": "2026-05-13T22:57:11.203426", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.556 (max_dim=500)"}
+{"timestamp": "2026-05-13T22:57:11.208951", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-13T22:57:11.242360", "level": "INFO", "logger": "automation.image_tracer", "message": "150 contours after filtering."}
+{"timestamp": "2026-05-13T22:57:11.259852", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 150 contour chains for drawing (500x500, origin=(710, 290))."}
+{"timestamp": "2026-05-13T22:57:14.182095", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/150 contours"}
+{"timestamp": "2026-05-13T22:57:16.216152", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/150 contours"}
+{"timestamp": "2026-05-13T22:57:17.287829", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/150 contours"}
+{"timestamp": "2026-05-13T22:57:18.380119", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/150 contours"}
+{"timestamp": "2026-05-13T22:57:19.548986", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/150 contours"}
+{"timestamp": "2026-05-13T22:57:20.466544", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/150 contours"}
+{"timestamp": "2026-05-13T22:57:20.467057", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-13T22:57:20.468071", "level": "INFO", "logger": "automation.draw_engine", "message": "Drawing completed successfully with mode SKETCH"}
+{"timestamp": "2026-05-13T22:57:20.480296", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew lion using mode SKETCH"}
+{"timestamp": "2026-05-13T23:01:42.278927", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-13T23:01:42.280968", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-13T23:01:42.284509", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:01:42.285507", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-13T23:01:42.286510", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:01:43.463846", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-13T23:01:43.622497", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-13T23:01:53.816222", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw lion"}
+{"timestamp": "2026-05-13T23:01:53.817235", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw lion"}
+{"timestamp": "2026-05-13T23:01:53.823880", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:01:53.823880", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:02:00.874020", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "lion"}
+{"timestamp": "2026-05-13T23:02:00.875536", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: lion"}
+{"timestamp": "2026-05-13T23:02:00.875536", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:02:01.012057", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 12828, "status": "success"}
+{"timestamp": "2026-05-13T23:02:03.364476", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: lion"}
+{"timestamp": "2026-05-13T23:02:04.297795", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='lion' primary_mode=SKETCH"}
+{"timestamp": "2026-05-13T23:02:04.952366", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['SKETCH', 'AUTO', 'LOGO']"}
+{"timestamp": "2026-05-13T23:02:04.952876", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:02:04.954890", "level": "INFO", "logger": "automation.draw_engine", "message": "Using cached asset: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\lion_sketch_88bd625fffca_v10.png"}
+{"timestamp": "2026-05-13T23:02:04.963478", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.556 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:02:04.984811", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-13T23:02:05.018865", "level": "INFO", "logger": "automation.image_tracer", "message": "150 contours after filtering."}
+{"timestamp": "2026-05-13T23:02:05.131099", "level": "INFO", "logger": "automation.draw_engine", "message": "Cached asset: mode=SKETCH Contours=150, Points=1923.51606388406, Est time=63.0s"}
+{"timestamp": "2026-05-13T23:02:05.131611", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\lion_sketch_88bd625fffca_v10_preprocessed_sketch.png"}
+{"timestamp": "2026-05-13T23:02:05.355218", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-13T23:02:05.377499", "level": "INFO", "logger": "automation.image_tracer", "message": "Cache hit: fe2b1a3f9c1815e91e0cafeb15598c18"}
+{"timestamp": "2026-05-13T23:02:05.377499", "level": "INFO", "logger": "automation.image_tracer", "message": "Using cached contour plan."}
+{"timestamp": "2026-05-13T23:02:05.377499", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 150 contour chains for drawing (500x500, origin=(710, 347))."}
+{"timestamp": "2026-05-13T23:02:07.797709", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/150 contours"}
+{"timestamp": "2026-05-13T23:02:09.735686", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/150 contours"}
+{"timestamp": "2026-05-13T23:02:10.782231", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/150 contours"}
+{"timestamp": "2026-05-13T23:02:11.934485", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/150 contours"}
+{"timestamp": "2026-05-13T23:02:13.118749", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/150 contours"}
+{"timestamp": "2026-05-13T23:02:14.052874", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/150 contours"}
+{"timestamp": "2026-05-13T23:02:14.052874", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-13T23:02:14.053889", "level": "INFO", "logger": "automation.draw_engine", "message": "Drawing completed successfully with mode SKETCH"}
+{"timestamp": "2026-05-13T23:02:14.061698", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew lion using mode SKETCH"}
+{"timestamp": "2026-05-13T23:09:10.540142", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-13T23:09:10.541658", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-13T23:09:10.545173", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:09:10.545173", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-13T23:09:10.546680", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:09:13.886077", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-13T23:09:14.182672", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-13T23:10:05.160698", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-13T23:10:05.162709", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-13T23:10:05.164706", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:10:05.164706", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-13T23:10:05.166299", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:10:06.100708", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-13T23:10:06.269503", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-13T23:10:24.186396", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw lion"}
+{"timestamp": "2026-05-13T23:10:24.187397", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw lion"}
+{"timestamp": "2026-05-13T23:10:24.192488", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:10:24.192488", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:10:30.975963", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "lion"}
+{"timestamp": "2026-05-13T23:10:30.976980", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: lion"}
+{"timestamp": "2026-05-13T23:10:30.976980", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:10:31.158432", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 4116, "status": "success"}
+{"timestamp": "2026-05-13T23:10:33.519685", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: lion"}
+{"timestamp": "2026-05-13T23:10:44.444697", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='lion' primary_mode=SKETCH"}
+{"timestamp": "2026-05-13T23:10:45.094578", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['SKETCH', 'AUTO', 'LOGO']"}
+{"timestamp": "2026-05-13T23:10:45.095241", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:10:45.103203", "level": "INFO", "logger": "automation.draw_engine", "message": "Using cached asset: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\lion_sketch_88bd625fffca_v10.png"}
+{"timestamp": "2026-05-13T23:10:45.128937", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.556 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:10:45.161396", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-13T23:10:45.213507", "level": "INFO", "logger": "automation.image_tracer", "message": "150 contours after filtering."}
+{"timestamp": "2026-05-13T23:10:45.394385", "level": "INFO", "logger": "automation.draw_engine", "message": "Cached asset: mode=SKETCH Contours=150, Points=1923.51606388406, Est time=63.0s"}
+{"timestamp": "2026-05-13T23:10:45.395387", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\lion_sketch_88bd625fffca_v10_preprocessed_sketch.png"}
+{"timestamp": "2026-05-13T23:10:45.607925", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-13T23:10:45.611030", "level": "INFO", "logger": "automation.image_tracer", "message": "Cache hit: fe2b1a3f9c1815e91e0cafeb15598c18"}
+{"timestamp": "2026-05-13T23:10:45.611030", "level": "INFO", "logger": "automation.image_tracer", "message": "Using cached contour plan."}
+{"timestamp": "2026-05-13T23:10:45.611030", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 150 contour chains for drawing (500x500, origin=(710, 347))."}
+{"timestamp": "2026-05-13T23:10:47.966329", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/150 contours"}
+{"timestamp": "2026-05-13T23:10:49.905787", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/150 contours"}
+{"timestamp": "2026-05-13T23:10:51.074379", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/150 contours"}
+{"timestamp": "2026-05-13T23:10:52.259167", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/150 contours"}
+{"timestamp": "2026-05-13T23:10:53.527981", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/150 contours"}
+{"timestamp": "2026-05-13T23:10:54.450472", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/150 contours"}
+{"timestamp": "2026-05-13T23:10:54.450472", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-13T23:10:54.451484", "level": "INFO", "logger": "automation.draw_engine", "message": "Drawing completed successfully with mode SKETCH"}
+{"timestamp": "2026-05-13T23:10:54.460748", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew lion using mode SKETCH"}
+{"timestamp": "2026-05-13T23:15:42.654519", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw spider-man"}
+{"timestamp": "2026-05-13T23:15:42.656025", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw spider-man"}
+{"timestamp": "2026-05-13T23:15:42.666170", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:15:42.667185", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:15:50.177676", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "spider-man"}
+{"timestamp": "2026-05-13T23:15:50.177676", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: spider-man"}
+{"timestamp": "2026-05-13T23:15:50.178674", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:15:50.240138", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 26964, "status": "success"}
+{"timestamp": "2026-05-13T23:15:51.575260", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: spider-man"}
+{"timestamp": "2026-05-13T23:15:51.575771", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='spider-man' primary_mode=AUTO"}
+{"timestamp": "2026-05-13T23:15:52.227585", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['AUTO', 'SKETCH', 'LOGO']"}
+{"timestamp": "2026-05-13T23:15:52.228298", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=AUTO --"}
+{"timestamp": "2026-05-13T23:15:52.229828", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'spider-man' mode=AUTO"}
+{"timestamp": "2026-05-13T23:15:52.229828", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:15:53.428706", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: saved remote asset to C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\spider-man_auto_22860e3b13e7_v10.png"}
+{"timestamp": "2026-05-13T23:15:53.473480", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: evaluating downloaded asset."}
+{"timestamp": "2026-05-13T23:15:53.981115", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.833 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:15:54.008003", "level": "INFO", "logger": "automation.image_tracer", "message": "Auto-detected pipeline mode: ANIME"}
+{"timestamp": "2026-05-13T23:15:54.020407", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: threshold"}
+{"timestamp": "2026-05-13T23:15:54.106990", "level": "INFO", "logger": "automation.image_tracer", "message": "165 contours after filtering."}
+{"timestamp": "2026-05-13T23:15:54.344909", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: mode=AUTO Contours=165, Points=3660.7956372883514, Est time=84.9s"}
+{"timestamp": "2026-05-13T23:15:54.348990", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\spider-man_auto_22860e3b13e7_v10.png"}
+{"timestamp": "2026-05-13T23:15:54.568876", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-13T23:15:54.572593", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.833 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:15:54.595003", "level": "INFO", "logger": "automation.image_tracer", "message": "Auto-detected pipeline mode: ANIME"}
+{"timestamp": "2026-05-13T23:15:54.606277", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: threshold"}
+{"timestamp": "2026-05-13T23:15:54.670771", "level": "INFO", "logger": "automation.image_tracer", "message": "165 contours after filtering."}
+{"timestamp": "2026-05-13T23:15:54.698997", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 165 contour chains for drawing (500x500, origin=(710, 347))."}
+{"timestamp": "2026-05-13T23:15:57.312131", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/165 contours"}
+{"timestamp": "2026-05-13T23:15:58.747436", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/165 contours"}
+{"timestamp": "2026-05-13T23:15:59.996583", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/165 contours"}
+{"timestamp": "2026-05-13T23:16:01.475209", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/165 contours"}
+{"timestamp": "2026-05-13T23:16:03.148145", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/165 contours"}
+{"timestamp": "2026-05-13T23:16:04.453894", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/165 contours"}
+{"timestamp": "2026-05-13T23:16:05.390858", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 165/165 contours"}
+{"timestamp": "2026-05-13T23:16:05.391480", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-13T23:16:05.391480", "level": "INFO", "logger": "automation.draw_engine", "message": "Drawing completed successfully with mode AUTO"}
+{"timestamp": "2026-05-13T23:16:05.402560", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew spider-man using mode AUTO"}
+{"timestamp": "2026-05-13T23:16:22.578770", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw venom"}
+{"timestamp": "2026-05-13T23:16:22.579781", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw venom"}
+{"timestamp": "2026-05-13T23:16:22.587527", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:16:22.588043", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:16:24.187864", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "venom"}
+{"timestamp": "2026-05-13T23:16:24.188378", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: venom"}
+{"timestamp": "2026-05-13T23:16:24.188948", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:16:24.242041", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 13260, "status": "success"}
+{"timestamp": "2026-05-13T23:16:25.578823", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: venom"}
+{"timestamp": "2026-05-13T23:16:25.579528", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='venom' primary_mode=AUTO"}
+{"timestamp": "2026-05-13T23:16:26.234076", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['AUTO', 'SKETCH', 'LOGO']"}
+{"timestamp": "2026-05-13T23:16:26.234735", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=AUTO --"}
+{"timestamp": "2026-05-13T23:16:26.235746", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'venom' mode=AUTO"}
+{"timestamp": "2026-05-13T23:16:26.236748", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:34.412846", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1 failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=8)"}
+{"timestamp": "2026-05-13T23:16:35.925211", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'venom' mode=AUTO"}
+{"timestamp": "2026-05-13T23:16:35.925719", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:36.638998", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:38.152225", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'venom' mode=AUTO"}
+{"timestamp": "2026-05-13T23:16:38.152225", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:38.858620", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:40.366170", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode AUTO"}
+{"timestamp": "2026-05-13T23:16:40.366170", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:16:40.367180", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'venom' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:16:40.368688", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:41.082218", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:42.584768", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'venom' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:16:42.585544", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:43.300683", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:44.806216", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'venom' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:16:44.806216", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:45.516376", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:47.031332", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode SKETCH"}
+{"timestamp": "2026-05-13T23:16:47.031842", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=LOGO --"}
+{"timestamp": "2026-05-13T23:16:47.033865", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'venom' mode=LOGO"}
+{"timestamp": "2026-05-13T23:16:47.034955", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:47.724072", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:49.232056", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'venom' mode=LOGO"}
+{"timestamp": "2026-05-13T23:16:49.232056", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:50.002227", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:51.506174", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'venom' mode=LOGO"}
+{"timestamp": "2026-05-13T23:16:51.506174", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:16:52.217057", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:16:53.720562", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode LOGO"}
+{"timestamp": "2026-05-13T23:16:53.721563", "level": "WARNING", "logger": "automation.draw_engine", "message": "All modes failed, drawing placeholder"}
+{"timestamp": "2026-05-13T23:16:59.879563", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew placeholder for venom (all modes failed)"}
+{"timestamp": "2026-05-13T23:17:21.374048", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw cat"}
+{"timestamp": "2026-05-13T23:17:21.374048", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw cat"}
+{"timestamp": "2026-05-13T23:17:21.382311", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:17:21.382311", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:17:22.851065", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "cat"}
+{"timestamp": "2026-05-13T23:17:22.852578", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: cat"}
+{"timestamp": "2026-05-13T23:17:22.853595", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:17:22.931471", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 2200, "status": "success"}
+{"timestamp": "2026-05-13T23:17:24.262061", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: cat"}
+{"timestamp": "2026-05-13T23:17:24.262778", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='cat' primary_mode=SKETCH"}
+{"timestamp": "2026-05-13T23:17:24.916405", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['SKETCH', 'AUTO', 'LOGO']"}
+{"timestamp": "2026-05-13T23:17:24.916405", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:17:24.918929", "level": "INFO", "logger": "automation.draw_engine", "message": "Using local asset: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\cat_image.png"}
+{"timestamp": "2026-05-13T23:17:24.930132", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.556 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:17:24.936758", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-13T23:17:25.010096", "level": "INFO", "logger": "automation.image_tracer", "message": "244 contours after filtering."}
+{"timestamp": "2026-05-13T23:17:25.419627", "level": "INFO", "logger": "automation.draw_engine", "message": "Local asset: mode=SKETCH Contours=244, Points=3163.9211735777844, Est time=103.3s"}
+{"timestamp": "2026-05-13T23:17:25.420635", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\cat_image_preprocessed_sketch.png"}
+{"timestamp": "2026-05-13T23:17:25.632222", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-13T23:17:25.642422", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.556 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:17:25.649110", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-13T23:17:25.719597", "level": "INFO", "logger": "automation.image_tracer", "message": "244 contours after filtering."}
+{"timestamp": "2026-05-13T23:17:25.754702", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 244 contour chains for drawing (500x500, origin=(710, 347))."}
+{"timestamp": "2026-05-13T23:17:26.800761", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/244 contours"}
+{"timestamp": "2026-05-13T23:17:27.975559", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/244 contours"}
+{"timestamp": "2026-05-13T23:17:29.056172", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/244 contours"}
+{"timestamp": "2026-05-13T23:17:29.966376", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/244 contours"}
+{"timestamp": "2026-05-13T23:17:31.109883", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/244 contours"}
+{"timestamp": "2026-05-13T23:17:31.953183", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/244 contours"}
+{"timestamp": "2026-05-13T23:17:32.827830", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 175/244 contours"}
+{"timestamp": "2026-05-13T23:17:34.088913", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 200/244 contours"}
+{"timestamp": "2026-05-13T23:17:35.150754", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 225/244 contours"}
+{"timestamp": "2026-05-13T23:17:38.662086", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 244/244 contours"}
+{"timestamp": "2026-05-13T23:17:38.662795", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-13T23:17:38.662795", "level": "INFO", "logger": "automation.draw_engine", "message": "Drawing completed successfully with mode SKETCH"}
+{"timestamp": "2026-05-13T23:17:38.672453", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew cat using mode SKETCH"}
+{"timestamp": "2026-05-13T23:18:14.081986", "level": "INFO", "logger": "main", "message": "User text input: open antigravity make changes too your own code to make yourself more eefective"}
+{"timestamp": "2026-05-13T23:18:14.083497", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open antigravity make changes too your own code to make yourself more eefective"}
+{"timestamp": "2026-05-13T23:18:14.092631", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:18:14.093632", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:18:18.739995", "level": "WARNING", "logger": "core.security", "message": "Security: unknown action '', but allowing for future compatibility."}
+{"timestamp": "2026-05-13T23:18:18.739995", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "", "target": null}
+{"timestamp": "2026-05-13T23:18:18.748051", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ⚠️ I couldn't understand that. Please try again."}
+{"timestamp": "2026-05-13T23:42:20.833576", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-13T23:42:20.836108", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-13T23:42:20.840149", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:42:20.840149", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-13T23:42:20.842320", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-13T23:42:22.113150", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-13T23:42:22.308659", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-13T23:42:39.036363", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw girl"}
+{"timestamp": "2026-05-13T23:42:39.037341", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw girl"}
+{"timestamp": "2026-05-13T23:42:39.051170", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:42:39.052682", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:42:47.215443", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "girl"}
+{"timestamp": "2026-05-13T23:42:47.216443", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: girl"}
+{"timestamp": "2026-05-13T23:42:47.216443", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:42:47.387848", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 4144, "status": "success"}
+{"timestamp": "2026-05-13T23:42:48.723212", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: girl"}
+{"timestamp": "2026-05-13T23:42:50.310051", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='girl' primary_mode=AUTO"}
+{"timestamp": "2026-05-13T23:42:50.970751", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['AUTO', 'SKETCH', 'LOGO']"}
+{"timestamp": "2026-05-13T23:42:50.971095", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=AUTO --"}
+{"timestamp": "2026-05-13T23:42:50.973945", "level": "INFO", "logger": "automation.draw_engine", "message": "Using local asset: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\anime_girl.png"}
+{"timestamp": "2026-05-13T23:42:51.531976", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.833 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:42:51.556843", "level": "INFO", "logger": "automation.image_tracer", "message": "Auto-detected pipeline mode: PHOTO"}
+{"timestamp": "2026-05-13T23:42:51.570863", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: canny"}
+{"timestamp": "2026-05-13T23:42:51.742620", "level": "INFO", "logger": "automation.image_tracer", "message": "675 contours after filtering."}
+{"timestamp": "2026-05-13T23:42:52.878720", "level": "INFO", "logger": "automation.image_tracer", "message": "Stitching: 675 -> 273 chains"}
+{"timestamp": "2026-05-13T23:42:53.691932", "level": "INFO", "logger": "automation.draw_engine", "message": "Local asset: mode=AUTO Contours=273, Points=9944.566918109129, Est time=191.3s"}
+{"timestamp": "2026-05-13T23:42:53.692910", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\anime_girl.png"}
+{"timestamp": "2026-05-13T23:42:53.915537", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-13T23:42:53.920738", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.833 (max_dim=500)"}
+{"timestamp": "2026-05-13T23:42:53.945510", "level": "INFO", "logger": "automation.image_tracer", "message": "Auto-detected pipeline mode: PHOTO"}
+{"timestamp": "2026-05-13T23:42:53.959382", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: canny"}
+{"timestamp": "2026-05-13T23:42:54.143657", "level": "INFO", "logger": "automation.image_tracer", "message": "675 contours after filtering."}
+{"timestamp": "2026-05-13T23:42:55.305977", "level": "INFO", "logger": "automation.image_tracer", "message": "Stitching: 675 -> 273 chains"}
+{"timestamp": "2026-05-13T23:42:55.356111", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 273 contour chains for drawing (500x500, origin=(710, 347))."}
+{"timestamp": "2026-05-13T23:42:57.265808", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/273 contours"}
+{"timestamp": "2026-05-13T23:42:59.089161", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/273 contours"}
+{"timestamp": "2026-05-13T23:43:00.825283", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/273 contours"}
+{"timestamp": "2026-05-13T23:43:02.188987", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/273 contours"}
+{"timestamp": "2026-05-13T23:43:03.798771", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/273 contours"}
+{"timestamp": "2026-05-13T23:43:05.237494", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/273 contours"}
+{"timestamp": "2026-05-13T23:43:06.591776", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 175/273 contours"}
+{"timestamp": "2026-05-13T23:43:08.027885", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 200/273 contours"}
+{"timestamp": "2026-05-13T23:43:10.045385", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 225/273 contours"}
+{"timestamp": "2026-05-13T23:43:11.196702", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 250/273 contours"}
+{"timestamp": "2026-05-13T23:43:12.260152", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 273/273 contours"}
+{"timestamp": "2026-05-13T23:43:12.260842", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-13T23:43:12.261857", "level": "INFO", "logger": "automation.draw_engine", "message": "Drawing completed successfully with mode AUTO"}
+{"timestamp": "2026-05-13T23:43:12.280978", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew girl using mode AUTO"}
+{"timestamp": "2026-05-13T23:43:51.704517", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw map of india"}
+{"timestamp": "2026-05-13T23:43:51.704517", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw map of india"}
+{"timestamp": "2026-05-13T23:43:51.721525", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:43:51.722526", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:43:55.302390", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "map of India"}
+{"timestamp": "2026-05-13T23:43:55.302390", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: map of India"}
+{"timestamp": "2026-05-13T23:43:55.303408", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:43:55.361804", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 20932, "status": "success"}
+{"timestamp": "2026-05-13T23:43:56.685444", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: map of India"}
+{"timestamp": "2026-05-13T23:43:56.685444", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='map of India' primary_mode=AUTO"}
+{"timestamp": "2026-05-13T23:43:57.325742", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['AUTO', 'SKETCH', 'LOGO']"}
+{"timestamp": "2026-05-13T23:43:57.326412", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=AUTO --"}
+{"timestamp": "2026-05-13T23:43:57.328879", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'map of India' mode=AUTO"}
+{"timestamp": "2026-05-13T23:43:57.328879", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:43:58.950715", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: saved remote asset to C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\map_of_india_auto_315db6cd16c3_v10.png"}
+{"timestamp": "2026-05-13T23:43:58.978873", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: quality gate failed"}
+{"timestamp": "2026-05-13T23:44:00.495233", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'map of India' mode=AUTO"}
+{"timestamp": "2026-05-13T23:44:00.496746", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:08.685828", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2 failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=8)"}
+{"timestamp": "2026-05-13T23:44:10.202139", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'map of India' mode=AUTO"}
+{"timestamp": "2026-05-13T23:44:10.202656", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:10.941333", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:12.454542", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode AUTO"}
+{"timestamp": "2026-05-13T23:44:12.454542", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:44:12.456543", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'map of India' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:44:12.457757", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:13.099629", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:14.613517", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'map of India' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:44:14.614570", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:15.271016", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:16.785509", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'map of India' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:44:16.786596", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:17.493983", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:19.008060", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode SKETCH"}
+{"timestamp": "2026-05-13T23:44:19.009088", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=LOGO --"}
+{"timestamp": "2026-05-13T23:44:19.012128", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'map of India' mode=LOGO"}
+{"timestamp": "2026-05-13T23:44:19.012128", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:19.665520", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:21.168784", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'map of India' mode=LOGO"}
+{"timestamp": "2026-05-13T23:44:21.169330", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:21.800656", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:23.312256", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'map of India' mode=LOGO"}
+{"timestamp": "2026-05-13T23:44:23.312772", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:44:23.989362", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:44:25.507547", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode LOGO"}
+{"timestamp": "2026-05-13T23:44:25.508593", "level": "WARNING", "logger": "automation.draw_engine", "message": "All modes failed, drawing placeholder"}
+{"timestamp": "2026-05-13T23:44:31.630420", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew placeholder for map of India (all modes failed)"}
+{"timestamp": "2026-05-13T23:45:30.387901", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw mia khalifa"}
+{"timestamp": "2026-05-13T23:45:30.390185", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw mia khalifa"}
+{"timestamp": "2026-05-13T23:45:30.406042", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:45:30.406554", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:45:35.535840", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "mia khalifa"}
+{"timestamp": "2026-05-13T23:45:35.536860", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: mia khalifa"}
+{"timestamp": "2026-05-13T23:45:35.536860", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:45:35.594651", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 25212, "status": "success"}
+{"timestamp": "2026-05-13T23:45:36.920775", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: mia khalifa"}
+{"timestamp": "2026-05-13T23:45:36.920775", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='mia khalifa' primary_mode=AUTO"}
+{"timestamp": "2026-05-13T23:45:37.575680", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['AUTO', 'SKETCH', 'LOGO']"}
+{"timestamp": "2026-05-13T23:45:37.576993", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=AUTO --"}
+{"timestamp": "2026-05-13T23:45:37.579522", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'mia khalifa' mode=AUTO"}
+{"timestamp": "2026-05-13T23:45:37.579522", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:45.786695", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1 failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=8)"}
+{"timestamp": "2026-05-13T23:45:47.291730", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'mia khalifa' mode=AUTO"}
+{"timestamp": "2026-05-13T23:45:47.292869", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:48.109308", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:45:49.620156", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'mia khalifa' mode=AUTO"}
+{"timestamp": "2026-05-13T23:45:49.621179", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:50.917172", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:45:52.427003", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode AUTO"}
+{"timestamp": "2026-05-13T23:45:52.427992", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:45:52.430082", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'mia khalifa' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:45:52.430082", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:53.162929", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:45:54.675289", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'mia khalifa' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:45:54.676543", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:55.288269", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:45:56.801881", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'mia khalifa' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:45:56.802399", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:57.443721", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:45:58.959908", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode SKETCH"}
+{"timestamp": "2026-05-13T23:45:58.959908", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=LOGO --"}
+{"timestamp": "2026-05-13T23:45:58.961524", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'mia khalifa' mode=LOGO"}
+{"timestamp": "2026-05-13T23:45:58.962534", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:45:59.616994", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:46:01.127172", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'mia khalifa' mode=LOGO"}
+{"timestamp": "2026-05-13T23:46:01.127940", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:46:01.742808", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:46:03.257971", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'mia khalifa' mode=LOGO"}
+{"timestamp": "2026-05-13T23:46:03.258948", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:46:03.890459", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:46:05.404396", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode LOGO"}
+{"timestamp": "2026-05-13T23:46:05.405904", "level": "WARNING", "logger": "automation.draw_engine", "message": "All modes failed, drawing placeholder"}
+{"timestamp": "2026-05-13T23:46:11.474582", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew placeholder for mia khalifa (all modes failed)"}
+{"timestamp": "2026-05-13T23:48:06.194170", "level": "INFO", "logger": "main", "message": "User text input: open paint and draw wolf"}
+{"timestamp": "2026-05-13T23:48:06.195182", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open paint and draw wolf"}
+{"timestamp": "2026-05-13T23:48:06.204737", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-13T23:48:06.207265", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-13T23:48:11.972272", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "draw_shape", "target": "wolf"}
+{"timestamp": "2026-05-13T23:48:11.973271", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_shape on target: wolf"}
+{"timestamp": "2026-05-13T23:48:11.973271", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-13T23:48:12.049342", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 22100, "status": "success"}
+{"timestamp": "2026-05-13T23:48:13.373656", "level": "INFO", "logger": "automation.mouse_automation", "message": "Requested to draw: wolf"}
+{"timestamp": "2026-05-13T23:48:13.373656", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawEngine] shape='wolf' primary_mode=SKETCH"}
+{"timestamp": "2026-05-13T23:48:14.012620", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt chain: ['SKETCH', 'AUTO', 'LOGO']"}
+{"timestamp": "2026-05-13T23:48:14.013268", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=SKETCH --"}
+{"timestamp": "2026-05-13T23:48:14.015487", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'wolf' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:48:14.015487", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:22.247666", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1 failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=8)"}
+{"timestamp": "2026-05-13T23:48:23.757424", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'wolf' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:48:23.757424", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:24.382428", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:25.891945", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'wolf' mode=SKETCH"}
+{"timestamp": "2026-05-13T23:48:25.892906", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:26.535281", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:28.051455", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode SKETCH"}
+{"timestamp": "2026-05-13T23:48:28.051455", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=AUTO --"}
+{"timestamp": "2026-05-13T23:48:28.054992", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'wolf' mode=AUTO"}
+{"timestamp": "2026-05-13T23:48:28.054992", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:28.676801", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:30.189609", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'wolf' mode=AUTO"}
+{"timestamp": "2026-05-13T23:48:30.190124", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:38.362692", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2 failed: HTTPSConnectionPool(host='image.pollinations.ai', port=443): Read timed out. (read timeout=8)"}
+{"timestamp": "2026-05-13T23:48:39.874621", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'wolf' mode=AUTO"}
+{"timestamp": "2026-05-13T23:48:39.875671", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:40.690578", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:42.200353", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode AUTO"}
+{"timestamp": "2026-05-13T23:48:42.201106", "level": "INFO", "logger": "automation.draw_engine", "message": "-- Pipeline attempt: mode=LOGO --"}
+{"timestamp": "2026-05-13T23:48:42.202625", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 1/3) for 'wolf' mode=LOGO"}
+{"timestamp": "2026-05-13T23:48:42.203712", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:42.922297", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 1: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:44.437459", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 2/3) for 'wolf' mode=LOGO"}
+{"timestamp": "2026-05-13T23:48:44.438669", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 2: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:45.099172", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 2: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:46.615282", "level": "INFO", "logger": "automation.draw_engine", "message": "Generating image (attempt 3/3) for 'wolf' mode=LOGO"}
+{"timestamp": "2026-05-13T23:48:46.616301", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 3: requesting remote asset."}
+{"timestamp": "2026-05-13T23:48:47.231138", "level": "WARNING", "logger": "automation.draw_engine", "message": "Attempt 3: remote service returned HTTP 429"}
+{"timestamp": "2026-05-13T23:48:48.747155", "level": "WARNING", "logger": "automation.draw_engine", "message": "Generation failed for mode LOGO"}
+{"timestamp": "2026-05-13T23:48:48.747155", "level": "WARNING", "logger": "automation.draw_engine", "message": "All modes failed, drawing placeholder"}
+{"timestamp": "2026-05-13T23:48:58.201248", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Drew placeholder for wolf (all modes failed)"}
+{"timestamp": "2026-05-14T00:26:12.110141", "level": "INFO", "logger": "main", "message": "User text input: in antigravity your code workspace is open in that make changes to you code to make you more according to yourself you can change anything you want"}
+{"timestamp": "2026-05-14T00:26:12.110141", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: in antigravity your code workspace is open in that make changes to you code to make you more according to yourself you can change anything you want"}
+{"timestamp": "2026-05-14T00:26:12.126692", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-05-14T00:26:12.130692", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-05-14T00:26:46.796788", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "write_text", "target": ".antigravity-workspace/modifications-manifest.txt"}
+{"timestamp": "2026-05-14T00:26:46.797806", "level": "INFO", "logger": "core.executor", "message": "Executing intent: write_text on target: .antigravity-workspace/modifications-manifest.txt"}
+{"timestamp": "2026-05-14T00:26:46.797806", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: .antigravity-workspace/modifications-manifest.txt"}
+{"timestamp": "2026-05-14T00:26:46.863901", "level": "ERROR", "logger": "core.executor", "message": "Execution failed for intent write_text: expected string or bytes-like object"}
+{"timestamp": "2026-05-14T00:26:46.875841", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Execution error: expected string or bytes-like object"}

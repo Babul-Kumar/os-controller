@@ -44,3 +44,4 @@
 {"timestamp": "2026-05-11T12:49:59.659827", "level": "ERROR", "logger": "voice.speech_to_text", "message": "Microphone error: Could not find PyAudio; check installation"}
 {"timestamp": "2026-05-11T16:01:15.064435", "level": "ERROR", "logger": "automation.image_tracer", "message": "Trace failed: `x` must be strictly increasing sequence."}
 {"timestamp": "2026-05-11T16:11:06.084694", "level": "ERROR", "logger": "automation.image_tracer", "message": "Trace failed: `x` must be strictly increasing sequence."}
+{"timestamp": "2026-05-14T00:26:46.863901", "level": "ERROR", "logger": "core.executor", "message": "Execution failed for intent write_text: expected string or bytes-like object"}

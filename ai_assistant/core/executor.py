@@ -104,6 +104,109 @@ class CommandExecutor:
 
                 return f"✅ File created at {file_path} and opened in {editor_cmd}."
 
+            elif intent == "read_file":
+                file_path = target
+                if not file_path:
+                    return "❌ No filename specified."
+                
+                if not os.path.isabs(file_path):
+                    desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+                    file_path = os.path.join(desktop, file_path)
+                    
+                if not os.path.exists(file_path):
+                    return f"❌ File '{file_path}' does not exist."
+                    
+                try:
+                    with open(file_path, "r", encoding="utf-8") as f:
+                        content = f.read()
+                    return f"📄 File '{file_path}' contents:\n{content[:2000]}"
+                except Exception as e:
+                    return f"❌ Could not read file: {e}"
+
+            elif intent == "modify_file":
+                content = _coerce_text(intent_data.get("content", ""))
+                file_path = target
+                if not file_path:
+                    return "❌ No filename specified."
+                
+                # Resolve relative paths to the user's Desktop
+                if not os.path.isabs(file_path):
+                    desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+                    file_path = os.path.join(desktop, file_path)
+                
+                if not os.path.exists(file_path):
+                    return f"❌ File '{file_path}' does not exist."
+                
+                with open(file_path, "w", encoding="utf-8") as f:
+                    f.write(content)
+                return f"✅ File '{file_path}' modified successfully."
+
+            elif intent == "delete_file":
+                file_path = target
+                if not file_path:
+                    return "❌ No filename specified."
+                if not os.path.isabs(file_path):
+                    desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+                    file_path = os.path.join(desktop, file_path)
+                return FileManager.delete_file(file_path)
+
+            elif intent == "list_directory":
+                dir_path = target
+                if not dir_path or dir_path.lower() in ("none", "null", "."):
+                    dir_path = os.getcwd()
+                elif not os.path.isabs(dir_path):
+                    desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+                    dir_path = os.path.join(desktop, dir_path)
+                
+                if not os.path.exists(dir_path):
+                    return f"❌ Directory '{dir_path}' does not exist."
+                if not os.path.isdir(dir_path):
+                    return f"❌ '{dir_path}' is not a directory."
+                    
+                try:
+                    # Provide a simple tree-like structure for the first level
+                    msg = f"📁 Directory listing for {dir_path}:\n"
+                    items = os.listdir(dir_path)
+                    files = []
+                    dirs = []
+                    for item in items:
+                        full_path = os.path.join(dir_path, item)
+                        if os.path.isdir(full_path):
+                            dirs.append(item)
+                        else:
+                            files.append(item)
+                    
+                    dirs.sort()
+                    files.sort()
+                    
+                    for d in dirs[:20]:
+                        msg += f"  [DIR]  {d}\n"
+                    if len(dirs) > 20: msg += f"  ... and {len(dirs)-20} more directories\n"
+                    
+                    for f in files[:30]:
+                        msg += f"  [FILE] {f}\n"
+                    if len(files) > 30: msg += f"  ... and {len(files)-30} more files\n"
+                    return msg.strip()
+                except Exception as e:
+                    return f"❌ Failed to list directory: {e}"
+
+            elif intent == "execute_command":
+                import subprocess
+                command = target
+                if not command:
+                    return "❌ No command specified."
+                
+                try:
+                    result = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=15)
+                    output = result.stdout.strip()
+                    err = result.stderr.strip()
+                    if result.returncode == 0:
+                        return f"✅ Command executed successfully:\n{output}"
+                    else:
+                        return f"❌ Command failed:\n{err or output}"
+                except Exception as ex:
+                    return f"❌ Command execution error: {ex}"
+
             elif intent == "web_search":
                 return self.web_automator.search_google(target)
 

@@ -15,6 +15,11 @@ Available intents:
 - close_app      : close an application
 - write_text     : open an app AND write/generate content inside it
 - create_file    : create a file at a given path and write code/content inside it, then open it in the specified editor
+- read_file      : read the contents of a file (target = file path)
+- modify_file    : modify an existing file with new code/content (target = file path, content = the full new content)
+- delete_file    : delete a file (target = file path)
+- list_directory : list files and folders in a directory (target = directory path)
+- execute_command: run a command in the terminal (target = the command to run)
 - web_search     : search the web
 - open_website   : open a URL
 - system_control : ONLY use for system operations (shutdown, restart, sleep, lock) when explicitly requested by the user.
@@ -57,6 +62,12 @@ Output: {"intent": "open_website", "target": "https://youtube.com", "confidence"
 
 Input: what is the capital of France
 Output: {"intent": "chat_response", "target": "The capital of France is Paris.", "confidence": 0.99}
+
+Input: modify file utils.py and add a new hello function
+Output: {"intent": "modify_file", "target": "utils.py", "content": "def hello():\n    print('Hello')\n", "confidence": 0.98}
+
+Input: run command ping google.com
+Output: {"intent": "execute_command", "target": "ping google.com", "confidence": 0.99}
 
 Input: shutdown my pc
 Output: {"intent": "system_control", "target": "shutdown", "confidence": 0.99}
