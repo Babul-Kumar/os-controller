@@ -2867,3 +2867,118 @@ _only"}
 {"timestamp": "2026-05-14T00:26:46.797806", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: .antigravity-workspace/modifications-manifest.txt"}
 {"timestamp": "2026-05-14T00:26:46.863901", "level": "ERROR", "logger": "core.executor", "message": "Execution failed for intent write_text: expected string or bytes-like object"}
 {"timestamp": "2026-05-14T00:26:46.875841", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Execution error: expected string or bytes-like object"}
+{"timestamp": "2026-05-16T14:40:21.637069", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-16T14:40:21.638758", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-16T14:40:21.648982", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-16T14:40:21.648982", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-16T14:40:21.651543", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-16T14:40:24.282697", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-16T14:40:24.454327", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-16T14:46:56.657815", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-16T14:46:56.659816", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-16T14:46:56.662946", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-16T14:46:56.662946", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-16T14:46:56.664499", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-16T14:46:58.935046", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-16T14:46:59.393641", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-16T14:47:15.336718", "level": "INFO", "logger": "main", "message": "User text input: __draw_local__:C:/Users/babul/OneDrive/Pictures/Camera Roll 1/WIN_20260516_14_41_09_Pro.jpg"}
+{"timestamp": "2026-05-16T14:47:15.337611", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: __draw_local__:C:/Users/babul/OneDrive/Pictures/Camera Roll 1/WIN_20260516_14_41_09_Pro.jpg"}
+{"timestamp": "2026-05-16T14:47:15.337611", "level": "INFO", "logger": "services.ai_service", "message": "Local image drop detected: C:/Users/babul/OneDrive/Pictures/Camera Roll 1/WIN_20260516_14_41_09_Pro.jpg"}
+{"timestamp": "2026-05-16T14:47:15.338193", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_local_image on target: C:/Users/babul/OneDrive/Pictures/Camera Roll 1/WIN_20260516_14_41_09_Pro.jpg"}
+{"timestamp": "2026-05-16T14:47:15.338760", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-16T14:47:18.063737", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 33700, "status": "success"}
+{"timestamp": "2026-05-16T14:47:32.515292", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Converting 'WIN_20260516_14_41_09_Pro.jpg' to sketch …"}
+{"timestamp": "2026-05-16T14:47:32.632580", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Sketch saved → C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\_user_upload_win_20260516_14_41_09_pro_sketch.png"}
+{"timestamp": "2026-05-16T14:47:33.613680", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.312 (max_dim=500)"}
+{"timestamp": "2026-05-16T14:47:33.619107", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-16T14:47:33.822350", "level": "INFO", "logger": "automation.image_tracer", "message": "401 contours after filtering."}
+{"timestamp": "2026-05-16T14:47:34.980662", "level": "INFO", "logger": "automation.draw_engine", "message": "UserUpload: mode=SKETCH Contours=401, Points=6524.210542257489, Est time=183.3s"}
+{"timestamp": "2026-05-16T14:47:34.980662", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\_user_upload_win_20260516_14_41_09_pro_sketch_preprocessed_sketch.png"}
+{"timestamp": "2026-05-16T14:47:35.205940", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-16T14:47:35.224243", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.312 (max_dim=500)"}
+{"timestamp": "2026-05-16T14:47:35.229321", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-16T14:47:35.430614", "level": "INFO", "logger": "automation.image_tracer", "message": "401 contours after filtering."}
+{"timestamp": "2026-05-16T14:47:35.502542", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 401 contour chains for drawing (500x281, origin=(710, 457))."}
+{"timestamp": "2026-05-16T14:47:36.432137", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/401 contours"}
+{"timestamp": "2026-05-16T14:47:37.716164", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/401 contours"}
+{"timestamp": "2026-05-16T14:47:38.738656", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/401 contours"}
+{"timestamp": "2026-05-16T14:47:39.629663", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/401 contours"}
+{"timestamp": "2026-05-16T14:47:40.467424", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/401 contours"}
+{"timestamp": "2026-05-16T14:47:41.511317", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/401 contours"}
+{"timestamp": "2026-05-16T14:47:42.538754", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 175/401 contours"}
+{"timestamp": "2026-05-16T14:47:44.313160", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 200/401 contours"}
+{"timestamp": "2026-05-16T14:47:45.233596", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 225/401 contours"}
+{"timestamp": "2026-05-16T14:47:46.242538", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 250/401 contours"}
+{"timestamp": "2026-05-16T14:47:47.271834", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 275/401 contours"}
+{"timestamp": "2026-05-16T14:47:48.169010", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 300/401 contours"}
+{"timestamp": "2026-05-16T14:47:49.238515", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 325/401 contours"}
+{"timestamp": "2026-05-16T14:47:50.053001", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 350/401 contours"}
+{"timestamp": "2026-05-16T14:47:51.838675", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 375/401 contours"}
+{"timestamp": "2026-05-16T14:47:52.708272", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 400/401 contours"}
+{"timestamp": "2026-05-16T14:47:52.723700", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 401/401 contours"}
+{"timestamp": "2026-05-16T14:47:52.724440", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-16T14:47:52.725455", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Drawing completed successfully."}
+{"timestamp": "2026-05-16T14:47:52.736689", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: ✅ Converted your image to a sketch and drew it in Paint! (mode=SKETCH)"}
+{"timestamp": "2026-05-16T14:55:30.109444", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-05-16T14:55:30.112073", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-05-16T14:55:30.115436", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-16T14:55:30.116116", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-05-16T14:55:30.117187", "level": "INFO", "logger": "core.memory", "message": "Database initialized at c:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-05-16T14:55:32.064734", "level": "INFO", "logger": "main", "message": "Starting Botbro App..."}
+{"timestamp": "2026-05-16T14:55:32.291656", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Hello, I am Botbro. How can I assist you today?"}
+{"timestamp": "2026-05-16T14:58:35.971480", "level": "INFO", "logger": "main", "message": "User text input: __draw_local__:C:/Users/babul/Downloads/WhatsApp Image 2026-05-16 at 2.56.48 PM.jpeg"}
+{"timestamp": "2026-05-16T14:58:35.973008", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: __draw_local__:C:/Users/babul/Downloads/WhatsApp Image 2026-05-16 at 2.56.48 PM.jpeg"}
+{"timestamp": "2026-05-16T14:58:35.973008", "level": "INFO", "logger": "services.ai_service", "message": "Local image drop detected: C:/Users/babul/Downloads/WhatsApp Image 2026-05-16 at 2.56.48 PM.jpeg"}
+{"timestamp": "2026-05-16T14:58:35.974019", "level": "INFO", "logger": "core.executor", "message": "Executing intent: draw_local_image on target: C:/Users/babul/Downloads/WhatsApp Image 2026-05-16 at 2.56.48 PM.jpeg"}
+{"timestamp": "2026-05-16T14:58:35.974019", "level": "INFO", "logger": "automation.app_controller", "message": "[OPEN] Request: paint"}
+{"timestamp": "2026-05-16T14:58:36.154433", "level": "INFO", "logger": "automation.app_controller", "message": "Action: open", "action": "open", "app": "paint", "pid": 32072, "status": "success"}
+{"timestamp": "2026-05-16T14:58:40.919283", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Converting 'WhatsApp Image 2026-05-16 at 2.56.48 PM.jpeg' to sketch …"}
+{"timestamp": "2026-05-16T14:58:40.988549", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Sketch saved → C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\_user_upload_whatsapp_image_2026-05-16_at_2_56_48_pm_sketch.png"}
+{"timestamp": "2026-05-16T14:58:41.750570", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.552 (max_dim=500)"}
+{"timestamp": "2026-05-16T14:58:41.761074", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-16T14:58:41.973209", "level": "INFO", "logger": "automation.image_tracer", "message": "853 contours after filtering."}
+{"timestamp": "2026-05-16T14:58:46.790088", "level": "INFO", "logger": "automation.draw_engine", "message": "UserUpload: mode=SKETCH Contours=853, Points=10933.12431740478, Est time=359.1s"}
+{"timestamp": "2026-05-16T14:58:46.790088", "level": "INFO", "logger": "automation.image_tracer", "message": "trace_image: C:\\Users\\babul\\OneDrive\\Desktop\\demo\\New folder\\os-controller\\ai_assistant\\assets\\_user_upload_whatsapp_image_2026-05-16_at_2_56_48_pm_sketch_preprocessed_sketch.png"}
+{"timestamp": "2026-05-16T14:58:47.018261", "level": "INFO", "logger": "automation.image_tracer", "message": "Fast Paint canvas centre (960, 597) from foreground window."}
+{"timestamp": "2026-05-16T14:58:47.028154", "level": "INFO", "logger": "automation.image_tracer", "message": "Scale reduced to 0.552 (max_dim=500)"}
+{"timestamp": "2026-05-16T14:58:47.035394", "level": "INFO", "logger": "automation.image_tracer", "message": "Preprocessing method: binary-pass"}
+{"timestamp": "2026-05-16T14:58:47.246424", "level": "INFO", "logger": "automation.image_tracer", "message": "853 contours after filtering."}
+{"timestamp": "2026-05-16T14:58:47.413907", "level": "INFO", "logger": "automation.image_tracer", "message": "Prepared 853 contour chains for drawing (497x500, origin=(712, 347))."}
+{"timestamp": "2026-05-16T14:58:48.165932", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 25/853 contours"}
+{"timestamp": "2026-05-16T14:58:48.947504", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 50/853 contours"}
+{"timestamp": "2026-05-16T14:58:49.712932", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 75/853 contours"}
+{"timestamp": "2026-05-16T14:58:50.461717", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 100/853 contours"}
+{"timestamp": "2026-05-16T14:58:51.052078", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 125/853 contours"}
+{"timestamp": "2026-05-16T14:58:51.750484", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 150/853 contours"}
+{"timestamp": "2026-05-16T14:58:52.409135", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 175/853 contours"}
+{"timestamp": "2026-05-16T14:58:53.505372", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 200/853 contours"}
+{"timestamp": "2026-05-16T14:58:54.385658", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 225/853 contours"}
+{"timestamp": "2026-05-16T14:58:55.336187", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 250/853 contours"}
+{"timestamp": "2026-05-16T14:58:56.190917", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 275/853 contours"}
+{"timestamp": "2026-05-16T14:58:57.032865", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 300/853 contours"}
+{"timestamp": "2026-05-16T14:58:57.829605", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 325/853 contours"}
+{"timestamp": "2026-05-16T14:58:58.546798", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 350/853 contours"}
+{"timestamp": "2026-05-16T14:58:59.214457", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 375/853 contours"}
+{"timestamp": "2026-05-16T14:59:00.274759", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 400/853 contours"}
+{"timestamp": "2026-05-16T14:59:00.959397", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 425/853 contours"}
+{"timestamp": "2026-05-16T14:59:01.956584", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 450/853 contours"}
+{"timestamp": "2026-05-16T14:59:02.819527", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 475/853 contours"}
+{"timestamp": "2026-05-16T14:59:03.804693", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 500/853 contours"}
+{"timestamp": "2026-05-16T14:59:04.604343", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 525/853 contours"}
+{"timestamp": "2026-05-16T14:59:05.336130", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 550/853 contours"}
+{"timestamp": "2026-05-16T14:59:06.068921", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 575/853 contours"}
+{"timestamp": "2026-05-16T14:59:07.254383", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 600/853 contours"}
+{"timestamp": "2026-05-16T14:59:08.411891", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 625/853 contours"}
+{"timestamp": "2026-05-16T14:59:09.329642", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 650/853 contours"}
+{"timestamp": "2026-05-16T14:59:10.089945", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 675/853 contours"}
+{"timestamp": "2026-05-16T14:59:10.904568", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 700/853 contours"}
+{"timestamp": "2026-05-16T14:59:13.058443", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 725/853 contours"}
+{"timestamp": "2026-05-16T14:59:14.211853", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 750/853 contours"}
+{"timestamp": "2026-05-16T14:59:15.052342", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 775/853 contours"}
+{"timestamp": "2026-05-16T14:59:15.703885", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 800/853 contours"}
+{"timestamp": "2026-05-16T14:59:16.500755", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 825/853 contours"}
+{"timestamp": "2026-05-16T14:59:17.246711", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 850/853 contours"}
+{"timestamp": "2026-05-16T14:59:17.370859", "level": "INFO", "logger": "automation.image_tracer", "message": "Drawing progress: 853/853 contours"}
+{"timestamp": "2026-05-16T14:59:17.371455", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
+{"timestamp": "2026-05-16T14:59:17.372000", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Drawing completed successfully."}
+{"timestamp": "2026-05-16T14:59:17.383543", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Done! ✅ I converted your image to a sketch and drew it in Paint. It looks great! 🎨"}

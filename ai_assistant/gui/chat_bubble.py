@@ -1,77 +1,143 @@
+"""chat_bubble.py – Premium dark-mode chat bubbles."""
+
 from datetime import datetime
-import markdown
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QLabel
-from PyQt5.QtCore import Qt, QPropertyAnimation, QRect
+from PyQt5.QtCore import Qt, QPropertyAnimation, QEasingCurve
 from PyQt5.QtGui import QFont
 
-from gui.styles import USER_BUBBLE_COLOR, BOT_BUBBLE_COLOR, TEXT_COLOR, MUTED_TEXT_COLOR
+try:
+    import markdown as _md
+    _HAS_MARKDOWN = True
+except ImportError:
+    _HAS_MARKDOWN = False
+
+# ── Palette ───────────────────────────────────────────────────────────────────
+_USER_BG   = "#1565c0"   # deep blue gradient start
+_USER_BG2  = "#1976d2"
+_BOT_BG    = "#1a1a2e"   # dark navy
+_BOT_BG2   = "#16213e"
+_TEXT      = "#e8e8f4"
+_MUTED     = "#556070"
+_SYS_BG    = "#2a1a1a"
+_SYS_TEXT  = "#ff7070"
+
+_BASE_FONT = '"Segoe UI", "Inter", "Arial", sans-serif'
+
+# ─────────────────────────────────────────────────────────────────────────────
 
 class ChatBubble(QWidget):
     def __init__(self, sender: str, message: str):
         super().__init__()
         self.sender_name = sender
         self.message = message
-        self.init_ui()
+        self._build_ui()
 
-    def init_ui(self):
-        layout = QHBoxLayout()
-        layout.setContentsMargins(10, 5, 10, 5)
+    def _build_ui(self):
+        outer = QHBoxLayout(self)
+        outer.setContentsMargins(8, 3, 8, 3)
 
-        # Container for the bubble text and timestamp
-        bubble_container = QWidget()
-        bubble_layout = QVBoxLayout(bubble_container)
-        bubble_layout.setContentsMargins(15, 12, 15, 12)
+        # ── Bubble container ──────────────────────────────────────────────
+        bubble = QWidget()
+        bubble.setMaximumWidth(540)
+        b_layout = QVBoxLayout(bubble)
+        b_layout.setContentsMargins(14, 10, 14, 8)
+        b_layout.setSpacing(4)
 
-        # Markdown Rendering
-        try:
-            # Basic markdown rendering without complex extensions for PyQt QLabel
-            html_message = markdown.markdown(self.message)
-            # Tweak font styles for HTML display within QLabel
-            html_message = f'<div style="color: {TEXT_COLOR}; font-family: \'Segoe UI\', sans-serif; font-size: 14px;">{html_message}</div>'
-        except Exception:
-            html_message = self.message  # Fallback
+        # Sender tag (small, muted)
+        if self.sender_name not in ("You",):
+            name_lbl = QLabel(self.sender_name)
+            name_lbl.setStyleSheet(
+                f"color: #00AEEF; font-size: 10px; font-weight: 600; "
+                f"font-family: {_BASE_FONT}; background: transparent;"
+            )
+            b_layout.addWidget(name_lbl)
 
-        self.text_label = QLabel(html_message)
-        self.text_label.setWordWrap(True)
-        self.text_label.setTextFormat(Qt.RichText)
-        self.text_label.setOpenExternalLinks(True)
-        bubble_layout.addWidget(self.text_label)
+        # Message text
+        html = self._render_markdown(self.message)
+        text_lbl = QLabel(html)
+        text_lbl.setWordWrap(True)
+        text_lbl.setTextFormat(Qt.RichText)
+        text_lbl.setOpenExternalLinks(True)
+        text_lbl.setTextInteractionFlags(
+            Qt.TextSelectableByMouse | Qt.LinksAccessibleByMouse
+        )
+        text_lbl.setStyleSheet(f"background: transparent; color: {_TEXT};")
+        b_layout.addWidget(text_lbl)
 
         # Timestamp
-        timestamp = datetime.now().strftime("%I:%M %p")
-        self.time_label = QLabel(timestamp)
-        self.time_label.setStyleSheet(f"color: {MUTED_TEXT_COLOR}; font-size: 10px;")
-        self.time_label.setAlignment(Qt.AlignRight)
-        bubble_layout.addWidget(self.time_label)
+        ts = datetime.now().strftime("%I:%M %p")
+        ts_lbl = QLabel(ts)
+        ts_lbl.setAlignment(Qt.AlignRight)
+        ts_lbl.setStyleSheet(
+            f"color: {_MUTED}; font-size: 10px; background: transparent;"
+        )
+        b_layout.addWidget(ts_lbl)
 
-        # Styling
-        if self.sender_name == "You":
-            bubble_container.setStyleSheet(f"""
+        # ── Bubble style per sender ───────────────────────────────────────
+        is_user = self.sender_name == "You"
+        is_sys  = "error" in self.sender_name.lower() or "system" in self.sender_name.lower()
+
+        if is_sys:
+            bubble.setStyleSheet(f"""
                 QWidget {{
-                    background-color: {USER_BUBBLE_COLOR};
-                    border-radius: 15px;
-                    border-bottom-right-radius: 0px;
+                    background-color: {_SYS_BG};
+                    border-radius: 14px;
+                    border: 1px solid #5a1010;
                 }}
             """)
-            layout.addStretch()
-            layout.addWidget(bubble_container)
+            text_lbl.setStyleSheet(f"background: transparent; color: {_SYS_TEXT};")
+        elif is_user:
+            bubble.setStyleSheet(f"""
+                QWidget {{
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                        stop:0 {_USER_BG}, stop:1 {_USER_BG2});
+                    border-radius: 18px;
+                    border-bottom-right-radius: 4px;
+                }}
+            """)
         else:
-            bubble_container.setStyleSheet(f"""
+            bubble.setStyleSheet(f"""
                 QWidget {{
-                    background-color: {BOT_BUBBLE_COLOR};
-                    border-radius: 15px;
-                    border-bottom-left-radius: 0px;
+                    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                        stop:0 {_BOT_BG}, stop:1 {_BOT_BG2});
+                    border-radius: 18px;
+                    border-bottom-left-radius: 4px;
+                    border: 1px solid #252540;
                 }}
             """)
-            layout.addWidget(bubble_container)
-            layout.addStretch()
 
-        self.setLayout(layout)
+        # ── Layout: user → right, bot → left ─────────────────────────────
+        if is_user:
+            outer.addStretch()
+            outer.addWidget(bubble)
+        else:
+            outer.addWidget(bubble)
+            outer.addStretch()
 
-        # Fade-in animation
-        self.setWindowOpacity(0.0)
-        self.animation = QPropertyAnimation(self, b"windowOpacity")
-        self.animation.setDuration(300)
-        self.animation.setStartValue(0.0)
-        self.animation.setEndValue(1.0)
-        self.animation.start()
+        # ── Subtle slide-in animation ─────────────────────────────────────
+        self.anim = QPropertyAnimation(bubble, b"maximumWidth")
+        self.anim.setDuration(180)
+        self.anim.setStartValue(0)
+        self.anim.setEndValue(540)
+        self.anim.setEasingCurve(QEasingCurve.OutCubic)
+        self.anim.start()
+
+    def _render_markdown(self, text: str) -> str:
+        style = (
+            f'color:{_TEXT}; font-family:{_BASE_FONT}; '
+            f'font-size:14px; line-height:1.5;'
+        )
+        if _HAS_MARKDOWN:
+            try:
+                html = _md.markdown(text, extensions=["nl2br"])
+                return f'<div style="{style}">{html}</div>'
+            except Exception:
+                pass
+        # Plain text fallback
+        escaped = (
+            text.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\n", "<br>")
+        )
+        return f'<div style="{style}">{escaped}</div>'

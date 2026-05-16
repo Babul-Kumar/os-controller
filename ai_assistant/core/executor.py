@@ -217,10 +217,10 @@ class CommandExecutor:
                 # Ensure paint is open for drawing
                 app_res = await AppController.open_app("paint")
                 if app_res.get("status") in ("error", "not_found", "blocked"):
-                    return f"❌ Failed to open paint: {app_res.get('message', 'Unknown error')}"
-                
+                    return f"I couldn't open MS Paint. Please make sure it's installed and try again."
+
                 self._wait_for_window_focus("paint", timeout=5)
-                
+
                 # Try to maximize the window for predictable drawing coordinates
                 import pygetwindow as gw
                 windows = [w for w in gw.getAllTitles() if "paint" in w.lower()]
@@ -235,6 +235,32 @@ class CommandExecutor:
 
                 from automation.mouse_automation import MouseAutomator
                 return MouseAutomator.draw_shape(target)
+
+            elif intent == "draw_local_image":
+                # User dropped/attached a local image; convert it to a sketch and draw
+                image_path = _coerce_text(intent_data.get("image_path", target)).strip()
+                if not image_path or not os.path.exists(image_path):
+                    return f"I couldn't find the image file at '{image_path}'. Please try dropping it again."
+
+                app_res = await AppController.open_app("paint")
+                if app_res.get("status") in ("error", "not_found", "blocked"):
+                    return "I couldn't open MS Paint. Please make sure it's installed and try again."
+
+                self._wait_for_window_focus("paint", timeout=5)
+
+                import pygetwindow as gw
+                windows = [w for w in gw.getAllTitles() if "paint" in w.lower()]
+                if windows:
+                    try:
+                        win = gw.getWindowsWithTitle(windows[0])[0]
+                        if not win.isMaximized:
+                            win.maximize()
+                        time.sleep(0.5)
+                    except Exception as exc:
+                        logger.warning(f"Failed to maximize Paint window: {exc}")
+
+                from automation.draw_engine import draw_from_local_image
+                return draw_from_local_image(image_path)
 
             elif intent == "system_control":
                 operation = _coerce_text(intent_data.get("operation") or target).strip()

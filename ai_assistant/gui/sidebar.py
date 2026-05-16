@@ -1,57 +1,96 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
+"""sidebar.py – Slim, premium dark sidebar."""
+
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QFrame
 from PyQt5.QtCore import Qt
-from gui.styles import SIDEBAR_COLOR
+from PyQt5.QtGui import QFont
+
+
+_SIDEBAR_BG   = "#0a0a18"
+_ITEM_HOVER   = "#151530"
+_ACCENT       = "#00AEEF"
+_TEXT_DIM     = "#4a4a6a"
+_TEXT_NORMAL  = "#8888aa"
+_TEXT_BRIGHT  = "#ccccee"
+
 
 class Sidebar(QWidget):
     def __init__(self):
         super().__init__()
-        self.init_ui()
-
-    def init_ui(self):
-        self.setMinimumWidth(200)
-        self.setMaximumWidth(300)
+        self.setMinimumWidth(130)
+        self.setMaximumWidth(190)
         self.setStyleSheet(f"""
             QWidget {{
-                background-color: {SIDEBAR_COLOR};
-                border-bottom-left-radius: 10px;
+                background-color: {_SIDEBAR_BG};
+                border-bottom-left-radius: 12px;
             }}
         """)
-        
-        layout = QVBoxLayout()
-        layout.setContentsMargins(15, 20, 15, 20)
-        layout.setSpacing(15)
+        self._build_ui()
 
-        # Title
-        title = QLabel("BotBro Settings")
-        title.setStyleSheet("color: #FFFFFF; font-size: 16px; font-weight: bold; font-family: 'Segoe UI';")
-        layout.addWidget(title)
+    def _build_ui(self):
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(12, 18, 12, 18)
+        layout.setSpacing(4)
 
-        # Nav items
-        nav_items = ["Chat History", "Memory Logs", "Plugins", "Settings"]
-        for item in nav_items:
-            btn = QPushButton(item)
-            btn.setStyleSheet("""
-                QPushButton {
+        # Logo / branding
+        logo = QLabel("🤖 BotBro")
+        logo.setStyleSheet(f"""
+            color: {_ACCENT};
+            font-size: 15px;
+            font-weight: 700;
+            font-family: "Segoe UI", sans-serif;
+            letter-spacing: 0.5px;
+            padding-bottom: 10px;
+        """)
+        layout.addWidget(logo)
+
+        # Thin separator
+        sep = QFrame()
+        sep.setFrameShape(QFrame.HLine)
+        sep.setStyleSheet(f"color: #1a1a2a; background: #1a1a2a; max-height: 1px;")
+        layout.addWidget(sep)
+        layout.addSpacing(8)
+
+        # Nav buttons
+        nav_items = [
+            ("💬", "Chat"),
+            ("🧠", "Memory"),
+            ("🔌", "Plugins"),
+            ("⚙️", "Settings"),
+        ]
+        for icon, label in nav_items:
+            btn = QPushButton(f"  {icon}  {label}")
+            btn.setStyleSheet(f"""
+                QPushButton {{
                     background-color: transparent;
-                    color: #AAAAAA;
+                    color: {_TEXT_NORMAL};
                     text-align: left;
-                    padding: 8px;
-                    border-radius: 5px;
-                    font-size: 14px;
+                    padding: 9px 10px;
+                    border-radius: 8px;
+                    font-size: 13px;
+                    font-family: "Segoe UI", sans-serif;
                     border: none;
-                }
-                QPushButton:hover {
-                    background-color: #2A2A2A;
-                    color: #FFFFFF;
-                }
+                }}
+                QPushButton:hover {{
+                    background-color: {_ITEM_HOVER};
+                    color: {_TEXT_BRIGHT};
+                }}
+                QPushButton:pressed {{
+                    background-color: #1a1a38;
+                }}
             """)
+            btn.setCursor(Qt.PointingHandCursor)
             layout.addWidget(btn)
 
         layout.addStretch()
 
-        # Status or Info at bottom
-        info_label = QLabel("v1.0.0")
-        info_label.setStyleSheet("color: #555555; font-size: 10px;")
-        layout.addWidget(info_label)
+        # Divider
+        sep2 = QFrame()
+        sep2.setFrameShape(QFrame.HLine)
+        sep2.setStyleSheet("background: #1a1a2a; max-height: 1px;")
+        layout.addWidget(sep2)
+        layout.addSpacing(6)
 
-        self.setLayout(layout)
+        # Version tag
+        ver = QLabel("v1.0.0")
+        ver.setStyleSheet(f"color: {_TEXT_DIM}; font-size: 10px; font-family: 'Segoe UI';")
+        layout.addWidget(ver)

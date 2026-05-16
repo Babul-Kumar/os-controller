@@ -9,9 +9,28 @@ from services.ollama_service import call_ollama
 
 logger = setup_logger(__name__)
 
-# Draw verbs to detect draw intent locally
+# Draw verbs — explicit commands
 _DRAW_VERBS = re.compile(
     r"\b(draw|sketch|paint|illustrate|doodle)\b", re.IGNORECASE
+)
+
+# Implicit visual-request patterns — no "draw" word needed
+# e.g. "show me a cat", "I want to see a lion", "make a tiger", "give me a picture of a dog"
+_IMPLICIT_DRAW = re.compile(
+    r"\b("
+    r"show\s+(me\s+)?(a\s+|an\s+|the\s+)?|"           # show me a …
+    r"(i\s+)?(want|wanna|would\s+like)\s+(to\s+)?see\s+(a\s+|an\s+|the\s+)?|"  # I want to see a …
+    r"(i'?d\s+like\s+to\s+see\s+)|"                   # I'd like to see …
+    r"(let\s+me\s+see\s+)|"                            # let me see …
+    r"(give\s+me\s+(a\s+|an\s+)?(picture|image|drawing|sketch)\s+of\s+)|"  # give me a picture of …
+    r"(can\s+you\s+(make|create|draw|sketch|show)\s+(a\s+|an\s+|me\s+a\s+|me\s+an\s+)?)|"  # can you make a …
+    r"(make\s+(a\s+|an\s+)?(?!file|new\s+file))|"     # make a … (not file)
+    r"(create\s+(a\s+|an\s+)?(?!file|new\s+file))|"   # create a … (not file)
+    r"(visually\s+(show|depict)\s+(me\s+)?)|"         # visually show me …
+    r"(put\s+(a\s+|an\s+)?\w+\s+in\s+(paint|drawing))|"  # put a X in paint
+    r"(i\s+want\s+(a\s+|an\s+)?\w+\s+(image|picture|drawing))"
+    r")(.+)",
+    re.IGNORECASE,
 )
 
 # Stop words to exclude when extracting draw subjects
@@ -75,32 +94,45 @@ def _detect_write_intent_locally(text: str):
     return None
 def _detect_draw_intent_locally(text: str):
     """
-    Local heuristic: if the user's text contains a draw verb, extract
-    the subject that follows it and return a draw_shape intent dict.
-    Returns None if no draw verb is found.
-    """
-    tl = text.lower()
-    if not _DRAW_VERBS.search(tl):
-        return None
+    Detect drawing intent from natural language — with OR without explicit draw verbs.
 
-    # Try to extract the noun phrase after the draw verb
-    # Pattern: (draw/sketch/paint) [a/an/the] <subject words>
-    m = re.search(
-        r"\b(?:draw|sketch|paint|illustrate|doodle)\s+(?:a\s+|an\s+|the\s+)?(.+)",
-        tl, re.IGNORECASE
-    )
-    if m:
-        raw = m.group(1).strip()
-        # Remove trailing noise words like "in it", "in paint", etc.
-        raw = re.sub(r"\s+(in\s+\w+|for\s+\w+|on\s+\w+)$", "", raw).strip()
-        # Filter stop words from multi-word subjects
+    Catches:
+      - Explicit: "draw a cat", "sketch a lion"
+      - Implicit: "show me a cat", "I want to see a dog",
+                  "can you make a tiger", "give me a picture of a horse"
+    """
+    tl = text.lower().strip()
+
+    # ── 1. Explicit draw verb ─────────────────────────────────────────────
+    if _DRAW_VERBS.search(tl):
+        m = re.search(
+            r"\b(?:draw|sketch|paint|illustrate|doodle)\s+(?:a\s+|an\s+|the\s+|me\s+a?\s+)?(.+)",
+            tl, re.IGNORECASE,
+        )
+        if m:
+            raw = m.group(1).strip()
+            raw = re.sub(r"\s+(in\s+\w+|for\s+\w+|on\s+\w+|please|now)$", "", raw).strip()
+            tokens = [w for w in raw.split() if w not in _DRAW_STOP_WORDS]
+            subject = " ".join(tokens).strip()
+            if subject:
+                return {"intent": "draw_shape", "target": subject, "confidence": 0.90}
+
+    # ── 2. Implicit visual-request phrases ────────────────────────────────
+    m2 = _IMPLICIT_DRAW.search(tl)
+    if m2:
+        # The last capture group holds the subject noun phrase
+        raw = m2.group(m2.lastindex or 1).strip()
+        # Remove trailing noise
+        raw = re.sub(r"\s+(please|now|for\s+me|in\s+paint|in\s+it)$", "", raw).strip()
+        # Strip leading articles
+        raw = re.sub(r"^(a |an |the )", "", raw).strip()
+        # Filter stop words
         tokens = [w for w in raw.split() if w not in _DRAW_STOP_WORDS]
         subject = " ".join(tokens).strip()
-        if subject:
-            return {"intent": "draw_shape", "target": subject, "confidence": 0.85}
+        if len(subject) >= 2:  # at least 2 chars — skip garbage matches
+            return {"intent": "draw_shape", "target": subject, "confidence": 0.82}
 
     return None
-
 
 
 class AIService:
@@ -110,6 +142,15 @@ class AIService:
 
     async def process_intent(self, user_text: str) -> Dict[str, Any]:
         """Send input to Ollama, get JSON string, parse it into an intent."""
+
+        # ── Fast path: local image drop from the GUI ─────────────────────────
+        # The GUI emits a synthetic "__draw_local__:<path>" sentinel so we can
+        # bypass Ollama and route directly to the draw_local_image executor.
+        if user_text.startswith("__draw_local__:"):
+            image_path = user_text[len("__draw_local__:"):]
+            logger.info(f"Local image drop detected: {image_path}")
+            return {"intent": "draw_local_image", "image_path": image_path, "target": image_path, "confidence": 1.0}
+
         # Fix common typos
         user_text = user_text.lower().replace("esay", "essay")
 
@@ -146,7 +187,12 @@ class AIService:
             local = _detect_write_intent_locally(text)
             if local:
                 return local
-            return {"intent": "error", "message": "API Error and could not understand command offline."}
+            # Local draw detection (explicit + implicit)
+            local_draw = _detect_draw_intent_locally(text)
+            if local_draw:
+                return local_draw
+            return {"intent": "error", "message": "I couldn't understand that. Could you rephrase? 🤔"}
+
 
         try:
             logger.info("Using Ollama")

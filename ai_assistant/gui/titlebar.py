@@ -10,16 +10,28 @@ class TitleBar(QWidget):
         self.start_pos = None
 
     def init_ui(self):
-        self.setFixedHeight(35)
-        self.setStyleSheet(f"background-color: {TITLEBAR_COLOR}; border-top-left-radius: 10px; border-top-right-radius: 10px;")
-        
-        layout = QHBoxLayout()
-        layout.setContentsMargins(10, 0, 10, 0)
-        layout.setSpacing(5)
+        self.setFixedHeight(38)
+        self.setStyleSheet(
+            "background-color: #09090f;"
+            "border-top-left-radius: 12px;"
+            "border-top-right-radius: 12px;"
+            "border-bottom: 1px solid #1a1a2e;"
+        )
 
-        # Title
-        self.title_label = QLabel("BotBro AI")
-        self.title_label.setStyleSheet("color: #AAAAAA; font-weight: bold; font-family: 'Segoe UI'; font-size: 12px;")
+        layout = QHBoxLayout()
+        layout.setContentsMargins(14, 0, 10, 0)
+        layout.setSpacing(6)
+
+        # Status dot + title
+        dot = QLabel("●")
+        dot.setStyleSheet("color: #00AEEF; font-size: 10px;")
+        layout.addWidget(dot)
+
+        self.title_label = QLabel("BotBro AI  —  Future")
+        self.title_label.setStyleSheet(
+            "color: #6677aa; font-weight: 600; "
+            "font-family: 'Segoe UI', sans-serif; font-size: 12px;"
+        )
         layout.addWidget(self.title_label)
 
         layout.addStretch()

@@ -1423,114 +1423,6 @@ def _download_image(query: str, mode: PipelineMode) -> Optional[DrawableCandidat
             logger.info(f"Attempt {attempt}: evaluating downloaded asset.")
             candidate = _resolve_drawable_candidate(
                 raw_path,
-                mode,
-                f"Attempt {attempt}",
-            )
-
-            if candidate is None:
-                logger.warning("Image rejected after local simplification attempts")
-                raw_path.unlink(missing_ok=True)
-                time.sleep(REMOTE_IMAGE_RETRY_DELAY_S)
-                continue
-
-            return candidate
-
-        except Exception as exc:
-            logger.warning(f"Attempt {attempt} failed: {exc}")
-            time.sleep(REMOTE_IMAGE_RETRY_DELAY_S)
-
-    return None
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# §12  Tracing
-# ══════════════════════════════════════════════════════════════════════════════
-
-def _trace_image(image_path: Path, mode: PipelineMode) -> bool:
-    config = _get_pipeline_config(mode)
-    
-    try:
-        ok = ImageTracer.trace_image(
-            str(image_path),
-            start_x=0,
-            start_y=0,
-            scale=config.trace_scale,
-            mode=mode,
-        )
-        return bool(ok)
-    except Exception as exc:
-        logger.error(f"Tracing error: {exc}")
-        return False
-
-
-def _click_canvas_center() -> Tuple[int, int]:
-    sw, sh = pyautogui.size()
-    cx, cy = sw // 2, sh // 2
-    pyautogui.click(cx, cy)
-    time.sleep(0.5)
-    return cx, cy
-
-
-# ══════════════════════════════════════════════════════════════════════════════
-# §13  Placeholder rendering (FIX-18)
-# ══════════════════════════════════════════════════════════════════════════════
-
-def _render_placeholder(cx: int, cy: int, points):
-    if not points:
-        return
-
-    pyautogui.moveTo(points[0][0], points[0][1])
-
-    if len(points) == 1:
-        pyautogui.click()
-        return
-
-    for x, y in points[1:]:
-        pyautogui.dragTo(x, y, duration=0.02, button="left")
-
-
-def _draw_geometric_placeholder(cx: int, cy: int, mode: PipelineMode) -> None:
-    """Mode‑aware placeholder using unified renderer."""
-    if mode == PipelineMode.SKETCH:
-        # Paw print
-        points = []
-        r = 60
-        for i in range(36):
-            angle = 2 * math.pi * i / 36
-            points.append((cx + int(r * 0.6 * math.cos(angle)), cy + int(r * 0.6 * math.sin(angle))))
-        _render_placeholder(cx, cy - r, points)
-        
-        for tx, ty in [(cx-50, cy-80), (cx, cy-90), (cx+50, cy-80)]:
-            toe_points = []
-            for i in range(12):
-                angle = 2 * math.pi * i / 12
-                toe_points.append((tx + int(15 * math.cos(angle)), ty + int(15 * math.sin(angle))))
-            _render_placeholder(tx, ty, toe_points)
-    
-    elif mode == PipelineMode.LOGO:
-        # Shield
-        points = [
-            (cx, cy - 70), (cx + 50, cy - 70), (cx + 50, cy - 20),
-            (cx, cy + 60), (cx - 50, cy - 20), (cx - 50, cy - 70), (cx, cy - 70)
-        ]
-        _render_placeholder(cx, cy, points)
-    
-    else:
-        # Circle + cross
-        points = []
-        r = 80
-        for i in range(37):
-            angle = 2 * math.pi * i / 36
-            points.append((cx + int(r * math.cos(angle)), cy + int(r * math.sin(angle))))
-        _render_placeholder(cx + r, cy, points)
-        
-        cross_points = [(cx - r, cy), (cx + r, cy), (cx, cy - r), (cx, cy + r)]
-        for x, y in cross_points:
-            _render_placeholder(x, y, [(x, y)])
-
-
-def _draw_spiral(cx: int, cy: int) -> None:
-    """Last‑resort spiral fallback."""
     points = []
     for t in np.linspace(0, 12 * math.pi, 400):
         r = 4 * t
@@ -1543,6 +1435,96 @@ def _draw_spiral(cx: int, cy: int) -> None:
 # ══════════════════════════════════════════════════════════════════════════════
 # §14  Public API
 # ══════════════════════════════════════════════════════════════════════════════
+
+def draw_from_local_image(image_path_str: str) -> str:
+    """
+    Convert a user-supplied colour image to a sketch and draw it in MS Paint.
+
+    Pipeline:
+      1. Read image (colour or grayscale).
+      2. Convert to greyscale if needed.
+      3. Upscale if too small.
+      4. CLAHE contrast enhancement.
+      5. Adaptive threshold → pencil-sketch binary mask.
+      6. Save to assets/ as a temporary PNG.
+      7. Evaluate & trace using the existing SKETCH pipeline.
+    """
+    image_path = Path(image_path_str).resolve()
+    if not image_path.exists():
+        return f"❌ Image file not found: {image_path}"
+
+    logger.info(f"[DrawFromLocal] Converting '{image_path.name}' to sketch …")
+
+    # ── 1. Load image ────────────────────────────────────────────────────────
+    raw = cv2.imread(str(image_path), cv2.IMREAD_UNCHANGED)
+    if raw is None:
+        return f"❌ Could not read image: {image_path}"
+
+    # ── 2. Convert to greyscale ───────────────────────────────────────────────
+    if raw.ndim == 2:
+        gray = raw
+    elif raw.shape[2] == 4:
+        gray = cv2.cvtColor(raw, cv2.COLOR_BGRA2GRAY)
+    else:
+        gray = cv2.cvtColor(raw, cv2.COLOR_BGR2GRAY)
+
+    # ── 3. Upscale small images ───────────────────────────────────────────────
+    h, w = gray.shape[:2]
+    target_min_dim = 900
+    if min(h, w) < target_min_dim:
+        scale_up = target_min_dim / min(h, w)
+        gray = cv2.resize(
+            gray,
+            (int(w * scale_up), int(h * scale_up)),
+            interpolation=cv2.INTER_CUBIC,
+        )
+        h, w = gray.shape[:2]
+        logger.debug(f"[DrawFromLocal] Upscaled to {w}×{h}")
+
+    # ── 4. CLAHE contrast enhancement ────────────────────────────────────────
+    clahe = cv2.createCLAHE(clipLimit=2.5, tileGridSize=(8, 8))
+    gray = clahe.apply(gray)
+
+    # ── 5. Adaptive threshold → binary sketch mask ───────────────────────────
+    block_size = max(11, (_odd_kernel_size(min(h, w) // 40, minimum=11)))
+    sketch_bin = cv2.adaptiveThreshold(
+        gray,
+        255,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY_INV,   # dark strokes on white background
+        block_size,
+        4,
+    )
+    # Clean up salt-and-pepper noise
+    sketch_bin = cv2.medianBlur(sketch_bin, 3)
+
+    # ── 6. Save sketch PNG to assets/ ────────────────────────────────────────
+    safe_stem = _safe_filename(image_path.stem)
+    sketch_path = ASSETS_DIR / f"_user_upload_{safe_stem}_sketch.png"
+    cv2.imwrite(str(sketch_path), sketch_bin)
+    logger.info(f"[DrawFromLocal] Sketch saved → {sketch_path}")
+
+    # ── 7. Evaluate & trace using SKETCH pipeline ─────────────────────────────
+    mode = PipelineMode.SKETCH
+    _click_canvas_center()
+
+    candidate = _resolve_drawable_candidate(sketch_path, mode, "UserUpload")
+    if candidate is None:
+        # Try AUTO fallback
+        logger.warning("[DrawFromLocal] SKETCH candidate rejected — trying AUTO.")
+        candidate = _resolve_drawable_candidate(sketch_path, PipelineMode.AUTO, "UserUpload-AUTO")
+
+    if candidate is None:
+        cx, cy = _click_canvas_center()
+        _draw_geometric_placeholder(cx, cy, mode)
+        return "I had trouble extracting the details from your image, so I drew a simple sketch in Paint instead. Try a clearer photo for better results! 🎨"
+
+    if not _trace_image(candidate.trace_source, candidate.mode):
+        return "I converted your image to a sketch but ran into an issue while drawing it in Paint. Please make sure Paint is open and try again."
+
+    logger.info("[DrawFromLocal] Drawing completed successfully.")
+    return f"Done! ✅ I converted your image to a sketch and drew it in Paint. It looks great! 🎨"
+
 
 def draw_anything(shape_name: str) -> str:
     """Master drawing function with complete orchestration pipeline."""
@@ -1591,11 +1573,11 @@ def draw_anything(shape_name: str) -> str:
         if not _trace_image(candidate.trace_source, candidate.mode):
             logger.warning(f"Tracing failed for {candidate.processed_path}")
             continue
-        
+
         logger.info(f"Drawing completed successfully with mode {candidate.mode.name}")
-        return f"Drew {shape_name} using mode {candidate.mode.name}"
+        return f"Done! ✅ I drew '{shape_name}' in Paint for you. Take a look! 🎨"
 
     logger.warning(f"All modes failed, drawing placeholder")
     cx, cy = _click_canvas_center()
     _draw_geometric_placeholder(cx, cy, primary_mode)
-    return f"Drew placeholder for {shape_name} (all modes failed)"
+    return f"I couldn't find a great reference image for '{shape_name}', so I drew a symbolic shape in Paint instead. Try a more specific subject for best results! 🖼️"
