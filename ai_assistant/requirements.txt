@@ -20,3 +20,34 @@ requests>=2.31.0
 scipy>=1.13.0
 selenium>=4.18.1
 SpeechRecognition>=3.10.0
+
+# ── Phase 1: Vision / OCR ─────────────────────────────────────────────────────
+# Requires Tesseract-OCR installed on Windows: https://github.com/UB-Mannheim/tesseract/wiki
+# After installing, add Tesseract to PATH or set pytesseract.pytesseract.tesseract_cmd
+pytesseract>=0.3.10
+
+# ── Phase 2: Browser Agent ────────────────────────────────────────────────────
+# Auto-manages ChromeDriver version matching your Chrome installation
+webdriver-manager>=4.0.1
+
+# ── Phase 3: RAG Memory (Vector Database) ────────────────────────────────────
+# FAISS for fast vector similarity search (CPU version, no GPU required)
+faiss-cpu>=1.7.4
+# Sentence embeddings — downloads ~90MB model on first run, then runs offline
+sentence-transformers>=2.7.0
+
+# ── Teach Botbro: Macro Recording ────────────────────────────────────────────
+# Global mouse + keyboard event capture for workflow recording
+pynput>=1.7.6
+
+# ── Local STT: Offline Speech Recognition (Faster-Whisper) ──────────────────
+# CTranslate2-based Whisper — fast CPU/GPU inference, no cloud dependency
+faster-whisper>=1.0.0
+# Cross-platform audio capture that returns numpy float32 arrays directly
+sounddevice>=0.4.6
+# WAV file I/O for writing temp files Whisper can read
+soundfile>=0.12.1
+# Used only for GPU detection (torch.cuda.is_available()).
+# If you already have PyTorch installed, this is a no-op.
+# CPU-only install (lightweight): pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0

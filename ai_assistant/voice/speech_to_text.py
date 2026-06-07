@@ -1,48 +1,130 @@
-import speech_recognition as sr
+"""
+speech_to_text.py  (updated)
+────────────────────────────
+SpeechRecognizer — unified STT entry point with a 3-level fallback chain.
+
+Priority chain
+──────────────
+  1. WhisperSTT (local, offline, faster-whisper)
+     ↓ ImportError / model load failure
+  2. GoogleSTT  (cloud, online, speech_recognition)
+     ↓ network error / unavailable
+  3. Return ""  (silent failure — caller handles gracefully)
+
+VoiceController should always use this class rather than the concrete engines
+directly, so the fallback behaviour is always in effect.
+"""
+
+from __future__ import annotations
+
+import logging
+from typing import Optional
+
 from utils.helpers import setup_logger
 
 logger = setup_logger(__name__)
 
-class SpeechRecognizer:
-    def __init__(self):
-        self.recognizer = sr.Recognizer()
-        self.last_error = ""
-        # Adjust for ambient noise dynamically
-        self.recognizer.dynamic_energy_threshold = True
 
-    def listen(self, timeout=5, phrase_time_limit=10) -> str:
-        """Listen to the microphone and convert speech to text."""
-        self.last_error = ""
+class SpeechRecognizer:
+    """Unified STT facade with automatic engine selection and fallback."""
+
+    def __init__(self) -> None:
+        self._primary: Optional[object] = None    # WhisperSTT instance
+        self._fallback: Optional[object] = None   # GoogleSTT instance
+        self.last_error: str = ""
+
+        self._init_engines()
+
+    # ── Engine initialisation ─────────────────────────────────────────────────
+
+    def _init_engines(self) -> None:
+        """Attempt to load WhisperSTT; always load GoogleSTT as backup."""
+
+        # Primary: local Whisper
         try:
-            with sr.Microphone() as source:
-                logger.info("Listening...")
-                # Reduce noise briefly before listening
-                self.recognizer.adjust_for_ambient_noise(source, duration=0.5)
-                
-                audio = self.recognizer.listen(
-                    source, 
-                    timeout=timeout, 
-                    phrase_time_limit=phrase_time_limit
+            from voice.local_speech_to_text import WhisperSTT
+            if WhisperSTT.is_available():
+                self._primary = WhisperSTT()
+                logger.info("STT primary engine: WhisperSTT (local/offline)")
+            else:
+                logger.warning("faster-whisper not available — skipping WhisperSTT.")
+        except Exception as exc:
+            logger.warning(f"WhisperSTT could not be loaded: {exc}")
+            self._primary = None
+
+        # Fallback: Google cloud
+        try:
+            from voice.google_speech_to_text import GoogleSTT
+            if GoogleSTT.is_available():
+                self._fallback = GoogleSTT()
+                logger.info("STT fallback engine: GoogleSTT (cloud)")
+            else:
+                logger.warning("SpeechRecognition not available — Google fallback disabled.")
+        except Exception as exc:
+            logger.warning(f"GoogleSTT could not be loaded: {exc}")
+            self._fallback = None
+
+        if self._primary is None and self._fallback is None:
+            logger.error("No STT engine available — voice input will be disabled.")
+
+    # ── Public API ────────────────────────────────────────────────────────────
+
+    @property
+    def backend(self) -> str:
+        """Name of the currently active primary backend."""
+        if self._primary is not None:
+            return self._primary.get_backend()
+        if self._fallback is not None:
+            return self._fallback.get_backend()
+        return "none"
+
+    def listen(self, timeout: float = 5.0, phrase_time_limit: float = 10.0) -> str:
+        """Listen from the microphone and return transcribed text.
+
+        Tries WhisperSTT first; falls back to GoogleSTT on any failure.
+        Returns "" if both engines fail.
+        """
+        self.last_error = ""
+
+        # ── Try primary (Whisper) ──────────────────────────────────────────
+        if self._primary is not None:
+            try:
+                text = self._primary.listen(
+                    timeout=timeout,
+                    phrase_time_limit=phrase_time_limit,
                 )
-                
-                logger.info("Processing speech...")
-                text = self.recognizer.recognize_google(audio)
+                if text:
+                    return text
+                # Empty result — check for hard error before falling back
+                if self._primary.last_error:
+                    logger.warning(
+                        f"WhisperSTT error ('{self._primary.last_error}') "
+                        "— falling back to GoogleSTT."
+                    )
+            except Exception as exc:
+                logger.warning(f"WhisperSTT raised an exception: {exc} — trying Google fallback.")
+
+        # ── Fallback (Google) ─────────────────────────────────────────────
+        if self._fallback is not None:
+            try:
+                text = self._fallback.listen(
+                    timeout=timeout,
+                    phrase_time_limit=phrase_time_limit,
+                )
+                if text:
+                    logger.info("Google STT fallback produced a result.")
                 return text
-                
-        except sr.WaitTimeoutError:
-            logger.info("Listening timed out.")
-            return ""
-        except sr.UnknownValueError:
-            logger.warning("Could not understand audio.")
-            return ""
-        except sr.RequestError as e:
-            self.last_error = "Speech recognition service is unavailable right now."
-            logger.error(f"Could not request results from Google Speech Recognition service; {e}")
-            return ""
-        except Exception as e:
-            self.last_error = str(e)
-            logger.error(f"Microphone error: {e}")
-            return ""
+            except Exception as exc:
+                self.last_error = str(exc)
+                logger.error(f"GoogleSTT fallback also failed: {exc}")
+
+        return ""
 
     def get_last_error(self) -> str:
         return self.last_error
+
+    def get_metrics(self) -> dict:
+        """Return performance metrics from the most-recently-used engine."""
+        if self._primary is not None and hasattr(self._primary, "get_metrics"):
+            return self._primary.get_metrics()
+        return {}
