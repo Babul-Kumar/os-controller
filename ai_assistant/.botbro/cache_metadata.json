@@ -1,0 +1,1193 @@
+{
+  "schema_version": 2,
+  "created_at": 1782060327.1181686,
+  "updated_at": 1782061706.70638,
+  "workspace_hash": "878f50cac5d188fb49278f7d3dec89f5",
+  "files": {
+    "main.py": {
+      "last_modified": 1780781789.4993312,
+      "hash": "10fb92e2529faa34c252cd6ba1670290",
+      "symbols": [
+        "main.py::BotbroApp",
+        "main.py::BotbroApp::__init__",
+        "main.py::BotbroApp::_run_async_loop",
+        "main.py::BotbroApp::_safe_gui_emit",
+        "main.py::BotbroApp::_track_future",
+        "main.py::BotbroApp::_install_signal_handlers",
+        "main.py::BotbroApp::_handle_console_interrupt",
+        "main.py::BotbroApp::_install_runtime_guards",
+        "main.py::BotbroApp::_ignore_windows_console_interrupts",
+        "main.py::BotbroApp::_handle_uncaught_exception",
+        "main.py::BotbroApp::process_text_input",
+        "main.py::BotbroApp::_process_text_async",
+        "main.py::BotbroApp::process_voice_input",
+        "main.py::BotbroApp::run",
+        "main.py::BotbroApp::shutdown"
+      ]
+    },
+    "requirements.txt": {
+      "last_modified": 1780810351.5827222,
+      "hash": "3f6e700f04c7bf40148c83cb2c51857e",
+      "symbols": []
+    },
+    "ai/__init__.py": {
+      "last_modified": 1780781789.450927,
+      "hash": "480e2f8611876f11adfe8456108443de",
+      "symbols": []
+    },
+    "automation/app_controller.py": {
+      "last_modified": 1782030991.9457052,
+      "hash": "1c18f919e5120e23e025d6f428883afa",
+      "symbols": [
+        "automation/app_controller.py::AppController",
+        "automation/app_controller.py::AppController::normalize_name",
+        "automation/app_controller.py::AppController::_validate_command",
+        "automation/app_controller.py::AppController::_resolve_executable",
+        "automation/app_controller.py::AppController::_find_app_in_registry",
+        "automation/app_controller.py::AppController::is_running",
+        "automation/app_controller.py::AppController::_window_action",
+        "automation/app_controller.py::AppController::focus_app",
+        "automation/app_controller.py::AppController::open_app",
+        "automation/app_controller.py::AppController::close_app"
+      ]
+    },
+    "automation/browser_agent.py": {
+      "last_modified": 1780783068.1423216,
+      "hash": "7f3cf71269401ae2bbc87d174fb32509",
+      "symbols": [
+        "automation/browser_agent.py::VALID_ACTIONS",
+        "automation/browser_agent.py::BrowserStep",
+        "automation/browser_agent.py::BrowserResult",
+        "automation/browser_agent.py::_BROWSER_PLANNER_PROMPT",
+        "automation/browser_agent.py::BrowserAgent",
+        "automation/browser_agent.py::BrowserAgent::__init__",
+        "automation/browser_agent.py::BrowserAgent::_init_driver",
+        "automation/browser_agent.py::BrowserAgent::close",
+        "automation/browser_agent.py::BrowserAgent::plan_steps",
+        "automation/browser_agent.py::BrowserAgent::_parse_steps",
+        "automation/browser_agent.py::BrowserAgent::_fallback_plan",
+        "automation/browser_agent.py::BrowserAgent::execute_steps",
+        "automation/browser_agent.py::BrowserAgent::_dispatch_step",
+        "automation/browser_agent.py::BrowserAgent::plan_and_execute",
+        "automation/browser_agent.py::BrowserAgent::_format_result",
+        "automation/browser_agent.py::BrowserAgent::_do_navigate",
+        "automation/browser_agent.py::BrowserAgent::_do_click_text",
+        "automation/browser_agent.py::BrowserAgent::_do_click_selector",
+        "automation/browser_agent.py::BrowserAgent::_do_type_into",
+        "automation/browser_agent.py::BrowserAgent::_do_wait_for",
+        "automation/browser_agent.py::BrowserAgent::_do_scrape_text",
+        "automation/browser_agent.py::BrowserAgent::_do_scroll_down",
+        "automation/browser_agent.py::BrowserAgent::_do_press_key",
+        "automation/browser_agent.py::BrowserAgent::_take_screenshot"
+      ]
+    },
+    "automation/draw_engine.py": {
+      "last_modified": 1780795450.3894682,
+      "hash": "b518843147fecd48ed16131f6ef6eb0a",
+      "symbols": [
+        "automation/draw_engine.py::BASE_DIR",
+        "automation/draw_engine.py::ASSETS_DIR",
+        "automation/draw_engine.py::ASSET_VERSION",
+        "automation/draw_engine.py::PREPROCESS_VERSION",
+        "automation/draw_engine.py::TRACER_VERSION",
+        "automation/draw_engine.py::RENDERER_VERSION",
+        "automation/draw_engine.py::MAX_CACHE_SIZE_MB",
+        "automation/draw_engine.py::MAX_CACHE_AGE_DAYS",
+        "automation/draw_engine.py::REMOTE_IMAGE_ATTEMPTS",
+        "automation/draw_engine.py::REMOTE_IMAGE_CONNECT_TIMEOUT_S",
+        "automation/draw_engine.py::REMOTE_IMAGE_READ_TIMEOUT_S",
+        "automation/draw_engine.py::REMOTE_IMAGE_DEADLINE_S",
+        "automation/draw_engine.py::REMOTE_IMAGE_RETRY_DELAY_S",
+        "automation/draw_engine.py::OUTLINE_MAX_CONTOURS",
+        "automation/draw_engine.py::OUTLINE_MIN_AREA_RATIO",
+        "automation/draw_engine.py::POLARITY_THRESHOLD",
+        "automation/draw_engine.py::CLOSURE_THRESHOLD",
+        "automation/draw_engine.py::InterpolationType",
+        "automation/draw_engine.py::RenderingBackend",
+        "automation/draw_engine.py::RetrievalStrategy",
+        "automation/draw_engine.py::ApproximationStrategy",
+        "automation/draw_engine.py::PreprocessingConfig",
+        "automation/draw_engine.py::QualityConfig",
+        "automation/draw_engine.py::TracingPolicy",
+        "automation/draw_engine.py::RenderingConfig",
+        "automation/draw_engine.py::PipelineConfig",
+        "automation/draw_engine.py::DrawableCandidate",
+        "automation/draw_engine.py::PIPELINE_CONFIGS",
+        "automation/draw_engine.py::_safe_filename",
+        "automation/draw_engine.py::_is_generated_asset_stem",
+        "automation/draw_engine.py::_is_preprocessed_asset",
+        "automation/draw_engine.py::_get_raw_asset_path",
+        "automation/draw_engine.py::_processed_asset_path",
+        "automation/draw_engine.py::_odd_kernel_size",
+        "automation/draw_engine.py::_get_retrieval_mode",
+        "automation/draw_engine.py::_get_approx_method",
+        "automation/draw_engine.py::_get_config_hash",
+        "automation/draw_engine.py::_prompt_hash",
+        "automation/draw_engine.py::_versioned_asset_path",
+        "automation/draw_engine.py::_manage_cache_size",
+        "automation/draw_engine.py::_get_pipeline_config",
+        "automation/draw_engine.py::FALLBACK_MAP",
+        "automation/draw_engine.py::_tokenize",
+        "automation/draw_engine.py::_detect_best_mode",
+        "automation/draw_engine.py::_build_attempt_chain",
+        "automation/draw_engine.py::_get_trace_source_path",
+        "automation/draw_engine.py::_find_local_asset",
+        "automation/draw_engine.py::_detect_threshold_polarity_histogram",
+        "automation/draw_engine.py::_try_both_polarities",
+        "automation/draw_engine.py::_dynamic_adaptive_block_size",
+        "automation/draw_engine.py::_is_image_quality_good",
+        "automation/draw_engine.py::_is_contour_closed",
+        "automation/draw_engine.py::_smooth_contour",
+        "automation/draw_engine.py::_compress_large_contour",
+        "automation/draw_engine.py::_prepare_contours_for_analysis",
+        "automation/draw_engine.py::_compute_curvature_proxy",
+        "automation/draw_engine.py::_compute_centroids",
+        "automation/draw_engine.py::_order_contours_nearest_neighbor",
+        "automation/draw_engine.py::_analyze_contour_density",
+        "automation/draw_engine.py::_is_binary_like_analysis_image",
+        "automation/draw_engine.py::_normalize_analysis_binary",
+        "automation/draw_engine.py::_estimate_draw_time",
+        "automation/draw_engine.py::_should_draw",
+        "automation/draw_engine.py::_preprocess_image",
+        "automation/draw_engine.py::_log_candidate_summary",
+        "automation/draw_engine.py::_evaluate_drawable_candidate",
+        "automation/draw_engine.py::_is_preferred_candidate_mode",
+        "automation/draw_engine.py::_candidate_rank",
+        "automation/draw_engine.py::_pick_better_candidate",
+        "automation/draw_engine.py::_build_outline_fallback",
+        "automation/draw_engine.py::_resolve_drawable_candidate",
+        "automation/draw_engine.py::_generate_prompt",
+        "automation/draw_engine.py::_request_remote_image",
+        "automation/draw_engine.py::_download_image",
+        "automation/draw_engine.py::_trace_image",
+        "automation/draw_engine.py::_click_canvas_center",
+        "automation/draw_engine.py::_render_placeholder",
+        "automation/draw_engine.py::_draw_geometric_placeholder",
+        "automation/draw_engine.py::_draw_spiral",
+        "automation/draw_engine.py::draw_from_local_image",
+        "automation/draw_engine.py::draw_anything"
+      ]
+    },
+    "automation/feedback_loop.py": {
+      "last_modified": 1780817252.4558208,
+      "hash": "2eab3fbef093dd1380629a5d22d21b45",
+      "symbols": [
+        "automation/feedback_loop.py::_THIS_FILE",
+        "automation/feedback_loop.py::BASE_DIR",
+        "automation/feedback_loop.py::SCREENSHOTS_DIR",
+        "automation/feedback_loop.py::VerificationResult",
+        "automation/feedback_loop.py::VerificationResult::__str__",
+        "automation/feedback_loop.py::FeedbackLoop",
+        "automation/feedback_loop.py::FeedbackLoop::take_verification_screenshot",
+        "automation/feedback_loop.py::FeedbackLoop::verify_app_opened",
+        "automation/feedback_loop.py::FeedbackLoop::verify_window_has_content",
+        "automation/feedback_loop.py::FeedbackLoop::verify_text_on_screen",
+        "automation/feedback_loop.py::FeedbackLoop::find_text_on_screen",
+        "automation/feedback_loop.py::FeedbackLoop::retry_with_feedback"
+      ]
+    },
+    "automation/file_finder.py": {
+      "last_modified": 1780781789.4891448,
+      "hash": "868e58c7ba01b416f66c9a9911afa9af",
+      "symbols": [
+        "automation/file_finder.py::FileFinder",
+        "automation/file_finder.py::FileFinder::find_by_name",
+        "automation/file_finder.py::FileFinder::find_image_for",
+        "automation/file_finder.py::FileFinder::find_by_extension",
+        "automation/file_finder.py::FileFinder::search_deep"
+      ]
+    },
+    "automation/file_manager.py": {
+      "last_modified": 1780781789.4901507,
+      "hash": "31ca8f4544430b81d0c7e5545c117530",
+      "symbols": [
+        "automation/file_manager.py::FileManager",
+        "automation/file_manager.py::FileManager::create_file",
+        "automation/file_manager.py::FileManager::delete_file",
+        "automation/file_manager.py::FileManager::search_file"
+      ]
+    },
+    "automation/image_tracer.py": {
+      "last_modified": 1782031172.261345,
+      "hash": "9d234015a5fcaa93252583615b1409b0",
+      "symbols": [
+        "automation/image_tracer.py::PipelineMode",
+        "automation/image_tracer.py::_MouseController",
+        "automation/image_tracer.py::_MouseController::__init__",
+        "automation/image_tracer.py::_MouseController::_to_absolute",
+        "automation/image_tracer.py::_MouseController::_send_input",
+        "automation/image_tracer.py::_MouseController::_maybe_throttle",
+        "automation/image_tracer.py::_MouseController::move_to",
+        "automation/image_tracer.py::_MouseController::mouse_down",
+        "automation/image_tracer.py::_MouseController::mouse_up",
+        "automation/image_tracer.py::_MouseController::position",
+        "automation/image_tracer.py::_detect_canvas_via_uia",
+        "automation/image_tracer.py::_detect_canvas_via_uia_with_timeout",
+        "automation/image_tracer.py::_detect_paint_canvas_rect",
+        "automation/image_tracer.py::_force_focus_paint_canvas",
+        "automation/image_tracer.py::_fast_canvas_center",
+        "automation/image_tracer.py::_select_pencil_tool",
+        "automation/image_tracer.py::_is_line_art",
+        "automation/image_tracer.py::_auto_mode",
+        "automation/image_tracer.py::_preprocess_binary",
+        "automation/image_tracer.py::_is_binary_like",
+        "automation/image_tracer.py::_normalize_binary_mask",
+        "automation/image_tracer.py::_load_and_preprocess",
+        "automation/image_tracer.py::_vectorise_with_potrace",
+        "automation/image_tracer.py::_get_retrieval_mode",
+        "automation/image_tracer.py::_is_border_frame_contour",
+        "automation/image_tracer.py::_is_small_border_fragment",
+        "automation/image_tracer.py::_simplify_contour",
+        "automation/image_tracer.py::_remove_collinear",
+        "automation/image_tracer.py::_stitch_contours",
+        "automation/image_tracer.py::_order_contours_nn",
+        "automation/image_tracer.py::_curvature_adaptive_samples",
+        "automation/image_tracer.py::_smooth_interpolate_contour",
+        "automation/image_tracer.py::_should_interpolate",
+        "automation/image_tracer.py::_velocity_delays",
+        "automation/image_tracer.py::_export_svg",
+        "automation/image_tracer.py::_CACHE_DIR",
+        "automation/image_tracer.py::TRACE_CACHE_VERSION",
+        "automation/image_tracer.py::_cache_key",
+        "automation/image_tracer.py::_load_cache",
+        "automation/image_tracer.py::_save_cache",
+        "automation/image_tracer.py::ImageTracer",
+        "automation/image_tracer.py::ImageTracer::_prepare_contours",
+        "automation/image_tracer.py::ImageTracer::trace_image"
+      ]
+    },
+    "automation/mouse_automation.py": {
+      "last_modified": 1780781789.4911518,
+      "hash": "a9018ec16159e377793d92c9511fac81",
+      "symbols": [
+        "automation/mouse_automation.py::MouseAutomator",
+        "automation/mouse_automation.py::MouseAutomator::draw_indian_flag",
+        "automation/mouse_automation.py::MouseAutomator::_draw_rect",
+        "automation/mouse_automation.py::MouseAutomator::_draw_circle",
+        "automation/mouse_automation.py::MouseAutomator::draw_shape"
+      ]
+    },
+    "automation/screen_reader.py": {
+      "last_modified": 1780817263.8953853,
+      "hash": "5b608015a213866d6810a373fd1d6a6c",
+      "symbols": [
+        "automation/screen_reader.py::SCREENSHOTS_DIR",
+        "automation/screen_reader.py::ScreenReader",
+        "automation/screen_reader.py::ScreenReader::take_screenshot",
+        "automation/screen_reader.py::ScreenReader::get_screen_as_array",
+        "automation/screen_reader.py::ScreenReader::find_element_on_screen",
+        "automation/screen_reader.py::ScreenReader::describe_screen",
+        "automation/screen_reader.py::ScreenReader::read_text_from_region",
+        "automation/screen_reader.py::ScreenReader::click_element",
+        "automation/screen_reader.py::ScreenReader::read_full_screen_text",
+        "automation/screen_reader.py::ScreenReader::find_button_by_text",
+        "automation/screen_reader.py::ScreenReader::find_dialog_text",
+        "automation/screen_reader.py::ScreenReader::list_visible_windows",
+        "automation/screen_reader.py::ScreenReader::get_active_window_title"
+      ]
+    },
+    "automation/system_control.py": {
+      "last_modified": 1780781789.4921503,
+      "hash": "3de63d2438e145f7e5e333623c790e0e",
+      "symbols": [
+        "automation/system_control.py::SystemController",
+        "automation/system_control.py::SystemController::execute",
+        "automation/system_control.py::SystemController::_execute_windows",
+        "automation/system_control.py::SystemController::_execute_macos",
+        "automation/system_control.py::SystemController::_execute_linux"
+      ]
+    },
+    "automation/vision.py": {
+      "last_modified": 1780781789.4926004,
+      "hash": "b163b652c68928c7de68535ce4fda402",
+      "symbols": [
+        "automation/vision.py::VisionAutomator",
+        "automation/vision.py::VisionAutomator::click_icon"
+      ]
+    },
+    "automation/web_automation.py": {
+      "last_modified": 1780783103.1663601,
+      "hash": "5ce46fff90b52df5280492957ad4132f",
+      "symbols": [
+        "automation/web_automation.py::WebAutomator",
+        "automation/web_automation.py::WebAutomator::__init__",
+        "automation/web_automation.py::WebAutomator::_init_driver",
+        "automation/web_automation.py::WebAutomator::open_website",
+        "automation/web_automation.py::WebAutomator::search_google",
+        "automation/web_automation.py::WebAutomator::close_browser",
+        "automation/web_automation.py::WebAutomator::execute_web_task",
+        "automation/web_automation.py::WebAutomator::search_linkedin_jobs",
+        "automation/web_automation.py::WebAutomator::search_kaggle",
+        "automation/web_automation.py::WebAutomator::open_github_repo",
+        "automation/web_automation.py::WebAutomator::fill_form"
+      ]
+    },
+    "automation/__init__.py": {
+      "last_modified": 1780781789.487121,
+      "hash": "20576784c876bd6094a0bac2640638c7",
+      "symbols": []
+    },
+    "config/settings.py": {
+      "last_modified": 1782056207.911426,
+      "hash": "02e37a4cb7e5858ba19a69d21da24c65",
+      "symbols": [
+        "config/settings.py::APP_NAME",
+        "config/settings.py::VERSION",
+        "config/settings.py::VOICE_RATE",
+        "config/settings.py::VOICE_VOLUME",
+        "config/settings.py::BASE_DIR",
+        "config/settings.py::DB_PATH",
+        "config/settings.py::REQUIRE_CONFIRMATION",
+        "config/settings.py::STT_MODEL",
+        "config/settings.py::STT_DEVICE",
+        "config/settings.py::STT_COMPUTE",
+        "config/settings.py::STT_LANGUAGE",
+        "config/settings.py::STT_BEAM_SIZE",
+        "config/settings.py::OLLAMA_MODEL",
+        "config/settings.py::OLLAMA_BASE_URL",
+        "config/settings.py::IGNORED_DIRS",
+        "config/settings.py::PENDING_CHANGE_TIMEOUT"
+      ]
+    },
+    "config/__init__.py": {
+      "last_modified": 1780781789.4926004,
+      "hash": "570c8c760e5318514a78a841641924b1",
+      "symbols": []
+    },
+    "core/command_parser.py": {
+      "last_modified": 1780781789.4957933,
+      "hash": "c279d67949d8204ac4f528acf6ab34f4",
+      "symbols": [
+        "core/command_parser.py::_fix_json_control_chars",
+        "core/command_parser.py::_extract_first_json_payload",
+        "core/command_parser.py::CommandParser",
+        "core/command_parser.py::CommandParser::parse"
+      ]
+    },
+    "core/event_bus.py": {
+      "last_modified": 1780781789.4957933,
+      "hash": "c0be587439bfbf6d3e60ea63c08834b4",
+      "symbols": [
+        "core/event_bus.py::EventBus",
+        "core/event_bus.py::EventBus::on",
+        "core/event_bus.py::EventBus::off",
+        "core/event_bus.py::EventBus::emit"
+      ]
+    },
+    "core/executor.py": {
+      "last_modified": 1782060206.5691113,
+      "hash": "dbe8a4949276d82117ab787f93c9e269",
+      "symbols": [
+        "core/executor.py::_IS_WINDOWS",
+        "core/executor.py::_coerce_text",
+        "core/executor.py::_windows_only_msg",
+        "core/executor.py::CommandExecutor",
+        "core/executor.py::CommandExecutor::__init__",
+        "core/executor.py::CommandExecutor::_get_feedback_loop",
+        "core/executor.py::CommandExecutor::_get_orchestrator",
+        "core/executor.py::CommandExecutor::_get_workflow_recorder",
+        "core/executor.py::CommandExecutor::execute_intent",
+        "core/executor.py::CommandExecutor::_is_window_active",
+        "core/executor.py::CommandExecutor::_wait_for_window_focus",
+        "core/executor.py::CommandExecutor::_type_text_via_clipboard"
+      ]
+    },
+    "core/memory.py": {
+      "last_modified": 1780783108.1019597,
+      "hash": "985412f5dcfeb8cdd593437e975580da",
+      "symbols": [
+        "core/memory.py::MemoryManager",
+        "core/memory.py::MemoryManager::__init__",
+        "core/memory.py::MemoryManager::_init_db",
+        "core/memory.py::MemoryManager::add_message",
+        "core/memory.py::MemoryManager::log_command",
+        "core/memory.py::MemoryManager::get_recent_context",
+        "core/memory.py::MemoryManager::get_favorite_apps",
+        "core/memory.py::MemoryManager::suggest_next_app",
+        "core/memory.py::MemoryManager::store_memory_entry",
+        "core/memory.py::MemoryManager::get_memory_entries_by_type",
+        "core/memory.py::MemoryManager::get_all_memory_entries",
+        "core/memory.py::MemoryManager::delete_memory_entry"
+      ]
+    },
+    "core/metrics_store.py": {
+      "last_modified": 1780816347.8476326,
+      "hash": "f286f4fb5af828a9e105a106ef4ecce9",
+      "symbols": [
+        "core/metrics_store.py::_DDL",
+        "core/metrics_store.py::MetricsStore",
+        "core/metrics_store.py::MetricsStore::__init__",
+        "core/metrics_store.py::MetricsStore::_ensure_schema",
+        "core/metrics_store.py::MetricsStore::_conn",
+        "core/metrics_store.py::MetricsStore::_now",
+        "core/metrics_store.py::MetricsStore::log_command",
+        "core/metrics_store.py::MetricsStore::log_agent",
+        "core/metrics_store.py::MetricsStore::log_ocr",
+        "core/metrics_store.py::MetricsStore::log_workflow",
+        "core/metrics_store.py::MetricsStore::get_summary",
+        "core/metrics_store.py::MetricsStore::get_recent_commands",
+        "core/metrics_store.py::MetricsStore::get_recent_stt",
+        "core/metrics_store.py::MetricsStore::get_recent_agents",
+        "core/metrics_store.py::MetricsStore::get_recent_workflows",
+        "core/metrics_store.py::MetricsStore::get_daily_command_counts",
+        "core/metrics_store.py::MetricsStore::get_stt_model_comparison",
+        "core/metrics_store.py::get_store"
+      ]
+    },
+    "core/orchestrator.py": {
+      "last_modified": 1780817242.3791752,
+      "hash": "fe43b374382ce247f3a9d5ee936642d5",
+      "symbols": [
+        "core/orchestrator.py::_COMPLEX_KEYWORDS",
+        "core/orchestrator.py::AgentOrchestrator",
+        "core/orchestrator.py::AgentOrchestrator::__init__",
+        "core/orchestrator.py::AgentOrchestrator::run_complex_task",
+        "core/orchestrator.py::AgentOrchestrator::is_complex_task",
+        "core/orchestrator.py::AgentOrchestrator::_execute"
+      ]
+    },
+    "core/pii_engine.py": {
+      "last_modified": 1780781789.4982553,
+      "hash": "226e2cb6452fa543ebc1f219d126fd89",
+      "symbols": [
+        "core/pii_engine.py::_EncryptedStore",
+        "core/pii_engine.py::_EncryptedStore::__init__",
+        "core/pii_engine.py::_EncryptedStore::_next_nonce",
+        "core/pii_engine.py::_EncryptedStore::put",
+        "core/pii_engine.py::_EncryptedStore::get",
+        "core/pii_engine.py::_EncryptedStore::clear",
+        "core/pii_engine.py::_EncryptedStore::__len__",
+        "core/pii_engine.py::PIIContext",
+        "core/pii_engine.py::PIIContext::__init__",
+        "core/pii_engine.py::PIIContext::get",
+        "core/pii_engine.py::PIIContext::tokens",
+        "core/pii_engine.py::PIIContext::has_pii",
+        "core/pii_engine.py::PIIEngine",
+        "core/pii_engine.py::PIIEngine::__init__",
+        "core/pii_engine.py::PIIEngine::tokenize",
+        "core/pii_engine.py::PIIEngine::restore",
+        "core/pii_engine.py::PIIEngine::scan_only"
+      ]
+    },
+    "core/plugin_manager.py": {
+      "last_modified": 1780781789.4987712,
+      "hash": "7e5a5b9016aa7ecc642ca73cb2227e27",
+      "symbols": [
+        "core/plugin_manager.py::PluginManager",
+        "core/plugin_manager.py::PluginManager::__init__",
+        "core/plugin_manager.py::PluginManager::_load_plugins",
+        "core/plugin_manager.py::PluginManager::execute_all"
+      ]
+    },
+    "core/preference_learner.py": {
+      "last_modified": 1780783084.374314,
+      "hash": "64562bb70d241bc1eb392a1f67c2c8b1",
+      "symbols": [
+        "core/preference_learner.py::PreferenceLearner",
+        "core/preference_learner.py::PreferenceLearner::__init__",
+        "core/preference_learner.py::PreferenceLearner::_init_freq_table",
+        "core/preference_learner.py::PreferenceLearner::_increment_app_freq",
+        "core/preference_learner.py::PreferenceLearner::_get_top_apps",
+        "core/preference_learner.py::PreferenceLearner::learn_from_command",
+        "core/preference_learner.py::PreferenceLearner::analyze_history",
+        "core/preference_learner.py::PreferenceLearner::get_user_profile_summary",
+        "core/preference_learner.py::PreferenceLearner::suggest_next_action"
+      ]
+    },
+    "core/security.py": {
+      "last_modified": 1780783074.2926946,
+      "hash": "7d0ccd8cf9a28971762c54db726f3480",
+      "symbols": [
+        "core/security.py::ALLOWED_ACTIONS",
+        "core/security.py::BLOCKED_PATHS",
+        "core/security.py::is_safe_action",
+        "core/security.py::is_safe_path",
+        "core/security.py::validate_command_safety",
+        "core/security.py::SAFE_MODE",
+        "core/security.py::FORBIDDEN_RE",
+        "core/security.py::validate_shell_command"
+      ]
+    },
+    "core/vector_memory.py": {
+      "last_modified": 1780783083.987175,
+      "hash": "94934914c9f57b71a15cb0fdb6a5c589",
+      "symbols": [
+        "core/vector_memory.py::EMBEDDING_DIM",
+        "core/vector_memory.py::_MODEL_NAME",
+        "core/vector_memory.py::MemoryEntry",
+        "core/vector_memory.py::VectorMemory",
+        "core/vector_memory.py::VectorMemory::__init__",
+        "core/vector_memory.py::VectorMemory::_init_db",
+        "core/vector_memory.py::VectorMemory::_get_embedder",
+        "core/vector_memory.py::VectorMemory::embed",
+        "core/vector_memory.py::VectorMemory::_get_or_create_index",
+        "core/vector_memory.py::VectorMemory::save_index",
+        "core/vector_memory.py::VectorMemory::load_index",
+        "core/vector_memory.py::VectorMemory::remember",
+        "core/vector_memory.py::VectorMemory::recall",
+        "core/vector_memory.py::VectorMemory::_keyword_recall",
+        "core/vector_memory.py::VectorMemory::learn_preference",
+        "core/vector_memory.py::VectorMemory::get_preferences",
+        "core/vector_memory.py::VectorMemory::format_for_prompt"
+      ]
+    },
+    "core/workflow_recorder.py": {
+      "last_modified": 1780817269.2321532,
+      "hash": "94706ad4d9759c18533e6ed8d2d5a484",
+      "symbols": [
+        "core/workflow_recorder.py::_THIS_FILE",
+        "core/workflow_recorder.py::BASE_DIR",
+        "core/workflow_recorder.py::WORKFLOWS_DIR",
+        "core/workflow_recorder.py::WorkflowEvent",
+        "core/workflow_recorder.py::Workflow",
+        "core/workflow_recorder.py::_safe_name",
+        "core/workflow_recorder.py::_pixel_distance",
+        "core/workflow_recorder.py::_workflow_path",
+        "core/workflow_recorder.py::_events_to_dicts",
+        "core/workflow_recorder.py::_events_from_dicts",
+        "core/workflow_recorder.py::WorkflowRecorder",
+        "core/workflow_recorder.py::WorkflowRecorder::__init__",
+        "core/workflow_recorder.py::WorkflowRecorder::start_recording",
+        "core/workflow_recorder.py::WorkflowRecorder::stop_recording",
+        "core/workflow_recorder.py::WorkflowRecorder::save_workflow",
+        "core/workflow_recorder.py::WorkflowRecorder::replay_workflow",
+        "core/workflow_recorder.py::WorkflowRecorder::list_workflows",
+        "core/workflow_recorder.py::WorkflowRecorder::get_workflow_info",
+        "core/workflow_recorder.py::WorkflowRecorder::delete_workflow",
+        "core/workflow_recorder.py::WorkflowRecorder::_on_click",
+        "core/workflow_recorder.py::WorkflowRecorder::_on_move",
+        "core/workflow_recorder.py::WorkflowRecorder::_on_key_press",
+        "core/workflow_recorder.py::WorkflowRecorder::_on_key_release",
+        "core/workflow_recorder.py::WorkflowRecorder::_compute_delays",
+        "core/workflow_recorder.py::WorkflowRecorder::_filter_mouse_moves",
+        "core/workflow_recorder.py::WorkflowRecorder::_replay_event",
+        "core/workflow_recorder.py::WorkflowRecorder::_map_button",
+        "core/workflow_recorder.py::WorkflowRecorder::_normalise_key",
+        "core/workflow_recorder.py::WorkflowRecorder::_load_workflow",
+        "core/workflow_recorder.py::WorkflowRecorder::_persist_replay_count"
+      ]
+    },
+    "core/__init__.py": {
+      "last_modified": 1780781789.4926004,
+      "hash": "829006967985d39173cc47ef16ad820e",
+      "symbols": []
+    },
+    "core/agents/base_agent.py": {
+      "last_modified": 1780783032.2092698,
+      "hash": "9aa68e4e3996a6e3604071139a2c0ecf",
+      "symbols": [
+        "core/agents/base_agent.py::AgentTask",
+        "core/agents/base_agent.py::AgentTask::__post_init__",
+        "core/agents/base_agent.py::AgentResult",
+        "core/agents/base_agent.py::AgentResult::__post_init__",
+        "core/agents/base_agent.py::BaseAgent",
+        "core/agents/base_agent.py::BaseAgent::name",
+        "core/agents/base_agent.py::BaseAgent::role",
+        "core/agents/base_agent.py::BaseAgent::run",
+        "core/agents/base_agent.py::BaseAgent::_ok",
+        "core/agents/base_agent.py::BaseAgent::_fail",
+        "core/agents/base_agent.py::BaseAgent::__repr__"
+      ]
+    },
+    "core/agents/coder_agent.py": {
+      "last_modified": 1780783062.9283302,
+      "hash": "0adb380228086a22c1e326157f1698f2",
+      "symbols": [
+        "core/agents/coder_agent.py::_CODE_PROMPT",
+        "core/agents/coder_agent.py::CoderAgent",
+        "core/agents/coder_agent.py::CoderAgent::name",
+        "core/agents/coder_agent.py::CoderAgent::role",
+        "core/agents/coder_agent.py::CoderAgent::run",
+        "core/agents/coder_agent.py::_strip_fences"
+      ]
+    },
+    "core/agents/executor_agent.py": {
+      "last_modified": 1780783083.601254,
+      "hash": "d5ef88a3ee47d6c3638b0ceec9a602f8",
+      "symbols": [
+        "core/agents/executor_agent.py::ExecutorAgent",
+        "core/agents/executor_agent.py::ExecutorAgent::__init__",
+        "core/agents/executor_agent.py::ExecutorAgent::name",
+        "core/agents/executor_agent.py::ExecutorAgent::role",
+        "core/agents/executor_agent.py::ExecutorAgent::run"
+      ]
+    },
+    "core/agents/planner_agent.py": {
+      "last_modified": 1780783048.8163607,
+      "hash": "ced51c18af923bec59ea83af4e40098c",
+      "symbols": [
+        "core/agents/planner_agent.py::_DECOMPOSITION_PROMPT",
+        "core/agents/planner_agent.py::PlannerAgent",
+        "core/agents/planner_agent.py::PlannerAgent::name",
+        "core/agents/planner_agent.py::PlannerAgent::role",
+        "core/agents/planner_agent.py::PlannerAgent::run",
+        "core/agents/planner_agent.py::PlannerAgent::_parse_steps",
+        "core/agents/planner_agent.py::PlannerAgent::_steps_to_tasks"
+      ]
+    },
+    "core/agents/verifier_agent.py": {
+      "last_modified": 1780783113.9670975,
+      "hash": "4d69d3d6dc0cafc379fc51b0f718f452",
+      "symbols": [
+        "core/agents/verifier_agent.py::VerifierAgent",
+        "core/agents/verifier_agent.py::VerifierAgent::name",
+        "core/agents/verifier_agent.py::VerifierAgent::role",
+        "core/agents/verifier_agent.py::VerifierAgent::run",
+        "core/agents/verifier_agent.py::VerifierAgent::_verify_open_app",
+        "core/agents/verifier_agent.py::VerifierAgent::_verify_file_exists"
+      ]
+    },
+    "core/agents/__init__.py": {
+      "last_modified": 1780783006.2323055,
+      "hash": "aba0828b895ae7dd49061249c1976d5c",
+      "symbols": []
+    },
+    "core/code_intelligence/ast_indexer.py": {
+      "last_modified": 1782059666.1252656,
+      "hash": "d46764cb97fba24c1244e129c7daaa2c",
+      "symbols": [
+        "core/code_intelligence/ast_indexer.py::ASTIndexer",
+        "core/code_intelligence/ast_indexer.py::ASTIndexer::index_file"
+      ]
+    },
+    "core/code_intelligence/cache_manager.py": {
+      "last_modified": 1782060380.9593494,
+      "hash": "cefcee540f4aa09aac17fd94f714cf16",
+      "symbols": [
+        "core/code_intelligence/cache_manager.py::CACHE_DIR_NAME",
+        "core/code_intelligence/cache_manager.py::SCHEMA_VERSION",
+        "core/code_intelligence/cache_manager.py::CacheManager",
+        "core/code_intelligence/cache_manager.py::CacheManager::__init__",
+        "core/code_intelligence/cache_manager.py::CacheManager::_ensure_cache_dir",
+        "core/code_intelligence/cache_manager.py::CacheManager::clear_cache",
+        "core/code_intelligence/cache_manager.py::CacheManager::load_json_file",
+        "core/code_intelligence/cache_manager.py::CacheManager::save_json_file",
+        "core/code_intelligence/cache_manager.py::CacheManager::compute_file_hash",
+        "core/code_intelligence/cache_manager.py::CacheManager::scan_workspace",
+        "core/code_intelligence/cache_manager.py::CacheManager::load_or_rebuild_index",
+        "core/code_intelligence/cache_manager.py::CacheManager::_update_index",
+        "core/code_intelligence/cache_manager.py::CacheManager::_extract_references_from_file"
+      ]
+    },
+    "core/code_intelligence/call_graph.py": {
+      "last_modified": 1782059682.6053154,
+      "hash": "883ed2f267ee2057f3319e8449706c97",
+      "symbols": [
+        "core/code_intelligence/call_graph.py::CallGraphExtractor",
+        "core/code_intelligence/call_graph.py::CallGraphExtractor::extract_calls_from_file",
+        "core/code_intelligence/call_graph.py::CallGraphExtractor::trace_execution_flow"
+      ]
+    },
+    "core/code_intelligence/dependency_resolver.py": {
+      "last_modified": 1782059674.216033,
+      "hash": "14f436551e32a9f465099ba51732674f",
+      "symbols": [
+        "core/code_intelligence/dependency_resolver.py::DependencyResolver",
+        "core/code_intelligence/dependency_resolver.py::DependencyResolver::extract_imports_from_file",
+        "core/code_intelligence/dependency_resolver.py::DependencyResolver::_resolve_import",
+        "core/code_intelligence/dependency_resolver.py::DependencyResolver::build_graphs",
+        "core/code_intelligence/dependency_resolver.py::DependencyResolver::get_transitive_context"
+      ]
+    },
+    "core/code_intelligence/search_engine.py": {
+      "last_modified": 1782059692.682554,
+      "hash": "12e5ed8052d52f9baabcc77cd5440f3d",
+      "symbols": [
+        "core/code_intelligence/search_engine.py::SearchEngine",
+        "core/code_intelligence/search_engine.py::SearchEngine::symbol_lookup",
+        "core/code_intelligence/search_engine.py::SearchEngine::reference_lookup",
+        "core/code_intelligence/search_engine.py::SearchEngine::keyword_search",
+        "core/code_intelligence/search_engine.py::SearchEngine::tf_idf_search"
+      ]
+    },
+    "core/code_intelligence/symbol_models.py": {
+      "last_modified": 1782059647.5515463,
+      "hash": "da500f126d1230cb80ab1c537d235482",
+      "symbols": [
+        "core/code_intelligence/symbol_models.py::SymbolInfo",
+        "core/code_intelligence/symbol_models.py::FileSummary"
+      ]
+    },
+    "core/code_intelligence/__init__.py": {
+      "last_modified": 1782059705.3719199,
+      "hash": "48dfbacc132563aa2f64e7d78b70784e",
+      "symbols": []
+    },
+    "gui/chat_bubble.py": {
+      "last_modified": 1780781789.4993312,
+      "hash": "390e19a3fca4c040e633c1fd10de25fa",
+      "symbols": [
+        "gui/chat_bubble.py::_USER_BG",
+        "gui/chat_bubble.py::_USER_BG2",
+        "gui/chat_bubble.py::_BOT_BG",
+        "gui/chat_bubble.py::_BOT_BG2",
+        "gui/chat_bubble.py::_TEXT",
+        "gui/chat_bubble.py::_MUTED",
+        "gui/chat_bubble.py::_SYS_BG",
+        "gui/chat_bubble.py::_SYS_TEXT",
+        "gui/chat_bubble.py::_BASE_FONT",
+        "gui/chat_bubble.py::ChatBubble",
+        "gui/chat_bubble.py::ChatBubble::__init__",
+        "gui/chat_bubble.py::ChatBubble::_build_ui",
+        "gui/chat_bubble.py::ChatBubble::_render_markdown"
+      ]
+    },
+    "gui/dashboard.py": {
+      "last_modified": 1780817281.5452383,
+      "hash": "69e2064a843339345ebf3f1f2be53e63",
+      "symbols": [
+        "gui/dashboard.py::_CARD_BG",
+        "gui/dashboard.py::_BORDER_COLOR",
+        "gui/dashboard.py::_TEXT_BRIGHT",
+        "gui/dashboard.py::_TEXT_DIM",
+        "gui/dashboard.py::_ACCENT_BLUE",
+        "gui/dashboard.py::_ACCENT_GREEN",
+        "gui/dashboard.py::_ACCENT_RED",
+        "gui/dashboard.py::_GRID_LINE",
+        "gui/dashboard.py::CustomActivityChart",
+        "gui/dashboard.py::CustomActivityChart::__init__",
+        "gui/dashboard.py::CustomActivityChart::set_data",
+        "gui/dashboard.py::CustomActivityChart::paintEvent",
+        "gui/dashboard.py::KPICard",
+        "gui/dashboard.py::KPICard::__init__",
+        "gui/dashboard.py::KPICard::update_stats",
+        "gui/dashboard.py::PerformanceDashboard",
+        "gui/dashboard.py::PerformanceDashboard::__init__",
+        "gui/dashboard.py::PerformanceDashboard::init_ui",
+        "gui/dashboard.py::PerformanceDashboard::refresh_data",
+        "gui/dashboard.py::PerformanceDashboard::_cell",
+        "gui/dashboard.py::PerformanceDashboard::_table_stylesheet"
+      ]
+    },
+    "gui/main_window.py": {
+      "last_modified": 1780783240.8966544,
+      "hash": "8f642f0fd1becb006ec0ad126610a3eb",
+      "symbols": [
+        "gui/main_window.py::_IMAGE_EXTS",
+        "gui/main_window.py::_ATTACH_BTN_STYLE",
+        "gui/main_window.py::_VOICE_BTN_STYLE",
+        "gui/main_window.py::_INPUT_STYLE",
+        "gui/main_window.py::_DRAG_HINT_ACTIVE",
+        "gui/main_window.py::_DRAG_HINT_IDLE",
+        "gui/main_window.py::_MAIN_WIDGET_STYLE",
+        "gui/main_window.py::_SCROLL_STYLE",
+        "gui/main_window.py::_RECORD_BTN_STYLE_IDLE",
+        "gui/main_window.py::_RECORD_BTN_STYLE_ACTIVE",
+        "gui/main_window.py::Signals",
+        "gui/main_window.py::BotbroGUI",
+        "gui/main_window.py::BotbroGUI::__init__",
+        "gui/main_window.py::BotbroGUI::init_ui",
+        "gui/main_window.py::BotbroGUI::dragEnterEvent",
+        "gui/main_window.py::BotbroGUI::dragLeaveEvent",
+        "gui/main_window.py::BotbroGUI::dropEvent",
+        "gui/main_window.py::BotbroGUI::_set_drag_active",
+        "gui/main_window.py::BotbroGUI::_open_image_file_dialog",
+        "gui/main_window.py::BotbroGUI::_submit_image",
+        "gui/main_window.py::BotbroGUI::_append_message",
+        "gui/main_window.py::BotbroGUI::_update_status",
+        "gui/main_window.py::BotbroGUI::_set_controls_enabled",
+        "gui/main_window.py::BotbroGUI::_on_agent_progress",
+        "gui/main_window.py::BotbroGUI::_subscribe_to_agent_events",
+        "gui/main_window.py::BotbroGUI::handle_text_submit",
+        "gui/main_window.py::BotbroGUI::handle_record_click",
+        "gui/main_window.py::BotbroGUI::handle_voice_click"
+      ]
+    },
+    "gui/sidebar.py": {
+      "last_modified": 1780817288.7647398,
+      "hash": "d06a56a751869894ad090b77816bc080",
+      "symbols": [
+        "gui/sidebar.py::_SIDEBAR_BG",
+        "gui/sidebar.py::_ITEM_HOVER",
+        "gui/sidebar.py::_ACCENT",
+        "gui/sidebar.py::_TEXT_DIM",
+        "gui/sidebar.py::_TEXT_NORMAL",
+        "gui/sidebar.py::_TEXT_BRIGHT",
+        "gui/sidebar.py::Sidebar",
+        "gui/sidebar.py::Sidebar::__init__",
+        "gui/sidebar.py::Sidebar::_build_ui",
+        "gui/sidebar.py::Sidebar::_on_nav_click",
+        "gui/sidebar.py::Sidebar::set_active_tab"
+      ]
+    },
+    "gui/styles.py": {
+      "last_modified": 1780781789.4993312,
+      "hash": "53e9f32d5f203531002170b6ea2d1586",
+      "symbols": [
+        "gui/styles.py::BACKGROUND_COLOR",
+        "gui/styles.py::SIDEBAR_COLOR",
+        "gui/styles.py::TITLEBAR_COLOR",
+        "gui/styles.py::USER_BUBBLE_COLOR",
+        "gui/styles.py::BOT_BUBBLE_COLOR",
+        "gui/styles.py::TEXT_COLOR",
+        "gui/styles.py::MUTED_TEXT_COLOR",
+        "gui/styles.py::INPUT_BG_COLOR",
+        "gui/styles.py::ACCENT_COLOR",
+        "gui/styles.py::MAIN_STYLESHEET",
+        "gui/styles.py::INPUT_STYLESHEET",
+        "gui/styles.py::VOICE_BTN_STYLESHEET",
+        "gui/styles.py::SCROLL_AREA_STYLESHEET"
+      ]
+    },
+    "gui/titlebar.py": {
+      "last_modified": 1780781789.4993312,
+      "hash": "1dd727548882514fbe86e8f5803ff4c8",
+      "symbols": [
+        "gui/titlebar.py::TitleBar",
+        "gui/titlebar.py::TitleBar::__init__",
+        "gui/titlebar.py::TitleBar::init_ui",
+        "gui/titlebar.py::TitleBar::_btn_style",
+        "gui/titlebar.py::TitleBar::toggle_maximize",
+        "gui/titlebar.py::TitleBar::mousePressEvent",
+        "gui/titlebar.py::TitleBar::mouseMoveEvent",
+        "gui/titlebar.py::TitleBar::mouseReleaseEvent"
+      ]
+    },
+    "gui/workers.py": {
+      "last_modified": 1780781789.4993312,
+      "hash": "4b4f51dc120224a3fce676c4d6bdeef7",
+      "symbols": [
+        "gui/workers.py::TaskWorker",
+        "gui/workers.py::TaskWorker::__init__",
+        "gui/workers.py::TaskWorker::run"
+      ]
+    },
+    "gui/__init__.py": {
+      "last_modified": 1780781789.4993312,
+      "hash": "80a7768456402ddf568b404225bdd6c8",
+      "symbols": []
+    },
+    "plugins/base_plugin.py": {
+      "last_modified": 1780781789.508606,
+      "hash": "29242388fc8caa4061ad79c64643c1bf",
+      "symbols": [
+        "plugins/base_plugin.py::Plugin",
+        "plugins/base_plugin.py::Plugin::name",
+        "plugins/base_plugin.py::Plugin::execute"
+      ]
+    },
+    "plugins/file_plugin.py": {
+      "last_modified": 1780781789.5093434,
+      "hash": "3f51f91b89cd149a8332cab2bc9379e5",
+      "symbols": [
+        "plugins/file_plugin.py::FileOpenPlugin",
+        "plugins/file_plugin.py::FileOpenPlugin::execute"
+      ]
+    },
+    "plugins/url_plugin.py": {
+      "last_modified": 1780781789.5093434,
+      "hash": "72755f0ea6992456b89411ae32df087c",
+      "symbols": [
+        "plugins/url_plugin.py::URLPlugin",
+        "plugins/url_plugin.py::URLPlugin::execute"
+      ]
+    },
+    "plugins/__init__.py": {
+      "last_modified": 1780781789.5082302,
+      "hash": "c698afd9a7805fe005055ac58c866646",
+      "symbols": []
+    },
+    "services/ai_service.py": {
+      "last_modified": 1782060250.666087,
+      "hash": "3bb4240456474f3feee9fe45f14b7108",
+      "symbols": [
+        "services/ai_service.py::_DRAW_VERBS",
+        "services/ai_service.py::_IMPLICIT_DRAW",
+        "services/ai_service.py::_DRAW_STOP_WORDS",
+        "services/ai_service.py::_WRITABLE_APPS",
+        "services/ai_service.py::_WRITE_VERBS",
+        "services/ai_service.py::_FILE_VERBS",
+        "services/ai_service.py::_FILENAME_RE",
+        "services/ai_service.py::_EDITOR_KEYWORDS",
+        "services/ai_service.py::_detect_create_file_intent_locally",
+        "services/ai_service.py::_detect_write_intent_locally",
+        "services/ai_service.py::_detect_draw_intent_locally",
+        "services/ai_service.py::AIService",
+        "services/ai_service.py::AIService::_generate_workspace_tree",
+        "services/ai_service.py::AIService::_read_and_truncate_file",
+        "services/ai_service.py::AIService::__init__",
+        "services/ai_service.py::AIService::process_intent"
+      ]
+    },
+    "services/command_service.py": {
+      "last_modified": 1782061489.9757657,
+      "hash": "b0325b15cfeef1868afd275cfea241ff",
+      "symbols": [
+        "services/command_service.py::CommandService",
+        "services/command_service.py::CommandService::__init__",
+        "services/command_service.py::CommandService::process_command",
+        "services/command_service.py::CommandService::_log_history"
+      ]
+    },
+    "services/ollama_service.py": {
+      "last_modified": 1782060275.0835514,
+      "hash": "4fe1b750d9bf35a3cfb0442ffac72605",
+      "symbols": [
+        "services/ollama_service.py::SYSTEM_PROMPT",
+        "services/ollama_service.py::_get_ollama",
+        "services/ollama_service.py::call_ollama",
+        "services/ollama_service.py::call_ollama_with_context"
+      ]
+    },
+    "services/__init__.py": {
+      "last_modified": 1780781789.5106907,
+      "hash": "40b211ba92310fa02ea5573e4d7d48fc",
+      "symbols": []
+    },
+    "tests/test_botbro_core.py": {
+      "last_modified": 1780795586.483012,
+      "hash": "678ed71d27d5ce1dcceb67ceedfa31a2",
+      "symbols": [
+        "tests/test_botbro_core.py::TestBotbroCore",
+        "tests/test_botbro_core.py::TestBotbroCore::test_command_parser_clean",
+        "tests/test_botbro_core.py::TestBotbroCore::test_command_parser_malformed",
+        "tests/test_botbro_core.py::TestBotbroCore::test_security_layer",
+        "tests/test_botbro_core.py::TestBotbroCore::test_command_service_initialization",
+        "tests/test_botbro_core.py::TestBotbroCore::test_async_command_processing"
+      ]
+    },
+    "tests/test_browser_agent.py": {
+      "last_modified": 1780787601.7047026,
+      "hash": "462362039391bf6aab18d9fc8a4dbbb9",
+      "symbols": [
+        "tests/test_browser_agent.py::TestBrowserAgent",
+        "tests/test_browser_agent.py::TestBrowserAgent::test_init_driver",
+        "tests/test_browser_agent.py::TestBrowserAgent::test_plan_steps_ollama_success",
+        "tests/test_browser_agent.py::TestBrowserAgent::test_fallback_plan",
+        "tests/test_browser_agent.py::TestBrowserAgent::test_execute_steps_success"
+      ]
+    },
+    "tests/test_code_intelligence.py": {
+      "last_modified": 1782060398.5096786,
+      "hash": "7921ccdbe2ed5d7c3b0f76d4f3e04b35",
+      "symbols": [
+        "tests/test_code_intelligence.py::TestCodeIntelligence",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::setUp",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::tearDown",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::test_circular_and_relative_imports",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::test_duplicate_symbols_handling",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::test_cache_corruption_recovery",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::test_incremental_updates_and_file_ownership",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::test_performance_targets",
+        "tests/test_code_intelligence.py::TestCodeIntelligence::test_executor_intents"
+      ]
+    },
+    "tests/test_coding_agent.py": {
+      "last_modified": 1782058624.7861567,
+      "hash": "20d111538f9a25d8442c7ca701ae8b22",
+      "symbols": [
+        "tests/test_coding_agent.py::TestCodingAgent",
+        "tests/test_coding_agent.py::TestCodingAgent::setUp",
+        "tests/test_coding_agent.py::TestCodingAgent::tearDown",
+        "tests/test_coding_agent.py::TestCodingAgent::test_workspace_tree_generation",
+        "tests/test_coding_agent.py::TestCodingAgent::test_file_truncation_logic",
+        "tests/test_coding_agent.py::TestCodingAgent::test_syntax_validation_staging",
+        "tests/test_coding_agent.py::TestCodingAgent::test_pending_change_confirmation_atomic_write_and_backup",
+        "tests/test_coding_agent.py::TestCodingAgent::test_pending_change_cancellation",
+        "tests/test_coding_agent.py::TestCodingAgent::test_show_pending_change",
+        "tests/test_coding_agent.py::TestCodingAgent::test_change_timeout",
+        "tests/test_coding_agent.py::TestCodingAgent::test_prevent_concurrent_modifications",
+        "tests/test_coding_agent.py::TestCodingAgent::test_large_project_duplicate_filenames"
+      ]
+    },
+    "tests/test_draw_engine.py": {
+      "last_modified": 1780781789.5135026,
+      "hash": "3b33053b7c329f5c49eb039dbc363733",
+      "symbols": [
+        "tests/test_draw_engine.py::TestDrawEngine",
+        "tests/test_draw_engine.py::TestDrawEngine::test_detect_best_mode_prefers_sketch_for_snake",
+        "tests/test_draw_engine.py::TestDrawEngine::test_auto_attempt_chain_includes_simpler_fallbacks",
+        "tests/test_draw_engine.py::TestDrawEngine::test_pick_better_candidate_prefers_sketch_over_logo_for_sketch_requests",
+        "tests/test_draw_engine.py::TestDrawEngine::test_find_local_asset_ignores_generated_versioned_files",
+        "tests/test_draw_engine.py::TestDrawEngine::test_resolve_candidate_uses_outline_rescue"
+      ]
+    },
+    "tests/test_feedback_loop.py": {
+      "last_modified": 1780803755.903627,
+      "hash": "132d140c69dd35c6caa220d57c8d8c03",
+      "symbols": [
+        "tests/test_feedback_loop.py::TestFeedbackLoop",
+        "tests/test_feedback_loop.py::TestFeedbackLoop::test_verify_app_opened_success",
+        "tests/test_feedback_loop.py::TestFeedbackLoop::test_verify_app_opened_timeout",
+        "tests/test_feedback_loop.py::TestFeedbackLoop::test_verify_window_has_content",
+        "tests/test_feedback_loop.py::TestFeedbackLoop::test_verify_text_on_screen_fallback",
+        "tests/test_feedback_loop.py::TestFeedbackLoop::test_retry_with_feedback_success"
+      ]
+    },
+    "tests/test_local_stt.py": {
+      "last_modified": 1780810420.3734071,
+      "hash": "a98e6cc00f4570cc627b1463c1852286",
+      "symbols": [
+        "tests/test_local_stt.py::_write_silent_wav",
+        "tests/test_local_stt.py::TestWhisperModelLoads",
+        "tests/test_local_stt.py::TestWhisperModelLoads::test_whisper_model_loads",
+        "tests/test_local_stt.py::TestTranscribeWavFile",
+        "tests/test_local_stt.py::TestTranscribeWavFile::test_transcribe_wav_returns_string",
+        "tests/test_local_stt.py::TestFallbackToGoogle",
+        "tests/test_local_stt.py::TestFallbackToGoogle::test_fallback_triggered_on_whisper_error",
+        "tests/test_local_stt.py::TestBackendProperty",
+        "tests/test_local_stt.py::TestBackendProperty::test_backend_is_whisper_when_primary_set",
+        "tests/test_local_stt.py::TestBackendProperty::test_backend_is_google_when_primary_none",
+        "tests/test_local_stt.py::TestEmptyAudioReturnsEmpty",
+        "tests/test_local_stt.py::TestEmptyAudioReturnsEmpty::test_silent_wav_returns_empty_string",
+        "tests/test_local_stt.py::TestWhisperWithoutInternet",
+        "tests/test_local_stt.py::TestWhisperWithoutInternet::test_whisper_works_without_internet"
+      ]
+    },
+    "tests/test_orchestrator.py": {
+      "last_modified": 1780803750.4850395,
+      "hash": "952c2f9469fb821592a0a0531c64ba2f",
+      "symbols": [
+        "tests/test_orchestrator.py::TestOrchestrator",
+        "tests/test_orchestrator.py::TestOrchestrator::test_is_complex_task",
+        "tests/test_orchestrator.py::TestOrchestrator::test_run_complex_task_success"
+      ]
+    },
+    "tests/test_screen_understanding.py": {
+      "last_modified": 1782032796.859875,
+      "hash": "b57fa6fd613b067d9e5df0c278b86af4",
+      "symbols": [
+        "tests/test_screen_understanding.py::TestScreenUnderstanding",
+        "tests/test_screen_understanding.py::TestScreenUnderstanding::test_screen_info_analysis_success",
+        "tests/test_screen_understanding.py::TestScreenUnderstanding::test_screen_info_fallback_on_empty_text"
+      ]
+    },
+    "tests/test_vector_memory.py": {
+      "last_modified": 1780787593.2556243,
+      "hash": "5270805e7c1a9aac96098f40b98e6590",
+      "symbols": [
+        "tests/test_vector_memory.py::TestVectorMemory",
+        "tests/test_vector_memory.py::TestVectorMemory::setUp",
+        "tests/test_vector_memory.py::TestVectorMemory::tearDown",
+        "tests/test_vector_memory.py::TestVectorMemory::_cleanup",
+        "tests/test_vector_memory.py::TestVectorMemory::test_remember_and_recall_with_faiss",
+        "tests/test_vector_memory.py::TestVectorMemory::test_learn_and_get_preferences"
+      ]
+    },
+    "tests/test_workflow_recorder.py": {
+      "last_modified": 1780787612.6091123,
+      "hash": "200941927a664422b0aeffbf690dfc21",
+      "symbols": [
+        "tests/test_workflow_recorder.py::TestWorkflowRecorder",
+        "tests/test_workflow_recorder.py::TestWorkflowRecorder::test_safe_name",
+        "tests/test_workflow_recorder.py::TestWorkflowRecorder::test_start_stop_recording",
+        "tests/test_workflow_recorder.py::TestWorkflowRecorder::test_filter_mouse_moves"
+      ]
+    },
+    "utils/helpers.py": {
+      "last_modified": 1780781789.515869,
+      "hash": "9beea65bde411b0d28befa352c0de098",
+      "symbols": [
+        "utils/helpers.py::fuzzy_match",
+        "utils/helpers.py::get_close_suggestions",
+        "utils/helpers.py::BASE_DIR",
+        "utils/helpers.py::LOG_DIR",
+        "utils/helpers.py::JSONFormatter",
+        "utils/helpers.py::JSONFormatter::format",
+        "utils/helpers.py::setup_logger",
+        "utils/helpers.py::json_log",
+        "utils/helpers.py::ensure_directory",
+        "utils/helpers.py::safe_filename"
+      ]
+    },
+    "utils/stt_benchmark.py": {
+      "last_modified": 1780810383.0641859,
+      "hash": "fbeb8a7ba87dc5027077e098b94e37af",
+      "symbols": [
+        "utils/stt_benchmark.py::CREATE_TABLE",
+        "utils/stt_benchmark.py::ensure_table",
+        "utils/stt_benchmark.py::save_metrics",
+        "utils/stt_benchmark.py::run_benchmark",
+        "utils/stt_benchmark.py::main"
+      ]
+    },
+    "utils/__init__.py": {
+      "last_modified": 1780781789.5148718,
+      "hash": "42c8b7045b0f7d710e62a79573573227",
+      "symbols": []
+    },
+    "voice/google_speech_to_text.py": {
+      "last_modified": 1780810280.2802558,
+      "hash": "39202d4c7df00534c9ecf3a16a7c2066",
+      "symbols": [
+        "voice/google_speech_to_text.py::GoogleSTT",
+        "voice/google_speech_to_text.py::GoogleSTT::__init__",
+        "voice/google_speech_to_text.py::GoogleSTT::is_available",
+        "voice/google_speech_to_text.py::GoogleSTT::get_backend",
+        "voice/google_speech_to_text.py::GoogleSTT::transcribe",
+        "voice/google_speech_to_text.py::GoogleSTT::listen"
+      ]
+    },
+    "voice/local_speech_to_text.py": {
+      "last_modified": 1780810261.1660397,
+      "hash": "72190bad5737be1cddf44bbc78a84276",
+      "symbols": [
+        "voice/local_speech_to_text.py::_resolve_device",
+        "voice/local_speech_to_text.py::WhisperSTT",
+        "voice/local_speech_to_text.py::WhisperSTT::__init__",
+        "voice/local_speech_to_text.py::WhisperSTT::_load_model",
+        "voice/local_speech_to_text.py::WhisperSTT::is_available",
+        "voice/local_speech_to_text.py::WhisperSTT::get_backend",
+        "voice/local_speech_to_text.py::WhisperSTT::transcribe",
+        "voice/local_speech_to_text.py::WhisperSTT::listen"
+      ]
+    },
+    "voice/speech_to_text.py": {
+      "last_modified": 1780810304.19039,
+      "hash": "911a3e5f9387d66cf65eb0e824943393",
+      "symbols": [
+        "voice/speech_to_text.py::SpeechRecognizer",
+        "voice/speech_to_text.py::SpeechRecognizer::__init__",
+        "voice/speech_to_text.py::SpeechRecognizer::_init_engines",
+        "voice/speech_to_text.py::SpeechRecognizer::backend",
+        "voice/speech_to_text.py::SpeechRecognizer::listen",
+        "voice/speech_to_text.py::SpeechRecognizer::get_last_error",
+        "voice/speech_to_text.py::SpeechRecognizer::get_metrics"
+      ]
+    },
+    "voice/stt_engine.py": {
+      "last_modified": 1780810224.9257293,
+      "hash": "d83bbf83a707b0876eb7c94ed134ab35",
+      "symbols": [
+        "voice/stt_engine.py::STTEngine",
+        "voice/stt_engine.py::STTEngine::__init__",
+        "voice/stt_engine.py::STTEngine::transcribe",
+        "voice/stt_engine.py::STTEngine::get_backend",
+        "voice/stt_engine.py::STTEngine::get_metrics",
+        "voice/stt_engine.py::STTEngine::is_available",
+        "voice/stt_engine.py::STTEngine::_timed_transcribe"
+      ]
+    },
+    "voice/text_to_speech.py": {
+      "last_modified": 1780781789.5168705,
+      "hash": "52182d376878706ad897b57d403cc830",
+      "symbols": [
+        "voice/text_to_speech.py::TextToSpeech",
+        "voice/text_to_speech.py::TextToSpeech::__init__",
+        "voice/text_to_speech.py::TextToSpeech::_configure_engine",
+        "voice/text_to_speech.py::TextToSpeech::_run_worker",
+        "voice/text_to_speech.py::TextToSpeech::speak",
+        "voice/text_to_speech.py::TextToSpeech::shutdown"
+      ]
+    },
+    "voice/voice_controller.py": {
+      "last_modified": 1780810320.0121064,
+      "hash": "30d5db34c8ffd628a3fe79342a05e61c",
+      "symbols": [
+        "voice/voice_controller.py::VoiceController",
+        "voice/voice_controller.py::VoiceController::__init__",
+        "voice/voice_controller.py::VoiceController::backend",
+        "voice/voice_controller.py::VoiceController::listen",
+        "voice/voice_controller.py::VoiceController::speak",
+        "voice/voice_controller.py::VoiceController::shutdown",
+        "voice/voice_controller.py::VoiceController::get_stt_metrics",
+        "voice/voice_controller.py::VoiceController::process_voice_async"
+      ]
+    },
+    "voice/__init__.py": {
+      "last_modified": 1780781789.515869,
+      "hash": "f1dd5a4dbb6a6bc2de08d84874e2ce0b",
+      "symbols": []
+    }
+  }
+}

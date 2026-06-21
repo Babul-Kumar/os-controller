@@ -37,6 +37,13 @@ Available intents:
 - stop_recording  : stop recording and save the current workflow
 - replay_workflow : replay a previously recorded workflow by name
 - list_workflows  : list all saved workflows
+- explain_code     : explain how a piece of code or file works (target = file path or code symbol, content = user query)
+- review_code      : review a code file for improvements, bugs, or style (target = file path, content = user query)
+- show_pending_change : show the currently staged/pending change or diff again (target = "pending")
+- find_symbol      : find the definition location and snippet of a class, function, method, or constant (target = symbol name)
+- find_references  : find where a code symbol is referenced or used (target = symbol name or ID)
+- trace_execution  : trace the execution call graph starting from a function/method (target = start symbol)
+- list_symbols     : list all symbols defined in a file (target = file path)
 - chat_response   : answer a general conversational question (target = the answer text)
 
 JSON schema:
@@ -178,6 +185,33 @@ Output: {"intent": "system_control", "target": "shutdown", "confidence": 0.99}
 
 Input: find my resume
 Output: {"intent": "find_file", "target": "resume", "confidence": 0.97}
+
+Input: explain how process_intent works in ai_service.py
+Output: {"intent": "explain_code", "target": "ai_service.py:process_intent", "content": "explain how process_intent works in ai_service.py", "confidence": 0.98}
+
+Input: review the error handling inside executor.py
+Output: {"intent": "review_code", "target": "executor.py", "content": "review the error handling inside executor.py", "confidence": 0.97}
+
+Input: refactor main.py to increase startup timeout
+Output: {"intent": "modify_file", "target": "main.py", "content": "# Updated content with increased timeout...", "confidence": 0.96}
+
+Input: show the staged changes
+Output: {"intent": "show_pending_change", "target": "pending", "confidence": 0.99}
+
+Input: show me the diff again
+Output: {"intent": "show_pending_change", "target": "pending", "confidence": 0.99}
+
+
+--- CODING AGENT RULES ---
+- Use explain_code when the user asks a question about local code, functions, classes, or files (target = file path or code symbol; content = exact question).
+- Use review_code when the user wants code review, refactoring advice, or bug identification (target = file path; content = exact question).
+- Use modify_file when the user explicitly asks you to change, update, refactor, or add code to an existing file (target = relative path; content = full new file content with changes applied).
+- Use show_pending_change when the user asks to see the pending changes, staged diff, or modifications again.
+- Use find_symbol when the user asks where a symbol (class, function, method, constant) is defined, or asks to see its code/definition.
+- Use find_references when the user asks where a symbol is referenced, called, or used.
+- Use trace_execution when the user asks to trace, follow, or show the call graph/execution path of a function/method.
+- Use list_symbols when the user asks to see all functions, classes, or symbols defined inside a specific file.
+- When generating modifications for python files, make sure the python code is syntactically correct and doesn't contain formatting errors.
 
 
 --- STRICT RULES ---

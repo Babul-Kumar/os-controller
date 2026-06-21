@@ -1,0 +1,588 @@
+{
+  "forward": {
+    "main.py": [
+      "gui/main_window.py",
+      "services/command_service.py",
+      "utils/helpers.py",
+      "voice/voice_controller.py"
+    ],
+    "ai/__init__.py": [],
+    "automation/app_controller.py": [
+      "core/security.py",
+      "utils/helpers.py"
+    ],
+    "automation/browser_agent.py": [
+      "services/ollama_service.py",
+      "utils/helpers.py"
+    ],
+    "automation/draw_engine.py": [
+      "automation/file_finder.py",
+      "automation/image_tracer.py",
+      "utils/helpers.py"
+    ],
+    "automation/feedback_loop.py": [
+      "core/metrics_store.py",
+      "utils/helpers.py"
+    ],
+    "automation/file_finder.py": [
+      "utils/helpers.py"
+    ],
+    "automation/file_manager.py": [
+      "utils/helpers.py"
+    ],
+    "automation/image_tracer.py": [
+      "utils/helpers.py"
+    ],
+    "automation/mouse_automation.py": [
+      "automation/draw_engine.py",
+      "automation/vision.py",
+      "utils/helpers.py"
+    ],
+    "automation/screen_reader.py": [
+      "core/metrics_store.py",
+      "utils/helpers.py"
+    ],
+    "automation/system_control.py": [
+      "utils/helpers.py"
+    ],
+    "automation/vision.py": [
+      "utils/helpers.py"
+    ],
+    "automation/web_automation.py": [
+      "automation/browser_agent.py",
+      "utils/helpers.py"
+    ],
+    "automation/__init__.py": [],
+    "config/settings.py": [],
+    "config/__init__.py": [],
+    "core/command_parser.py": [
+      "core/security.py",
+      "utils/helpers.py"
+    ],
+    "core/event_bus.py": [
+      "utils/helpers.py"
+    ],
+    "core/executor.py": [
+      "automation/app_controller.py",
+      "automation/draw_engine.py",
+      "automation/feedback_loop.py",
+      "automation/file_finder.py",
+      "automation/file_manager.py",
+      "automation/mouse_automation.py",
+      "automation/screen_reader.py",
+      "automation/system_control.py",
+      "automation/web_automation.py",
+      "config/settings.py",
+      "core/code_intelligence/cache_manager.py",
+      "core/code_intelligence/call_graph.py",
+      "core/code_intelligence/search_engine.py",
+      "core/orchestrator.py",
+      "core/workflow_recorder.py",
+      "services/ollama_service.py",
+      "utils/helpers.py"
+    ],
+    "core/memory.py": [
+      "config/settings.py",
+      "utils/helpers.py"
+    ],
+    "core/metrics_store.py": [
+      "config/settings.py"
+    ],
+    "core/orchestrator.py": [
+      "core/agents/base_agent.py",
+      "core/agents/coder_agent.py",
+      "core/agents/executor_agent.py",
+      "core/agents/planner_agent.py",
+      "core/agents/verifier_agent.py",
+      "core/event_bus.py",
+      "core/metrics_store.py",
+      "utils/helpers.py"
+    ],
+    "core/pii_engine.py": [
+      "utils/helpers.py"
+    ],
+    "core/plugin_manager.py": [
+      "plugins/base_plugin.py",
+      "utils/helpers.py"
+    ],
+    "core/preference_learner.py": [
+      "core/vector_memory.py",
+      "utils/helpers.py"
+    ],
+    "core/security.py": [
+      "utils/helpers.py"
+    ],
+    "core/vector_memory.py": [
+      "config/settings.py",
+      "utils/helpers.py"
+    ],
+    "core/workflow_recorder.py": [
+      "core/metrics_store.py",
+      "utils/helpers.py"
+    ],
+    "core/__init__.py": [],
+    "core/agents/base_agent.py": [
+      "utils/helpers.py"
+    ],
+    "core/agents/coder_agent.py": [
+      "core/agents/base_agent.py",
+      "services/ollama_service.py",
+      "utils/helpers.py"
+    ],
+    "core/agents/executor_agent.py": [
+      "core/agents/base_agent.py",
+      "core/executor.py",
+      "utils/helpers.py"
+    ],
+    "core/agents/planner_agent.py": [
+      "core/agents/base_agent.py",
+      "services/ollama_service.py",
+      "utils/helpers.py"
+    ],
+    "core/agents/verifier_agent.py": [
+      "automation/feedback_loop.py",
+      "core/agents/base_agent.py",
+      "utils/helpers.py"
+    ],
+    "core/agents/__init__.py": [
+      "core/agents/base_agent.py"
+    ],
+    "core/code_intelligence/ast_indexer.py": [
+      "core/code_intelligence/symbol_models.py"
+    ],
+    "core/code_intelligence/cache_manager.py": [
+      "config/settings.py",
+      "core/code_intelligence/ast_indexer.py",
+      "core/code_intelligence/dependency_resolver.py"
+    ],
+    "core/code_intelligence/call_graph.py": [],
+    "core/code_intelligence/dependency_resolver.py": [],
+    "core/code_intelligence/search_engine.py": [],
+    "core/code_intelligence/symbol_models.py": [],
+    "core/code_intelligence/__init__.py": [
+      "core/code_intelligence/ast_indexer.py",
+      "core/code_intelligence/cache_manager.py",
+      "core/code_intelligence/call_graph.py",
+      "core/code_intelligence/dependency_resolver.py",
+      "core/code_intelligence/search_engine.py",
+      "core/code_intelligence/symbol_models.py"
+    ],
+    "gui/chat_bubble.py": [],
+    "gui/dashboard.py": [
+      "core/metrics_store.py"
+    ],
+    "gui/main_window.py": [
+      "core/event_bus.py",
+      "gui/chat_bubble.py",
+      "gui/sidebar.py",
+      "gui/styles.py",
+      "gui/titlebar.py"
+    ],
+    "gui/sidebar.py": [],
+    "gui/styles.py": [],
+    "gui/titlebar.py": [
+      "gui/styles.py"
+    ],
+    "gui/workers.py": [],
+    "gui/__init__.py": [],
+    "plugins/base_plugin.py": [],
+    "plugins/file_plugin.py": [
+      "plugins/base_plugin.py"
+    ],
+    "plugins/url_plugin.py": [
+      "plugins/base_plugin.py"
+    ],
+    "plugins/__init__.py": [],
+    "services/ai_service.py": [
+      "config/settings.py",
+      "core/code_intelligence/cache_manager.py",
+      "core/command_parser.py",
+      "core/memory.py",
+      "core/pii_engine.py",
+      "core/preference_learner.py",
+      "core/vector_memory.py",
+      "services/ollama_service.py",
+      "utils/helpers.py"
+    ],
+    "services/command_service.py": [
+      "core/code_intelligence/cache_manager.py",
+      "core/event_bus.py",
+      "core/executor.py",
+      "core/memory.py",
+      "core/metrics_store.py",
+      "core/plugin_manager.py",
+      "services/ai_service.py",
+      "utils/helpers.py"
+    ],
+    "services/ollama_service.py": [
+      "config/settings.py",
+      "utils/helpers.py"
+    ],
+    "services/__init__.py": [],
+    "tests/test_botbro_core.py": [
+      "core/command_parser.py",
+      "core/security.py",
+      "services/command_service.py"
+    ],
+    "tests/test_browser_agent.py": [
+      "automation/browser_agent.py"
+    ],
+    "tests/test_code_intelligence.py": [
+      "core/code_intelligence/ast_indexer.py",
+      "core/code_intelligence/cache_manager.py",
+      "core/code_intelligence/call_graph.py",
+      "core/code_intelligence/dependency_resolver.py",
+      "core/code_intelligence/search_engine.py",
+      "core/executor.py"
+    ],
+    "tests/test_coding_agent.py": [
+      "config/settings.py",
+      "core/executor.py",
+      "services/ai_service.py"
+    ],
+    "tests/test_draw_engine.py": [
+      "automation/__init__.py",
+      "automation/draw_engine.py"
+    ],
+    "tests/test_feedback_loop.py": [
+      "automation/feedback_loop.py"
+    ],
+    "tests/test_local_stt.py": [
+      "voice/local_speech_to_text.py",
+      "voice/speech_to_text.py"
+    ],
+    "tests/test_orchestrator.py": [
+      "core/agents/base_agent.py",
+      "core/orchestrator.py"
+    ],
+    "tests/test_screen_understanding.py": [
+      "core/executor.py"
+    ],
+    "tests/test_vector_memory.py": [
+      "core/vector_memory.py"
+    ],
+    "tests/test_workflow_recorder.py": [
+      "core/workflow_recorder.py"
+    ],
+    "utils/helpers.py": [],
+    "utils/stt_benchmark.py": [
+      "config/settings.py",
+      "voice/google_speech_to_text.py",
+      "voice/local_speech_to_text.py"
+    ],
+    "utils/__init__.py": [],
+    "voice/google_speech_to_text.py": [
+      "voice/stt_engine.py"
+    ],
+    "voice/local_speech_to_text.py": [
+      "config/settings.py",
+      "voice/stt_engine.py"
+    ],
+    "voice/speech_to_text.py": [
+      "utils/helpers.py",
+      "voice/google_speech_to_text.py",
+      "voice/local_speech_to_text.py"
+    ],
+    "voice/stt_engine.py": [],
+    "voice/text_to_speech.py": [
+      "config/settings.py",
+      "utils/helpers.py"
+    ],
+    "voice/voice_controller.py": [
+      "utils/helpers.py",
+      "voice/speech_to_text.py",
+      "voice/text_to_speech.py"
+    ],
+    "voice/__init__.py": []
+  },
+  "reverse": {
+    "main.py": [],
+    "ai/__init__.py": [],
+    "automation/app_controller.py": [
+      "core/executor.py"
+    ],
+    "automation/browser_agent.py": [
+      "automation/web_automation.py",
+      "tests/test_browser_agent.py"
+    ],
+    "automation/draw_engine.py": [
+      "automation/mouse_automation.py",
+      "core/executor.py",
+      "tests/test_draw_engine.py"
+    ],
+    "automation/feedback_loop.py": [
+      "core/executor.py",
+      "core/agents/verifier_agent.py",
+      "tests/test_feedback_loop.py"
+    ],
+    "automation/file_finder.py": [
+      "automation/draw_engine.py",
+      "core/executor.py"
+    ],
+    "automation/file_manager.py": [
+      "core/executor.py"
+    ],
+    "automation/image_tracer.py": [
+      "automation/draw_engine.py"
+    ],
+    "automation/mouse_automation.py": [
+      "core/executor.py"
+    ],
+    "automation/screen_reader.py": [
+      "core/executor.py"
+    ],
+    "automation/system_control.py": [
+      "core/executor.py"
+    ],
+    "automation/vision.py": [
+      "automation/mouse_automation.py"
+    ],
+    "automation/web_automation.py": [
+      "core/executor.py"
+    ],
+    "automation/__init__.py": [
+      "tests/test_draw_engine.py"
+    ],
+    "config/settings.py": [
+      "core/executor.py",
+      "core/memory.py",
+      "core/metrics_store.py",
+      "core/vector_memory.py",
+      "core/code_intelligence/cache_manager.py",
+      "services/ai_service.py",
+      "services/ollama_service.py",
+      "tests/test_coding_agent.py",
+      "utils/stt_benchmark.py",
+      "voice/local_speech_to_text.py",
+      "voice/text_to_speech.py"
+    ],
+    "config/__init__.py": [],
+    "core/command_parser.py": [
+      "services/ai_service.py",
+      "tests/test_botbro_core.py"
+    ],
+    "core/event_bus.py": [
+      "core/orchestrator.py",
+      "gui/main_window.py",
+      "services/command_service.py"
+    ],
+    "core/executor.py": [
+      "core/agents/executor_agent.py",
+      "services/command_service.py",
+      "tests/test_code_intelligence.py",
+      "tests/test_coding_agent.py",
+      "tests/test_screen_understanding.py"
+    ],
+    "core/memory.py": [
+      "services/ai_service.py",
+      "services/command_service.py"
+    ],
+    "core/metrics_store.py": [
+      "automation/feedback_loop.py",
+      "automation/screen_reader.py",
+      "core/orchestrator.py",
+      "core/workflow_recorder.py",
+      "gui/dashboard.py",
+      "services/command_service.py"
+    ],
+    "core/orchestrator.py": [
+      "core/executor.py",
+      "tests/test_orchestrator.py"
+    ],
+    "core/pii_engine.py": [
+      "services/ai_service.py"
+    ],
+    "core/plugin_manager.py": [
+      "services/command_service.py"
+    ],
+    "core/preference_learner.py": [
+      "services/ai_service.py"
+    ],
+    "core/security.py": [
+      "automation/app_controller.py",
+      "core/command_parser.py",
+      "tests/test_botbro_core.py"
+    ],
+    "core/vector_memory.py": [
+      "core/preference_learner.py",
+      "services/ai_service.py",
+      "tests/test_vector_memory.py"
+    ],
+    "core/workflow_recorder.py": [
+      "core/executor.py",
+      "tests/test_workflow_recorder.py"
+    ],
+    "core/__init__.py": [],
+    "core/agents/base_agent.py": [
+      "core/orchestrator.py",
+      "core/agents/coder_agent.py",
+      "core/agents/executor_agent.py",
+      "core/agents/planner_agent.py",
+      "core/agents/verifier_agent.py",
+      "core/agents/__init__.py",
+      "tests/test_orchestrator.py"
+    ],
+    "core/agents/coder_agent.py": [
+      "core/orchestrator.py"
+    ],
+    "core/agents/executor_agent.py": [
+      "core/orchestrator.py"
+    ],
+    "core/agents/planner_agent.py": [
+      "core/orchestrator.py"
+    ],
+    "core/agents/verifier_agent.py": [
+      "core/orchestrator.py"
+    ],
+    "core/agents/__init__.py": [],
+    "core/code_intelligence/ast_indexer.py": [
+      "core/code_intelligence/cache_manager.py",
+      "core/code_intelligence/__init__.py",
+      "tests/test_code_intelligence.py"
+    ],
+    "core/code_intelligence/cache_manager.py": [
+      "core/executor.py",
+      "core/code_intelligence/__init__.py",
+      "services/ai_service.py",
+      "services/command_service.py",
+      "tests/test_code_intelligence.py"
+    ],
+    "core/code_intelligence/call_graph.py": [
+      "core/executor.py",
+      "core/code_intelligence/__init__.py",
+      "tests/test_code_intelligence.py"
+    ],
+    "core/code_intelligence/dependency_resolver.py": [
+      "core/code_intelligence/cache_manager.py",
+      "core/code_intelligence/__init__.py",
+      "tests/test_code_intelligence.py"
+    ],
+    "core/code_intelligence/search_engine.py": [
+      "core/executor.py",
+      "core/code_intelligence/__init__.py",
+      "tests/test_code_intelligence.py"
+    ],
+    "core/code_intelligence/symbol_models.py": [
+      "core/code_intelligence/ast_indexer.py",
+      "core/code_intelligence/__init__.py"
+    ],
+    "core/code_intelligence/__init__.py": [],
+    "gui/chat_bubble.py": [
+      "gui/main_window.py"
+    ],
+    "gui/dashboard.py": [],
+    "gui/main_window.py": [
+      "main.py"
+    ],
+    "gui/sidebar.py": [
+      "gui/main_window.py"
+    ],
+    "gui/styles.py": [
+      "gui/main_window.py",
+      "gui/titlebar.py"
+    ],
+    "gui/titlebar.py": [
+      "gui/main_window.py"
+    ],
+    "gui/workers.py": [],
+    "gui/__init__.py": [],
+    "plugins/base_plugin.py": [
+      "core/plugin_manager.py",
+      "plugins/file_plugin.py",
+      "plugins/url_plugin.py"
+    ],
+    "plugins/file_plugin.py": [],
+    "plugins/url_plugin.py": [],
+    "plugins/__init__.py": [],
+    "services/ai_service.py": [
+      "services/command_service.py",
+      "tests/test_coding_agent.py"
+    ],
+    "services/command_service.py": [
+      "main.py",
+      "tests/test_botbro_core.py"
+    ],
+    "services/ollama_service.py": [
+      "automation/browser_agent.py",
+      "core/executor.py",
+      "core/agents/coder_agent.py",
+      "core/agents/planner_agent.py",
+      "services/ai_service.py"
+    ],
+    "services/__init__.py": [],
+    "tests/test_botbro_core.py": [],
+    "tests/test_browser_agent.py": [],
+    "tests/test_code_intelligence.py": [],
+    "tests/test_coding_agent.py": [],
+    "tests/test_draw_engine.py": [],
+    "tests/test_feedback_loop.py": [],
+    "tests/test_local_stt.py": [],
+    "tests/test_orchestrator.py": [],
+    "tests/test_screen_understanding.py": [],
+    "tests/test_vector_memory.py": [],
+    "tests/test_workflow_recorder.py": [],
+    "utils/helpers.py": [
+      "main.py",
+      "automation/app_controller.py",
+      "automation/browser_agent.py",
+      "automation/draw_engine.py",
+      "automation/feedback_loop.py",
+      "automation/file_finder.py",
+      "automation/file_manager.py",
+      "automation/image_tracer.py",
+      "automation/mouse_automation.py",
+      "automation/screen_reader.py",
+      "automation/system_control.py",
+      "automation/vision.py",
+      "automation/web_automation.py",
+      "core/command_parser.py",
+      "core/event_bus.py",
+      "core/executor.py",
+      "core/memory.py",
+      "core/orchestrator.py",
+      "core/pii_engine.py",
+      "core/plugin_manager.py",
+      "core/preference_learner.py",
+      "core/security.py",
+      "core/vector_memory.py",
+      "core/workflow_recorder.py",
+      "core/agents/base_agent.py",
+      "core/agents/coder_agent.py",
+      "core/agents/executor_agent.py",
+      "core/agents/planner_agent.py",
+      "core/agents/verifier_agent.py",
+      "services/ai_service.py",
+      "services/command_service.py",
+      "services/ollama_service.py",
+      "voice/speech_to_text.py",
+      "voice/text_to_speech.py",
+      "voice/voice_controller.py"
+    ],
+    "utils/stt_benchmark.py": [],
+    "utils/__init__.py": [],
+    "voice/google_speech_to_text.py": [
+      "utils/stt_benchmark.py",
+      "voice/speech_to_text.py"
+    ],
+    "voice/local_speech_to_text.py": [
+      "tests/test_local_stt.py",
+      "utils/stt_benchmark.py",
+      "voice/speech_to_text.py"
+    ],
+    "voice/speech_to_text.py": [
+      "tests/test_local_stt.py",
+      "voice/voice_controller.py"
+    ],
+    "voice/stt_engine.py": [
+      "voice/google_speech_to_text.py",
+      "voice/local_speech_to_text.py"
+    ],
+    "voice/text_to_speech.py": [
+      "voice/voice_controller.py"
+    ],
+    "voice/voice_controller.py": [
+      "main.py"
+    ],
+    "voice/__init__.py": []
+  }
+}

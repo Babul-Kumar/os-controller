@@ -53,3 +53,14 @@ OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "phi3")
 
 # Ollama server base URL (override if using a remote Ollama instance).
 OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")
+
+# ── Coding Agent Configuration ────────────────────────────────────────────────
+# Directories to exclude during project workspace context mapping.
+IGNORED_DIRS = {
+    "venv", ".venv", "__pycache__", "node_modules", ".git", "dist", "build",
+    ".pytest_cache", "logs", "screenshots", "assets"
+}
+
+# Timeout (in seconds) for confirming file changes before they expire.
+PENDING_CHANGE_TIMEOUT = 300
+

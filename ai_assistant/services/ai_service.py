@@ -5,7 +5,8 @@ from utils.helpers import setup_logger, json_log
 from core.command_parser import CommandParser
 from core.memory import MemoryManager
 from core.pii_engine import PIIEngine
-from config.settings import DB_PATH
+import os
+from config.settings import DB_PATH, IGNORED_DIRS
 from services.ollama_service import call_ollama, call_ollama_with_context
 
 logger = setup_logger(__name__)
@@ -137,8 +138,68 @@ def _detect_draw_intent_locally(text: str):
 
 
 class AIService:
-    def __init__(self):
+    @staticmethod
+    def _generate_workspace_tree(start_dir: str, max_depth: int = 3) -> str:
+        """Generate a clean visual tree of the workspace directories, excluding IGNORED_DIRS."""
+        lines = []
+        def _walk(current_dir: str, prefix: str, depth: int):
+            if depth > max_depth:
+                return
+            try:
+                items = sorted(os.listdir(current_dir))
+            except Exception:
+                return
+            
+            filtered = []
+            for item in items:
+                if item in IGNORED_DIRS:
+                    continue
+                filtered.append(item)
+                
+            for i, item in enumerate(filtered):
+                path = os.path.join(current_dir, item)
+                is_last = (i == len(filtered) - 1)
+                connector = "└── " if is_last else "├── "
+                lines.append(f"{prefix}{connector}{item}")
+                
+                if os.path.isdir(path):
+                    new_prefix = prefix + ("    " if is_last else "│   ")
+                    _walk(path, new_prefix, depth + 1)
+                    
+        lines.append(os.path.basename(start_dir) + "/")
+        _walk(start_dir, "", 1)
+        return "\n".join(lines)
+
+    @staticmethod
+    def _read_and_truncate_file(file_path: str, max_size_bytes: int = 30 * 1024) -> str:
+        """Read a file. If it exceeds max_size_bytes, returns first 400 lines and last 150 lines."""
+        try:
+            size = os.path.getsize(file_path)
+            with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                lines = f.readlines()
+                
+            if size <= max_size_bytes:
+                return "".join(lines)
+                
+            # File is too large, apply truncation strategy
+            head = lines[:400]
+            tail = lines[-150:]
+            middle_marker = f"\n... [TRUNCATED {len(lines) - 550} LINES FOR CONTEXT EFFICIENCY] ...\n\n"
+            return "".join(head) + middle_marker + "".join(tail)
+        except Exception as e:
+            return f"[ERROR READING FILE: {e}]"
+
+    def __init__(self, cache_manager=None):
         self.memory = MemoryManager()
+
+        if cache_manager is None:
+            import os
+            from core.code_intelligence.cache_manager import CacheManager
+            workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            self.cache_manager = CacheManager(workspace_dir)
+            self.cache_manager.load_or_rebuild_index()
+        else:
+            self.cache_manager = cache_manager
 
         # Phase 3: RAG Memory — initialise VectorMemory and PreferenceLearner
         # Both are optional; if dependencies are missing the service degrades
@@ -235,6 +296,58 @@ class AIService:
                         memory_context = profile + "\n" + memory_context
                 except Exception as e:
                     logger.debug(f"Memory recall failed: {e}")
+
+
+            # ── Project Workspace File Context Injection ─────────────────────
+            # Look for mentioned filenames in the user's text (e.g. "main.py")
+            # and inject their contents into the context.
+            workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            file_mentions = re.findall(
+                r"\b([\w\-]+\.(?:py|txt|js|ts|html|css|java|cpp|c|json|csv|md|jsonl|yml|yaml))\b",
+                user_text,
+                re.IGNORECASE
+            )
+
+            coding_context = ""
+            if file_mentions:
+                # Add workspace tree first
+                tree_str = AIService._generate_workspace_tree(workspace_dir)
+                coding_context += f"\n\n[WORKSPACE STRUCTURE]\n{tree_str}\n"
+
+                for fname in set(file_mentions):
+                    # Search workspace for this file name
+                    matching_paths = []
+                    for root, dirs, files in os.walk(workspace_dir):
+                        # Filter dirs in-place to avoid walking ignored folders
+                        dirs[:] = [d for d in dirs if d not in IGNORED_DIRS]
+                        if fname in files:
+                            matching_paths.append(os.path.join(root, fname))
+
+                    if len(matching_paths) > 1:
+                        rel_paths = ", ".join([os.path.relpath(p, workspace_dir) for p in matching_paths])
+                        coding_context += f"\n\n[AMBIGUITY WARNING: Multiple files in the workspace match the name '{fname}': {rel_paths}. Please ask the user to clarify which one they mean instead of guessing.]\n"
+                        logger.warning(f"Ambiguity detected for referenced file '{fname}': {rel_paths}")
+                    elif len(matching_paths) == 1:
+                        found_path = matching_paths[0]
+                        rel_path = os.path.relpath(found_path, workspace_dir).replace("\\", "/")
+                        code = AIService._read_and_truncate_file(found_path)
+                        coding_context += f"\n\n[FILE: {rel_path}]\n```\n{code}\n```"
+
+                        # Inject summaries of its dependencies
+                        if hasattr(self, "cache_manager") and getattr(self.cache_manager, "dependency_graph", None):
+                            forward_deps = self.cache_manager.dependency_graph.get("forward", {})
+                            deps = forward_deps.get(rel_path, [])
+                            if deps:
+                                coding_context += f"\n\n[DEPENDENCY SUMMARIES FOR {rel_path}]"
+                                for dep in deps:
+                                    summary_info = self.cache_manager.file_summaries.get(dep, {})
+                                    summary_text = summary_info.get("summary", "No summary available.")
+                                    coding_context += f"\n- `{dep}`: {summary_text}"
+
+                        logger.info(f"Injected codebase context for referenced file: {rel_path}")
+
+            if coding_context:
+                memory_context = (memory_context + "\n" + coding_context).strip()
 
             # Use context-aware Ollama call when memory context is available
             if memory_context:

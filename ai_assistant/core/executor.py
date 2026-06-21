@@ -20,7 +20,11 @@ clear ``⚠️ Windows-only`` message when called on macOS or Linux.
 import os
 import sys
 import time
+import ast
+import difflib
+import tempfile
 import pyautogui
+from config.settings import PENDING_CHANGE_TIMEOUT
 from automation.system_control import SystemController
 from automation.app_controller import AppController
 from automation.file_manager import FileManager
@@ -52,14 +56,24 @@ def _windows_only_msg(intent: str) -> str:
 class CommandExecutor:
     """The central Brain Router that acts on Intents."""
 
-    def __init__(self):
+    def __init__(self, cache_manager=None):
         self.web_automator = WebAutomator()
+
+        if cache_manager is None:
+            import os
+            from core.code_intelligence.cache_manager import CacheManager
+            workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            self.cache_manager = CacheManager(workspace_dir)
+            self.cache_manager.load_or_rebuild_index()
+        else:
+            self.cache_manager = cache_manager
 
         # Lazy-loaded components (initialised on first use)
         self._feedback_loop = None
         self._browser_agent = None
         self._orchestrator = None
         self._workflow_recorder = None
+        self.pending_change = None
 
     # ------------------------------------------------------------------
     # Lazy loaders — keep startup fast; only import heavy deps on first use
@@ -220,16 +234,153 @@ class CommandExecutor:
                 if not file_path:
                     return "❌ No filename specified."
 
+                # Avoid concurrent changes
+                if getattr(self, "pending_change", None):
+                    # Expire old changes first
+                    if time.time() - self.pending_change["created_at"] > PENDING_CHANGE_TIMEOUT:
+                        self.pending_change = None
+                    else:
+                        return "⚠️ You already have an active pending change. Please 'apply' or 'cancel' it before staging new changes."
+
+                # Resolve file path
                 if not os.path.isabs(file_path):
-                    desktop = os.path.join(os.path.expanduser("~"), "Desktop")
-                    file_path = os.path.join(desktop, file_path)
+                    workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                    
+                    # If it's a plain filename without directory components, search recursively
+                    if "/" not in file_path.replace("\\", "/"):
+                        matching_paths = []
+                        for root, dirs, files in os.walk(workspace_dir):
+                            from config.settings import IGNORED_DIRS
+                            dirs[:] = [d for d in dirs if d not in IGNORED_DIRS]
+                            if file_path in files:
+                                matching_paths.append(os.path.join(root, file_path))
+
+                        if len(matching_paths) > 1:
+                            options_list = []
+                            for p in matching_paths:
+                                rel = os.path.relpath(p, workspace_dir)
+                                rel_norm = rel.replace("\\\\", "/").replace("\\", "/")
+                                options_list.append(f"- `{rel_norm}`")
+                            options = "\n".join(options_list)
+                            return (
+                                f"⚠️ **Ambiguity Detected**: Multiple files match the name '{file_path}':\n"
+                                f"{options}\n\n"
+                                f"Please specify the relative path to clarify which file you wish to modify."
+                            )
+                        elif len(matching_paths) == 1:
+                            file_path = matching_paths[0]
+                        else:
+                            desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+                            file_path = os.path.join(desktop, file_path)
+                    else:
+                        # It is a specific relative path (e.g. "src/main.py")
+                        possible_path = os.path.join(workspace_dir, file_path)
+                        if os.path.exists(possible_path):
+                            file_path = possible_path
+                        else:
+                            desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+                            file_path = os.path.join(desktop, file_path)
 
                 if not os.path.exists(file_path):
                     return f"❌ File '{file_path}' does not exist."
 
-                with open(file_path, "w", encoding="utf-8") as f:
-                    f.write(content)
-                return f"✅ File '{file_path}' modified successfully."
+                # Read existing contents
+                try:
+                    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+                        old_content = f.read()
+                except Exception as e:
+                    return f"❌ Could not read original file '{file_path}': {e}"
+
+                # Syntax validation for python files
+                if file_path.endswith(".py"):
+                    try:
+                        ast.parse(content)
+                    except SyntaxError as exc:
+                        return f"❌ Syntax check failed for proposed changes in '{os.path.basename(file_path)}':\n[Line {exc.lineno}] {exc.msg}\n\nModification was rejected."
+
+                # Compute unified diff
+                old_lines = old_content.splitlines(keepends=True)
+                new_lines = content.splitlines(keepends=True)
+                diff_lines = list(difflib.unified_diff(
+                    old_lines, new_lines,
+                    fromfile=f"a/{os.path.basename(file_path)}",
+                    tofile=f"b/{os.path.basename(file_path)}"
+                ))
+                diff_text = "".join(diff_lines)
+
+                if not diff_text.strip():
+                    return f"📝 Proposed changes match existing content of '{os.path.basename(file_path)}' exactly. No modification staged."
+
+                # Stage in memory
+                workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                rel_path = os.path.relpath(file_path, workspace_dir)
+
+                self.pending_change = {
+                    "file_path": file_path,
+                    "old_content": old_content,
+                    "new_content": content,
+                    "diff": diff_text,
+                    "created_at": time.time()
+                }
+
+                return (
+                    f"🔍 **Proposed Changes for `{rel_path}`**:\n\n"
+                    f"```diff\n{diff_text}\n```\n\n"
+                    f"💡 Say **'yes'** / **'apply'** to commit, or **'cancel'** / **'no'** to discard."
+                )
+
+            elif intent == "show_pending_change":
+                change = getattr(self, "pending_change", None)
+                if not change:
+                    return "ℹ️ You do not have any pending changes staged."
+
+                # Verify expiration
+                if time.time() - change["created_at"] > PENDING_CHANGE_TIMEOUT:
+                    self.pending_change = None
+                    return "⚠️ Staged change has expired (5-minute timeout). Please re-request the code modification."
+
+                workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                rel_path = os.path.relpath(change["file_path"], workspace_dir)
+                return (
+                    f"🔍 **Current Staged Changes for `{rel_path}`**:\n\n"
+                    f"```diff\n{change['diff']}\n```\n\n"
+                    f"💡 Say **'yes'** / **'apply'** to commit, or **'cancel'** / **'no'** to discard."
+                )
+
+            elif intent == "explain_code":
+                question = intent_data.get("content") or f"Explain code context for {target}"
+                from services.ollama_service import call_ollama
+                import asyncio
+
+                explain_prompt = f"""You are a helpful local AI coding agent. The user is asking a question:
+"{question}"
+
+Please provide a clear and detailed explanation of the code, functions, or files. Focus on clarity and detail."""
+                try:
+                    explanation = await asyncio.get_running_loop().run_in_executor(
+                        None, call_ollama, explain_prompt
+                    )
+                    return explanation or "I couldn't generate an explanation. Let me know how else I can help."
+                except Exception as e:
+                    return f"❌ Failed to explain code: {e}"
+
+            elif intent == "review_code":
+                question = intent_data.get("content") or f"Review code file {target}"
+                from services.ollama_service import call_ollama
+                import asyncio
+
+                review_prompt = f"""You are an expert local AI code reviewer. The user is asking:
+"{question}"
+
+Please review the code file, identify any potential bugs, safety issues, performance bottlenecks, or code smell, and suggest improvements or refactoring options."""
+                try:
+                    review = await asyncio.get_running_loop().run_in_executor(
+                        None, call_ollama, review_prompt
+                    )
+                    return review or "I couldn't generate a code review."
+                except Exception as e:
+                    return f"❌ Failed to review code: {e}"
+
 
             elif intent == "delete_file":
                 file_path = target
@@ -408,6 +559,50 @@ Please analyze the OCR text, explain what it means (particularly if there is an 
                 )
 
             elif intent == "chat_response":
+                # Special check for confirmation if there's a pending change
+                confirm_words = {"yes", "apply", "proceed", "do it", "y"}
+                cancel_words = {"no", "cancel", "stop", "n"}
+                cleaned_target = target.strip().lower().rstrip("!.")
+
+                change = getattr(self, "pending_change", None)
+                if change:
+                    if cleaned_target in confirm_words:
+                        # Check expiration
+                        if time.time() - change["created_at"] > PENDING_CHANGE_TIMEOUT:
+                            self.pending_change = None
+                            return "⚠️ Staged change has expired (5-minute timeout). Please re-request the code modification."
+
+                        file_path = change["file_path"]
+                        # Create backup
+                        backup_path = file_path + ".botbro.bak"
+                        try:
+                            with open(backup_path, "w", encoding="utf-8") as bf:
+                                bf.write(change["old_content"])
+                        except Exception as e:
+                            logger.warning(f"Failed to create backup for {file_path}: {e}")
+
+                        # Atomic write
+                        try:
+                            dir_name = os.path.dirname(file_path)
+                            base_name = os.path.basename(file_path)
+                            with tempfile.NamedTemporaryFile(
+                                "w", dir=dir_name, prefix=f".tmp_{base_name}", delete=False, encoding="utf-8"
+                            ) as tf:
+                                tf.write(change["new_content"])
+                                tf.flush()
+                                os.fsync(tf.fileno())
+                                temp_path = tf.name
+
+                            os.replace(temp_path, file_path)
+                            self.pending_change = None
+                            return f"✅ Applied changes to '{os.path.basename(file_path)}' successfully! Backup saved to: {os.path.basename(backup_path)}"
+                        except Exception as e:
+                            return f"❌ Failed to commit changes atomically: {e}"
+
+                    elif cleaned_target in cancel_words:
+                        self.pending_change = None
+                        return "❌ Staged changes discarded successfully."
+
                 return target
 
             # ── Phase 1: Screen OCR Click ──────────────────────────────────
@@ -498,6 +693,94 @@ Please analyze the OCR text, explain what it means (particularly if there is an 
                 if workflows:
                     return "📋 Saved workflows:\n" + "\n".join(f"  • {w}" for w in workflows)
                 return "📭 No workflows saved yet. Say 'start recording' to create one."
+
+            elif intent == "find_symbol":
+                symbol_name = target or intent_data.get("content")
+                if not symbol_name:
+                    return "❌ Please specify a symbol name to find."
+                from core.code_intelligence.search_engine import SearchEngine
+                results = SearchEngine.symbol_lookup(self.cache_manager.code_index, symbol_name)
+                if not results:
+                    results = SearchEngine.keyword_search(self.cache_manager.code_index, symbol_name)
+                if not results:
+                    return f"🔍 No symbols found matching '{symbol_name}'."
+                
+                msg = f"🔍 Found {len(results)} symbols matching '{symbol_name}':\n\n"
+                for r in results[:5]:
+                    msg += f"• **{r['name']}** ({r['type']}) in `{r['file_path']}` (Lines {r['start_line']}-{r['end_line']})\n"
+                    if r.get("docstring"):
+                        msg += f"  *Docstring:* {r['docstring'].strip()}\n"
+                    if r.get("snippet"):
+                        snip_lines = r['snippet'].splitlines()
+                        snip_preview = "\n".join(snip_lines[:10])
+                        if len(snip_lines) > 10:
+                            snip_preview += "\n..."
+                        msg += f"  ```python\n{snip_preview}\n  ```\n"
+                return msg
+
+            elif intent == "find_references":
+                symbol_name = target or intent_data.get("content")
+                if not symbol_name:
+                    return "❌ Please specify a symbol name to find references for."
+                from core.code_intelligence.search_engine import SearchEngine
+                sym_results = SearchEngine.symbol_lookup(self.cache_manager.code_index, symbol_name)
+                if not sym_results:
+                    return f"🔍 No symbols found matching '{symbol_name}' to look up references."
+                
+                symbol_id = sym_results[0]["id"]
+                refs = SearchEngine.reference_lookup(self.cache_manager.reference_index, symbol_id)
+                if not refs:
+                    return f"🔍 No references found for symbol '{symbol_id}'."
+                
+                msg = f"🔍 Found {len(refs)} references for symbol `{symbol_id}`:\n\n"
+                for ref in refs:
+                    msg += f"• `{ref['file_path']}` at Line {ref['line_no']}\n"
+                return msg
+
+            elif intent == "trace_execution":
+                start_symbol = target or intent_data.get("content")
+                if not start_symbol:
+                    return "❌ Please specify a start symbol to trace."
+                call_graph = {}
+                from core.code_intelligence.call_graph import CallGraphExtractor
+                for rel_path in self.cache_manager.file_summaries.keys():
+                    if rel_path.endswith(".py"):
+                        local_calls = CallGraphExtractor.extract_calls_from_file(self.cache_manager.workspace_dir, rel_path)
+                        for ctx, calls in local_calls.items():
+                            if ctx not in call_graph:
+                                call_graph[ctx] = []
+                            for c in calls:
+                                if c not in call_graph[ctx]:
+                                    call_graph[ctx].append(c)
+                
+                trace = CallGraphExtractor.trace_execution_flow(call_graph, start_symbol)
+                if not trace:
+                    return f"🔍 No execution trace found starting from '{start_symbol}'."
+                return f"🕸️ **Execution Trace for `{start_symbol}`**:\n" + "\n".join(trace)
+
+            elif intent == "list_symbols":
+                file_path = target or intent_data.get("content")
+                if not file_path:
+                    return "❌ Please specify a file path to list symbols."
+                norm_path = file_path.replace("\\", "/")
+                matching_files = [f for f in self.cache_manager.file_summaries.keys() if norm_path in f]
+                if not matching_files:
+                    return f"❌ File '{file_path}' not found in the index."
+                
+                selected_file = matching_files[0]
+                file_symbols = []
+                for sym_id, info in self.cache_manager.code_index.items():
+                    if info["file_path"] == selected_file:
+                        file_symbols.append(info)
+                        
+                if not file_symbols:
+                    return f"📁 No symbols found in '{selected_file}'."
+                
+                msg = f"📁 Symbols defined in `{selected_file}`:\n\n"
+                for s in sorted(file_symbols, key=lambda x: x["start_line"]):
+                    parent_str = f" (in class {s['parent']})" if s.get("parent") else ""
+                    msg += f"• **{s['name']}** ({s['type']}){parent_str} on Lines {s['start_line']}-{s['end_line']}\n"
+                return msg
 
             else:
                 return f"Unsupported intent: {intent}"

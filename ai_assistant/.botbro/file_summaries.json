@@ -1,0 +1,407 @@
+{
+  "main.py": {
+    "summary": "Classes: BotbroApp",
+    "hash": "10fb92e2529faa34c252cd6ba1670290",
+    "last_modified": 1780781789.4993312
+  },
+  "requirements.txt": {
+    "summary": "Utility/Config file.",
+    "hash": "3f6e700f04c7bf40148c83cb2c51857e",
+    "last_modified": 1780810351.5827222
+  },
+  "ai/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "480e2f8611876f11adfe8456108443de",
+    "last_modified": 1780781789.450927
+  },
+  "automation/app_controller.py": {
+    "summary": "Classes: AppController",
+    "hash": "1c18f919e5120e23e025d6f428883afa",
+    "last_modified": 1782030991.9457052
+  },
+  "automation/browser_agent.py": {
+    "summary": "Classes: BrowserStep, BrowserResult, BrowserAgent",
+    "hash": "7f3cf71269401ae2bbc87d174fb32509",
+    "last_modified": 1780783068.1423216
+  },
+  "automation/draw_engine.py": {
+    "summary": "Classes: InterpolationType, RenderingBackend, RetrievalStrategy, ApproximationStrategy, PreprocessingConfig, QualityConfig, TracingPolicy, RenderingConfig, PipelineConfig, DrawableCandidate. Functions: _safe_filename, _is_generated_asset_stem, _is_preprocessed_asset, _get_raw_asset_path, _processed_asset_path, _odd_kernel_size, _get_retrieval_mode, _get_approx_method, _get_config_hash, _prompt_hash, _versioned_asset_path, _manage_cache_size, _get_pipeline_config, _tokenize, _detect_best_mode, _build_attempt_chain, _get_trace_source_path, _find_local_asset, _detect_threshold_polarity_histogram, _try_both_polarities, _dynamic_adaptive_block_size, _is_image_quality_good, _is_contour_closed, _smooth_contour, _compress_large_contour, _prepare_contours_for_analysis, _compute_curvature_proxy, _compute_centroids, _order_contours_nearest_neighbor, _analyze_contour_density, _is_binary_like_analysis_image, _normalize_analysis_binary, _estimate_draw_time, _should_draw, _preprocess_image, _log_candidate_summary, _evaluate_drawable_candidate, _is_preferred_candidate_mode, _candidate_rank, _pick_better_candidate, _build_outline_fallback, _resolve_drawable_candidate, _generate_prompt, _request_remote_image, _download_image, _trace_image, _click_canvas_center, _render_placeholder, _draw_geometric_placeholder, _draw_spiral, draw_from_local_image, draw_anything",
+    "hash": "b518843147fecd48ed16131f6ef6eb0a",
+    "last_modified": 1780795450.3894682
+  },
+  "automation/feedback_loop.py": {
+    "summary": "Classes: VerificationResult, FeedbackLoop",
+    "hash": "2eab3fbef093dd1380629a5d22d21b45",
+    "last_modified": 1780817252.4558208
+  },
+  "automation/file_finder.py": {
+    "summary": "Classes: FileFinder",
+    "hash": "868e58c7ba01b416f66c9a9911afa9af",
+    "last_modified": 1780781789.4891448
+  },
+  "automation/file_manager.py": {
+    "summary": "Classes: FileManager",
+    "hash": "31ca8f4544430b81d0c7e5545c117530",
+    "last_modified": 1780781789.4901507
+  },
+  "automation/image_tracer.py": {
+    "summary": "Classes: PipelineMode, _MouseController, ImageTracer. Functions: _detect_canvas_via_uia, _detect_canvas_via_uia_with_timeout, _detect_paint_canvas_rect, _force_focus_paint_canvas, _fast_canvas_center, _select_pencil_tool, _is_line_art, _auto_mode, _preprocess_binary, _is_binary_like, _normalize_binary_mask, _load_and_preprocess, _vectorise_with_potrace, _get_retrieval_mode, _is_border_frame_contour, _is_small_border_fragment, _simplify_contour, _remove_collinear, _stitch_contours, _order_contours_nn, _curvature_adaptive_samples, _smooth_interpolate_contour, _should_interpolate, _velocity_delays, _export_svg, _cache_key, _load_cache, _save_cache",
+    "hash": "9d234015a5fcaa93252583615b1409b0",
+    "last_modified": 1782031172.261345
+  },
+  "automation/mouse_automation.py": {
+    "summary": "Classes: MouseAutomator",
+    "hash": "a9018ec16159e377793d92c9511fac81",
+    "last_modified": 1780781789.4911518
+  },
+  "automation/screen_reader.py": {
+    "summary": "Classes: ScreenReader",
+    "hash": "5b608015a213866d6810a373fd1d6a6c",
+    "last_modified": 1780817263.8953853
+  },
+  "automation/system_control.py": {
+    "summary": "Classes: SystemController",
+    "hash": "3de63d2438e145f7e5e333623c790e0e",
+    "last_modified": 1780781789.4921503
+  },
+  "automation/vision.py": {
+    "summary": "Classes: VisionAutomator",
+    "hash": "b163b652c68928c7de68535ce4fda402",
+    "last_modified": 1780781789.4926004
+  },
+  "automation/web_automation.py": {
+    "summary": "Classes: WebAutomator",
+    "hash": "5ce46fff90b52df5280492957ad4132f",
+    "last_modified": 1780783103.1663601
+  },
+  "automation/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "20576784c876bd6094a0bac2640638c7",
+    "last_modified": 1780781789.487121
+  },
+  "config/settings.py": {
+    "summary": "Utility/Config file.",
+    "hash": "02e37a4cb7e5858ba19a69d21da24c65",
+    "last_modified": 1782056207.911426
+  },
+  "config/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "570c8c760e5318514a78a841641924b1",
+    "last_modified": 1780781789.4926004
+  },
+  "core/command_parser.py": {
+    "summary": "Classes: CommandParser. Functions: _fix_json_control_chars, _extract_first_json_payload",
+    "hash": "c279d67949d8204ac4f528acf6ab34f4",
+    "last_modified": 1780781789.4957933
+  },
+  "core/event_bus.py": {
+    "summary": "Classes: EventBus",
+    "hash": "c0be587439bfbf6d3e60ea63c08834b4",
+    "last_modified": 1780781789.4957933
+  },
+  "core/executor.py": {
+    "summary": "Classes: CommandExecutor. Functions: _coerce_text, _windows_only_msg",
+    "hash": "dbe8a4949276d82117ab787f93c9e269",
+    "last_modified": 1782060206.5691113
+  },
+  "core/memory.py": {
+    "summary": "Classes: MemoryManager",
+    "hash": "985412f5dcfeb8cdd593437e975580da",
+    "last_modified": 1780783108.1019597
+  },
+  "core/metrics_store.py": {
+    "summary": "Classes: MetricsStore. Functions: get_store",
+    "hash": "f286f4fb5af828a9e105a106ef4ecce9",
+    "last_modified": 1780816347.8476326
+  },
+  "core/orchestrator.py": {
+    "summary": "Classes: AgentOrchestrator",
+    "hash": "fe43b374382ce247f3a9d5ee936642d5",
+    "last_modified": 1780817242.3791752
+  },
+  "core/pii_engine.py": {
+    "summary": "Classes: _EncryptedStore, PIIContext, PIIEngine",
+    "hash": "226e2cb6452fa543ebc1f219d126fd89",
+    "last_modified": 1780781789.4982553
+  },
+  "core/plugin_manager.py": {
+    "summary": "Classes: PluginManager",
+    "hash": "7e5a5b9016aa7ecc642ca73cb2227e27",
+    "last_modified": 1780781789.4987712
+  },
+  "core/preference_learner.py": {
+    "summary": "Classes: PreferenceLearner",
+    "hash": "64562bb70d241bc1eb392a1f67c2c8b1",
+    "last_modified": 1780783084.374314
+  },
+  "core/security.py": {
+    "summary": "Functions: is_safe_action, is_safe_path, validate_command_safety, validate_shell_command",
+    "hash": "7d0ccd8cf9a28971762c54db726f3480",
+    "last_modified": 1780783074.2926946
+  },
+  "core/vector_memory.py": {
+    "summary": "Classes: MemoryEntry, VectorMemory",
+    "hash": "94934914c9f57b71a15cb0fdb6a5c589",
+    "last_modified": 1780783083.987175
+  },
+  "core/workflow_recorder.py": {
+    "summary": "Classes: WorkflowEvent, Workflow, WorkflowRecorder. Functions: _safe_name, _pixel_distance, _workflow_path, _events_to_dicts, _events_from_dicts",
+    "hash": "94706ad4d9759c18533e6ed8d2d5a484",
+    "last_modified": 1780817269.2321532
+  },
+  "core/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "829006967985d39173cc47ef16ad820e",
+    "last_modified": 1780781789.4926004
+  },
+  "core/agents/base_agent.py": {
+    "summary": "Classes: AgentTask, AgentResult, BaseAgent",
+    "hash": "9aa68e4e3996a6e3604071139a2c0ecf",
+    "last_modified": 1780783032.2092698
+  },
+  "core/agents/coder_agent.py": {
+    "summary": "Classes: CoderAgent. Functions: _strip_fences",
+    "hash": "0adb380228086a22c1e326157f1698f2",
+    "last_modified": 1780783062.9283302
+  },
+  "core/agents/executor_agent.py": {
+    "summary": "Classes: ExecutorAgent",
+    "hash": "d5ef88a3ee47d6c3638b0ceec9a602f8",
+    "last_modified": 1780783083.601254
+  },
+  "core/agents/planner_agent.py": {
+    "summary": "Classes: PlannerAgent",
+    "hash": "ced51c18af923bec59ea83af4e40098c",
+    "last_modified": 1780783048.8163607
+  },
+  "core/agents/verifier_agent.py": {
+    "summary": "Classes: VerifierAgent",
+    "hash": "4d69d3d6dc0cafc379fc51b0f718f452",
+    "last_modified": 1780783113.9670975
+  },
+  "core/agents/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "aba0828b895ae7dd49061249c1976d5c",
+    "last_modified": 1780783006.2323055
+  },
+  "core/code_intelligence/ast_indexer.py": {
+    "summary": "Classes: ASTIndexer",
+    "hash": "d46764cb97fba24c1244e129c7daaa2c",
+    "last_modified": 1782059666.1252656
+  },
+  "core/code_intelligence/cache_manager.py": {
+    "summary": "Classes: CacheManager",
+    "hash": "cefcee540f4aa09aac17fd94f714cf16",
+    "last_modified": 1782060380.9593494
+  },
+  "core/code_intelligence/call_graph.py": {
+    "summary": "Classes: CallGraphExtractor",
+    "hash": "883ed2f267ee2057f3319e8449706c97",
+    "last_modified": 1782059682.6053154
+  },
+  "core/code_intelligence/dependency_resolver.py": {
+    "summary": "Classes: DependencyResolver",
+    "hash": "14f436551e32a9f465099ba51732674f",
+    "last_modified": 1782059674.216033
+  },
+  "core/code_intelligence/search_engine.py": {
+    "summary": "Classes: SearchEngine",
+    "hash": "12e5ed8052d52f9baabcc77cd5440f3d",
+    "last_modified": 1782059692.682554
+  },
+  "core/code_intelligence/symbol_models.py": {
+    "summary": "Classes: SymbolInfo, FileSummary",
+    "hash": "da500f126d1230cb80ab1c537d235482",
+    "last_modified": 1782059647.5515463
+  },
+  "core/code_intelligence/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "48dfbacc132563aa2f64e7d78b70784e",
+    "last_modified": 1782059705.3719199
+  },
+  "gui/chat_bubble.py": {
+    "summary": "Classes: ChatBubble",
+    "hash": "390e19a3fca4c040e633c1fd10de25fa",
+    "last_modified": 1780781789.4993312
+  },
+  "gui/dashboard.py": {
+    "summary": "Classes: CustomActivityChart, KPICard, PerformanceDashboard",
+    "hash": "69e2064a843339345ebf3f1f2be53e63",
+    "last_modified": 1780817281.5452383
+  },
+  "gui/main_window.py": {
+    "summary": "Classes: Signals, BotbroGUI",
+    "hash": "8f642f0fd1becb006ec0ad126610a3eb",
+    "last_modified": 1780783240.8966544
+  },
+  "gui/sidebar.py": {
+    "summary": "Classes: Sidebar",
+    "hash": "d06a56a751869894ad090b77816bc080",
+    "last_modified": 1780817288.7647398
+  },
+  "gui/styles.py": {
+    "summary": "Utility/Config file.",
+    "hash": "53e9f32d5f203531002170b6ea2d1586",
+    "last_modified": 1780781789.4993312
+  },
+  "gui/titlebar.py": {
+    "summary": "Classes: TitleBar",
+    "hash": "1dd727548882514fbe86e8f5803ff4c8",
+    "last_modified": 1780781789.4993312
+  },
+  "gui/workers.py": {
+    "summary": "Classes: TaskWorker",
+    "hash": "4b4f51dc120224a3fce676c4d6bdeef7",
+    "last_modified": 1780781789.4993312
+  },
+  "gui/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "80a7768456402ddf568b404225bdd6c8",
+    "last_modified": 1780781789.4993312
+  },
+  "plugins/base_plugin.py": {
+    "summary": "Classes: Plugin",
+    "hash": "29242388fc8caa4061ad79c64643c1bf",
+    "last_modified": 1780781789.508606
+  },
+  "plugins/file_plugin.py": {
+    "summary": "Classes: FileOpenPlugin",
+    "hash": "3f51f91b89cd149a8332cab2bc9379e5",
+    "last_modified": 1780781789.5093434
+  },
+  "plugins/url_plugin.py": {
+    "summary": "Classes: URLPlugin",
+    "hash": "72755f0ea6992456b89411ae32df087c",
+    "last_modified": 1780781789.5093434
+  },
+  "plugins/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "c698afd9a7805fe005055ac58c866646",
+    "last_modified": 1780781789.5082302
+  },
+  "services/ai_service.py": {
+    "summary": "Classes: AIService. Functions: _detect_create_file_intent_locally, _detect_write_intent_locally, _detect_draw_intent_locally",
+    "hash": "3bb4240456474f3feee9fe45f14b7108",
+    "last_modified": 1782060250.666087
+  },
+  "services/command_service.py": {
+    "summary": "Classes: CommandService",
+    "hash": "b0325b15cfeef1868afd275cfea241ff",
+    "last_modified": 1782061489.9757657
+  },
+  "services/ollama_service.py": {
+    "summary": "Functions: _get_ollama, call_ollama, call_ollama_with_context",
+    "hash": "4fe1b750d9bf35a3cfb0442ffac72605",
+    "last_modified": 1782060275.0835514
+  },
+  "services/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "40b211ba92310fa02ea5573e4d7d48fc",
+    "last_modified": 1780781789.5106907
+  },
+  "tests/test_botbro_core.py": {
+    "summary": "Classes: TestBotbroCore",
+    "hash": "678ed71d27d5ce1dcceb67ceedfa31a2",
+    "last_modified": 1780795586.483012
+  },
+  "tests/test_browser_agent.py": {
+    "summary": "Classes: TestBrowserAgent",
+    "hash": "462362039391bf6aab18d9fc8a4dbbb9",
+    "last_modified": 1780787601.7047026
+  },
+  "tests/test_code_intelligence.py": {
+    "summary": "Classes: TestCodeIntelligence",
+    "hash": "7921ccdbe2ed5d7c3b0f76d4f3e04b35",
+    "last_modified": 1782060398.5096786
+  },
+  "tests/test_coding_agent.py": {
+    "summary": "Classes: TestCodingAgent",
+    "hash": "20d111538f9a25d8442c7ca701ae8b22",
+    "last_modified": 1782058624.7861567
+  },
+  "tests/test_draw_engine.py": {
+    "summary": "Classes: TestDrawEngine",
+    "hash": "3b33053b7c329f5c49eb039dbc363733",
+    "last_modified": 1780781789.5135026
+  },
+  "tests/test_feedback_loop.py": {
+    "summary": "Classes: TestFeedbackLoop",
+    "hash": "132d140c69dd35c6caa220d57c8d8c03",
+    "last_modified": 1780803755.903627
+  },
+  "tests/test_local_stt.py": {
+    "summary": "Classes: TestWhisperModelLoads, TestTranscribeWavFile, TestFallbackToGoogle, TestBackendProperty, TestEmptyAudioReturnsEmpty, TestWhisperWithoutInternet. Functions: _write_silent_wav",
+    "hash": "a98e6cc00f4570cc627b1463c1852286",
+    "last_modified": 1780810420.3734071
+  },
+  "tests/test_orchestrator.py": {
+    "summary": "Classes: TestOrchestrator",
+    "hash": "952c2f9469fb821592a0a0531c64ba2f",
+    "last_modified": 1780803750.4850395
+  },
+  "tests/test_screen_understanding.py": {
+    "summary": "Classes: TestScreenUnderstanding",
+    "hash": "b57fa6fd613b067d9e5df0c278b86af4",
+    "last_modified": 1782032796.859875
+  },
+  "tests/test_vector_memory.py": {
+    "summary": "Classes: TestVectorMemory",
+    "hash": "5270805e7c1a9aac96098f40b98e6590",
+    "last_modified": 1780787593.2556243
+  },
+  "tests/test_workflow_recorder.py": {
+    "summary": "Classes: TestWorkflowRecorder",
+    "hash": "200941927a664422b0aeffbf690dfc21",
+    "last_modified": 1780787612.6091123
+  },
+  "utils/helpers.py": {
+    "summary": "Classes: JSONFormatter. Functions: fuzzy_match, get_close_suggestions, setup_logger, json_log, ensure_directory, safe_filename",
+    "hash": "9beea65bde411b0d28befa352c0de098",
+    "last_modified": 1780781789.515869
+  },
+  "utils/stt_benchmark.py": {
+    "summary": "Functions: ensure_table, save_metrics, run_benchmark, main",
+    "hash": "fbeb8a7ba87dc5027077e098b94e37af",
+    "last_modified": 1780810383.0641859
+  },
+  "utils/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "42c8b7045b0f7d710e62a79573573227",
+    "last_modified": 1780781789.5148718
+  },
+  "voice/google_speech_to_text.py": {
+    "summary": "Classes: GoogleSTT",
+    "hash": "39202d4c7df00534c9ecf3a16a7c2066",
+    "last_modified": 1780810280.2802558
+  },
+  "voice/local_speech_to_text.py": {
+    "summary": "Classes: WhisperSTT. Functions: _resolve_device",
+    "hash": "72190bad5737be1cddf44bbc78a84276",
+    "last_modified": 1780810261.1660397
+  },
+  "voice/speech_to_text.py": {
+    "summary": "Classes: SpeechRecognizer",
+    "hash": "911a3e5f9387d66cf65eb0e824943393",
+    "last_modified": 1780810304.19039
+  },
+  "voice/stt_engine.py": {
+    "summary": "Classes: STTEngine",
+    "hash": "d83bbf83a707b0876eb7c94ed134ab35",
+    "last_modified": 1780810224.9257293
+  },
+  "voice/text_to_speech.py": {
+    "summary": "Classes: TextToSpeech",
+    "hash": "52182d376878706ad897b57d403cc830",
+    "last_modified": 1780781789.5168705
+  },
+  "voice/voice_controller.py": {
+    "summary": "Classes: VoiceController",
+    "hash": "30d5db34c8ffd628a3fe79342a05e61c",
+    "last_modified": 1780810320.0121064
+  },
+  "voice/__init__.py": {
+    "summary": "Utility/Config file.",
+    "hash": "f1dd5a4dbb6a6bc2de08d84874e2ce0b",
+    "last_modified": 1780781789.515869
+  }
+}

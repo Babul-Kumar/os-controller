@@ -13,9 +13,15 @@ logger = setup_logger(__name__)
 class CommandService:
     """Middle layer: routes GUI inputs through plugins -> AI -> Executor -> Voice/GUI."""
     def __init__(self):
+        import os
+        from core.code_intelligence.cache_manager import CacheManager
+        workspace_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.cache_manager = CacheManager(workspace_dir)
+        self.cache_manager.load_or_rebuild_index()
+
         self.plugin_manager = PluginManager()
-        self.ai_service = AIService()
-        self.executor = CommandExecutor()
+        self.ai_service = AIService(self.cache_manager)
+        self.executor = CommandExecutor(self.cache_manager)
         self.memory = MemoryManager()
         
         # Hardcoded tasks for TaskEngine replacement
@@ -90,6 +96,31 @@ class CommandService:
             raise
         finally:
             latency_ms = (time.perf_counter() - start_time) * 1000.0
+
+            # Log to .botbro/usage_metrics.json if it is a code intelligence intent
+            if action in ("find_symbol", "find_references", "trace_execution", "list_symbols"):
+                try:
+                    import os
+                    import json
+                    metrics_path = os.path.join(self.cache_manager.cache_dir, "usage_metrics.json")
+                    metrics_data = []
+                    if os.path.exists(metrics_path):
+                        with open(metrics_path, "r", encoding="utf-8") as mf:
+                            metrics_data = json.load(mf)
+
+                    is_success = not (response_msg.startswith("❌") or response_msg.startswith("⚠️") or "error" in response_msg.lower())
+
+                    metrics_data.append({
+                        "query": command,
+                        "intent": action,
+                        "response_time_ms": latency_ms,
+                        "success": is_success
+                    })
+
+                    self.cache_manager.save_json_file(metrics_path, metrics_data)
+                except Exception as e:
+                    logger.error(f"Failed to log usage metrics to json: {e}")
+
             try:
                 get_store().log_command(
                     raw_input=command,
