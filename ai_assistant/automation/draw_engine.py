@@ -1423,6 +1423,105 @@ def _download_image(query: str, mode: PipelineMode) -> Optional[DrawableCandidat
             logger.info(f"Attempt {attempt}: evaluating downloaded asset.")
             candidate = _resolve_drawable_candidate(
                 raw_path,
+                mode,
+                f"Attempt {attempt}",
+            )
+            if candidate is not None:
+                return candidate
+
+        except Exception as exc:
+            logger.error(f"Attempt {attempt} download pipeline failed: {exc}")
+            time.sleep(REMOTE_IMAGE_RETRY_DELAY_S)
+            continue
+
+    return None
+
+
+def _trace_image(image_path: Path, mode: PipelineMode) -> bool:
+    config = _get_pipeline_config(mode)
+    
+    try:
+        ok = ImageTracer.trace_image(
+            str(image_path),
+            start_x=0,
+            start_y=0,
+            scale=config.trace_scale,
+            mode=mode,
+        )
+        return bool(ok)
+    except Exception as exc:
+        logger.error(f"Tracing error: {exc}")
+        return False
+
+
+def _click_canvas_center() -> Tuple[int, int]:
+    sw, sh = pyautogui.size()
+    cx, cy = sw // 2, sh // 2
+    pyautogui.click(cx, cy)
+    time.sleep(0.5)
+    return cx, cy
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# §13  Placeholder rendering (FIX-18)
+# ══════════════════════════════════════════════════════════════════════════════
+
+def _render_placeholder(cx: int, cy: int, points):
+    if not points:
+        return
+
+    pyautogui.moveTo(points[0][0], points[0][1])
+
+    if len(points) == 1:
+        pyautogui.click()
+        return
+
+    for x, y in points[1:]:
+        pyautogui.dragTo(x, y, duration=0.02, button="left")
+
+
+def _draw_geometric_placeholder(cx: int, cy: int, mode: PipelineMode) -> None:
+    """Mode‑aware placeholder using unified renderer."""
+    if mode == PipelineMode.SKETCH:
+        # Paw print
+        points = []
+        r = 60
+        for i in range(36):
+            angle = 2 * math.pi * i / 36
+            points.append((cx + int(r * 0.6 * math.cos(angle)), cy + int(r * 0.6 * math.sin(angle))))
+        _render_placeholder(cx, cy - r, points)
+        
+        for tx, ty in [(cx-50, cy-80), (cx, cy-90), (cx+50, cy-80)]:
+            toe_points = []
+            for i in range(12):
+                angle = 2 * math.pi * i / 12
+                toe_points.append((tx + int(15 * math.cos(angle)), ty + int(15 * math.sin(angle))))
+            _render_placeholder(tx, ty, toe_points)
+    
+    elif mode == PipelineMode.LOGO:
+        # Shield
+        points = [
+            (cx, cy - 70), (cx + 50, cy - 70), (cx + 50, cy - 20),
+            (cx, cy + 60), (cx - 50, cy - 20), (cx - 50, cy - 70), (cx, cy - 70)
+        ]
+        _render_placeholder(cx, cy, points)
+    
+    else:
+        # Circle + cross
+        points = []
+        r = 80
+        for i in range(37):
+            angle = 2 * math.pi * i / 36
+            points.append((cx + int(r * math.cos(angle)), cy + int(r * math.sin(angle))))
+        _render_placeholder(cx + r, cy, points)
+        
+        cross_points = [(cx - r, cy), (cx + r, cy), (cx, cy - r), (cx, cy + r)]
+        for x, y in cross_points:
+            _render_placeholder(x, y, [(x, y)])
+
+
+def _draw_spiral(cx: int, cy: int) -> None:
+    """Last‑resort spiral fallback."""
     points = []
     for t in np.linspace(0, 12 * math.pi, 400):
         r = 4 * t

@@ -42,3 +42,14 @@ STT_LANGUAGE = os.environ.get("STT_LANGUAGE", "en")
 
 # Beam search width (higher = more accurate but slower).
 STT_BEAM_SIZE = int(os.environ.get("STT_BEAM_SIZE", "5"))
+
+# ── Local LLM Configuration ────────────────────────────────────────────────────
+# Model that Ollama serves locally. Change this to upgrade reasoning quality:
+#   "phi3"        — lightweight, fast  (default, 3.8B)
+#   "mistral"     — stronger reasoning (7B)
+#   "llama3"      — best open-source   (8B / 70B)
+#   "phi3:medium" — medium phi3        (14B)
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "phi3")
+
+# Ollama server base URL (override if using a remote Ollama instance).
+OLLAMA_BASE_URL = os.environ.get("OLLAMA_BASE_URL", "http://localhost:11434")

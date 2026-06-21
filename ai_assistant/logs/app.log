@@ -2982,3 +2982,287 @@ _only"}
 {"timestamp": "2026-05-16T14:59:17.371455", "level": "INFO", "logger": "automation.image_tracer", "message": "Trace completed successfully."}
 {"timestamp": "2026-05-16T14:59:17.372000", "level": "INFO", "logger": "automation.draw_engine", "message": "[DrawFromLocal] Drawing completed successfully."}
 {"timestamp": "2026-05-16T14:59:17.383543", "level": "INFO", "logger": "voice.text_to_speech", "message": "Speaking: Done! ✅ I converted your image to a sketch and drew it in Paint. It looks great! 🎨"}
+{"timestamp": "2026-06-07T04:42:46.915050", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T04:42:46.929088", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T04:42:46.940164", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T04:42:59.231194", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T04:42:59.232201", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T04:42:59.233402", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T04:42:59.233940", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T04:42:59.236090", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T04:42:59.238286", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-06-07T04:42:59.241985", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-06-07T04:42:59.242513", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-06-07T04:42:59.243037", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-07T04:43:53.775627", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-07T04:44:04.375356", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "calculator"}
+{"timestamp": "2026-06-07T04:44:04.405601", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-06-07T04:44:04.405601", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "web_search", "target": "python programming"}
+{"timestamp": "2026-06-07T04:44:04.406284", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T04:44:04.406803", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T04:44:04.408361", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T04:44:04.455848", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (1 vectors)"}
+{"timestamp": "2026-06-07T04:44:04.457589", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T04:44:04.458102", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T04:44:04.459144", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T04:44:04.459144", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T04:44:04.460194", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T06:54:31.675601", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T06:54:31.677551", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T06:54:31.678588", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T06:54:31.682300", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (1 vectors)"}
+{"timestamp": "2026-06-07T06:54:31.682821", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T06:54:31.682821", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T06:54:31.682821", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T06:54:31.683996", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T06:54:31.684523", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T06:54:31.685557", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-06-07T06:54:31.688698", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-06-07T06:54:31.689268", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-06-07T06:54:31.689803", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-07T06:54:39.284128", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-07T09:12:04.480761", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T09:12:04.482794", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T09:12:04.484377", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:12:04.488586", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (1 vectors)"}
+{"timestamp": "2026-06-07T09:12:04.489116", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T09:12:04.489649", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T09:12:04.490180", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:12:04.490705", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T09:12:04.491756", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:12:04.492803", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-06-07T09:12:04.496503", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-06-07T09:12:04.497044", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-06-07T09:12:04.497044", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-07T09:12:11.728028", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-07T09:12:11.932998", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "calculator"}
+{"timestamp": "2026-06-07T09:12:11.958704", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-06-07T09:12:11.959208", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "web_search", "target": "python programming"}
+{"timestamp": "2026-06-07T09:12:11.959740", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T09:12:11.959740", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T09:12:11.962368", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:12:12.008078", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (2 vectors)"}
+{"timestamp": "2026-06-07T09:12:12.009393", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T09:12:12.009393", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T09:12:12.010454", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:12:12.010454", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T09:12:12.010983", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:12:12.012035", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:12:12.013211", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 1/2 [navigate]: https://example.com"}
+{"timestamp": "2026-06-07T09:12:12.013211", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 2/2 [scroll_down]: "}
+{"timestamp": "2026-06-07T09:12:12.013736", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:12:12.014258", "level": "INFO", "logger": "automation.browser_agent", "message": "Using fallback Google-search plan for goal: Test goal"}
+{"timestamp": "2026-06-07T09:12:12.015307", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:12:12.015835", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver initialised successfully."}
+{"timestamp": "2026-06-07T09:12:12.015835", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver closed."}
+{"timestamp": "2026-06-07T09:12:12.016880", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:12:12.017406", "level": "INFO", "logger": "automation.browser_agent", "message": "Requesting browser plan from Ollama for goal: Go to Github"}
+{"timestamp": "2026-06-07T09:12:12.017406", "level": "INFO", "logger": "automation.browser_agent", "message": "Parsed 1 browser steps from Ollama."}
+{"timestamp": "2026-06-07T09:12:12.021098", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: attempting local outline rescue."}
+{"timestamp": "2026-06-07T09:12:12.022687", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Attempt 1/2"}
+{"timestamp": "2026-06-07T09:12:12.022687", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ Verified on attempt 1"}
+{"timestamp": "2026-06-07T09:12:12.098361", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-07T09:12:12.098361", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window found: 'Notepad'\" | screenshot='mock_path.png'"}
+{"timestamp": "2026-06-07T09:12:12.117242", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-07T09:12:13.131951", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ❌ FAIL | conf=0.00 | msg=\"Timeout after 1s: no window matching 'notepad'\" | screenshot=''"}
+{"timestamp": "2026-06-07T09:12:13.134301", "level": "WARNING", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] pytesseract not available — falling back to window-title matching"}
+{"timestamp": "2026-06-07T09:12:13.134834", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=0.50 | msg=\"(fallback) Window-title match for 'Unique Title': found\" | screenshot=''"}
+{"timestamp": "2026-06-07T09:12:13.138011", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window 'Notepad' has content (800x600 px)\" | screenshot=''"}
+{"timestamp": "2026-06-07T09:12:13.144867", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Initialized with agents: ['Planner', 'Coder', 'Executor', 'Verifier']"}
+{"timestamp": "2026-06-07T09:12:13.145915", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Starting plan for: 'build a small test app'"}
+{"timestamp": "2026-06-07T09:12:13.154476", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-07T09:12:18.160480", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-07T09:12:18.208929", "level": "INFO", "logger": "core.workflow_recorder", "message": "WorkflowRecorder initialised. Workflows dir: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\workflows"}
+{"timestamp": "2026-06-07T09:12:18.210490", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording started. Perform your actions now."}
+{"timestamp": "2026-06-07T09:12:18.211538", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording stopped. Captured 0 events."}
+{"timestamp": "2026-06-07T09:14:34.648128", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T09:14:34.650253", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T09:14:34.651313", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:14:34.655565", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (2 vectors)"}
+{"timestamp": "2026-06-07T09:14:34.656679", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T09:14:34.656679", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T09:14:34.657873", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:14:34.658408", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T09:14:34.659469", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:14:34.661065", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-06-07T09:14:34.674716", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-06-07T09:14:34.674716", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-06-07T09:14:34.675252", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-07T09:14:41.860280", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-07T09:14:42.038882", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "calculator"}
+{"timestamp": "2026-06-07T09:14:42.062876", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-06-07T09:14:42.062876", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "web_search", "target": "python programming"}
+{"timestamp": "2026-06-07T09:14:42.063488", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-07T09:14:42.064015", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-07T09:14:42.065603", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:14:42.108924", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (3 vectors)"}
+{"timestamp": "2026-06-07T09:14:42.110403", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-07T09:14:42.110403", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-07T09:14:42.111459", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:14:42.111459", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-07T09:14:42.111984", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-07T09:14:42.113037", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:14:42.113563", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 1/2 [navigate]: https://example.com"}
+{"timestamp": "2026-06-07T09:14:42.113563", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 2/2 [scroll_down]: "}
+{"timestamp": "2026-06-07T09:14:42.114732", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:14:42.114732", "level": "INFO", "logger": "automation.browser_agent", "message": "Using fallback Google-search plan for goal: Test goal"}
+{"timestamp": "2026-06-07T09:14:42.116318", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:14:42.117370", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver initialised successfully."}
+{"timestamp": "2026-06-07T09:14:42.117897", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver closed."}
+{"timestamp": "2026-06-07T09:14:42.118957", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-07T09:14:42.119482", "level": "INFO", "logger": "automation.browser_agent", "message": "Requesting browser plan from Ollama for goal: Go to Github"}
+{"timestamp": "2026-06-07T09:14:42.119482", "level": "INFO", "logger": "automation.browser_agent", "message": "Parsed 1 browser steps from Ollama."}
+{"timestamp": "2026-06-07T09:14:42.124248", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: attempting local outline rescue."}
+{"timestamp": "2026-06-07T09:14:42.125299", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Attempt 1/2"}
+{"timestamp": "2026-06-07T09:14:42.125299", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ Verified on attempt 1"}
+{"timestamp": "2026-06-07T09:14:42.133335", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-07T09:14:42.133335", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window found: 'Notepad'\" | screenshot='mock_path.png'"}
+{"timestamp": "2026-06-07T09:14:42.137015", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-07T09:14:43.154568", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ❌ FAIL | conf=0.00 | msg=\"Timeout after 1s: no window matching 'notepad'\" | screenshot=''"}
+{"timestamp": "2026-06-07T09:14:43.157873", "level": "WARNING", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] pytesseract not available — falling back to window-title matching"}
+{"timestamp": "2026-06-07T09:14:43.157873", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=0.50 | msg=\"(fallback) Window-title match for 'Unique Title': found\" | screenshot=''"}
+{"timestamp": "2026-06-07T09:14:43.160517", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window 'Notepad' has content (800x600 px)\" | screenshot=''"}
+{"timestamp": "2026-06-07T09:14:43.166100", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Initialized with agents: ['Planner', 'Coder', 'Executor', 'Verifier']"}
+{"timestamp": "2026-06-07T09:14:43.167604", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Starting plan for: 'build a small test app'"}
+{"timestamp": "2026-06-07T09:14:43.167604", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Plan has 1 step(s)."}
+{"timestamp": "2026-06-07T09:14:43.167604", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Step 1/1: Create main.py"}
+{"timestamp": "2026-06-07T09:14:43.167604", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Step 1 needs code — invoking CoderAgent."}
+{"timestamp": "2026-06-07T09:14:43.167604", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] ✅ Step 1: Create main.py — File created successfully"}
+{"timestamp": "2026-06-07T09:14:43.170612", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Finished. 1 step(s) executed."}
+{"timestamp": "2026-06-07T09:14:43.177293", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-07T09:14:48.349814", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-07T09:14:48.392886", "level": "INFO", "logger": "core.workflow_recorder", "message": "WorkflowRecorder initialised. Workflows dir: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\workflows"}
+{"timestamp": "2026-06-07T09:14:48.393921", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording started. Perform your actions now."}
+{"timestamp": "2026-06-07T09:14:48.394966", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording stopped. Captured 0 events."}
+{"timestamp": "2026-06-07T12:05:50.592784", "level": "WARNING", "logger": "voice.speech_to_text", "message": "WhisperSTT raised an exception: Simulated Whisper failure — trying Google fallback."}
+{"timestamp": "2026-06-07T12:05:50.593790", "level": "INFO", "logger": "voice.speech_to_text", "message": "Google STT fallback produced a result."}
+{"timestamp": "2026-06-07T12:51:19.741892", "level": "WARNING", "logger": "voice.speech_to_text", "message": "WhisperSTT raised an exception: Simulated Whisper failure — trying Google fallback."}
+{"timestamp": "2026-06-07T12:51:19.741892", "level": "INFO", "logger": "voice.speech_to_text", "message": "Google STT fallback produced a result."}
+{"timestamp": "2026-06-21T14:21:43.110781", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-21T14:21:43.113506", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-21T14:21:43.122752", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:21:43.179814", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (3 vectors)"}
+{"timestamp": "2026-06-21T14:21:43.179814", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-21T14:21:43.179814", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-21T14:21:43.181540", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:21:43.182589", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-21T14:21:43.183588", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:21:43.185588", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-06-21T14:21:43.195960", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-06-21T14:21:43.197039", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-06-21T14:21:43.197039", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-21T14:21:54.463531", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-21T14:21:55.055480", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "calculator"}
+{"timestamp": "2026-06-21T14:21:55.107497", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-06-21T14:21:55.109644", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "web_search", "target": "python programming"}
+{"timestamp": "2026-06-21T14:21:55.112386", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-21T14:21:55.112386", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-21T14:21:55.115080", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:21:55.170482", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (4 vectors)"}
+{"timestamp": "2026-06-21T14:21:55.171477", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-21T14:21:55.171477", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-21T14:21:55.172491", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:21:55.172491", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-21T14:21:55.173489", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:21:55.177810", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:21:55.178345", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 1/2 [navigate]: https://example.com"}
+{"timestamp": "2026-06-21T14:21:55.178872", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 2/2 [scroll_down]: "}
+{"timestamp": "2026-06-21T14:21:55.181564", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:21:55.182091", "level": "INFO", "logger": "automation.browser_agent", "message": "Using fallback Google-search plan for goal: Test goal"}
+{"timestamp": "2026-06-21T14:21:55.185421", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:21:55.185961", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver initialised successfully."}
+{"timestamp": "2026-06-21T14:21:55.186491", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver closed."}
+{"timestamp": "2026-06-21T14:21:55.189184", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:21:55.189184", "level": "INFO", "logger": "automation.browser_agent", "message": "Requesting browser plan from Ollama for goal: Go to Github"}
+{"timestamp": "2026-06-21T14:21:55.189184", "level": "INFO", "logger": "automation.browser_agent", "message": "Parsed 1 browser steps from Ollama."}
+{"timestamp": "2026-06-21T14:21:55.207573", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: attempting local outline rescue."}
+{"timestamp": "2026-06-21T14:21:55.211890", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Attempt 1/2"}
+{"timestamp": "2026-06-21T14:21:55.212965", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ Verified on attempt 1"}
+{"timestamp": "2026-06-21T14:21:55.217256", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-21T14:21:55.217822", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window found: 'Notepad'\" | screenshot='mock_path.png'"}
+{"timestamp": "2026-06-21T14:21:55.219934", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-21T14:21:56.229088", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ❌ FAIL | conf=0.00 | msg=\"Timeout after 1s: no window matching 'notepad'\" | screenshot=''"}
+{"timestamp": "2026-06-21T14:21:56.231926", "level": "WARNING", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] pytesseract not available — falling back to window-title matching"}
+{"timestamp": "2026-06-21T14:21:56.232452", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=0.50 | msg=\"(fallback) Window-title match for 'Unique Title': found\" | screenshot=''"}
+{"timestamp": "2026-06-21T14:21:56.234574", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window 'Notepad' has content (800x600 px)\" | screenshot=''"}
+{"timestamp": "2026-06-21T14:21:59.592690", "level": "WARNING", "logger": "voice.speech_to_text", "message": "WhisperSTT raised an exception: Simulated Whisper failure — trying Google fallback."}
+{"timestamp": "2026-06-21T14:21:59.593238", "level": "INFO", "logger": "voice.speech_to_text", "message": "Google STT fallback produced a result."}
+{"timestamp": "2026-06-21T14:22:03.323989", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Initialized with agents: ['Planner', 'Coder', 'Executor', 'Verifier']"}
+{"timestamp": "2026-06-21T14:22:03.325060", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Starting plan for: 'build a small test app'"}
+{"timestamp": "2026-06-21T14:22:03.329133", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Plan has 1 step(s)."}
+{"timestamp": "2026-06-21T14:22:03.329659", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Step 1/1: Create main.py"}
+{"timestamp": "2026-06-21T14:22:03.330194", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Step 1 needs code — invoking CoderAgent."}
+{"timestamp": "2026-06-21T14:22:03.344376", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] ✅ Step 1: Create main.py — File created successfully"}
+{"timestamp": "2026-06-21T14:22:03.345377", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Finished. 1 step(s) executed."}
+{"timestamp": "2026-06-21T14:22:03.359325", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-21T14:22:12.095752", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-21T14:22:12.167855", "level": "INFO", "logger": "core.workflow_recorder", "message": "WorkflowRecorder initialised. Workflows dir: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\workflows"}
+{"timestamp": "2026-06-21T14:22:12.169457", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording started. Perform your actions now."}
+{"timestamp": "2026-06-21T14:22:12.170535", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording stopped. Captured 0 events."}
+{"timestamp": "2026-06-21T14:43:31.073456", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-21T14:43:31.075578", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-21T14:43:31.077736", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:43:31.081761", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (4 vectors)"}
+{"timestamp": "2026-06-21T14:43:31.082290", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-21T14:43:31.082290", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-21T14:43:31.086099", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:31.086099", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-21T14:43:31.087130", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:43:31.089132", "level": "INFO", "logger": "services.command_service", "message": "CommandService processing: open calculator"}
+{"timestamp": "2026-06-21T14:43:31.093494", "level": "INFO", "logger": "services.ai_service", "message": "Using Ollama"}
+{"timestamp": "2026-06-21T14:43:31.094956", "level": "INFO", "logger": "core.pii_engine", "message": "PIIEngine initialised — crypto=AES-256-GCM"}
+{"timestamp": "2026-06-21T14:43:31.094956", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-21T14:43:41.941994", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-21T14:43:42.164155", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "calculator"}
+{"timestamp": "2026-06-21T14:43:42.195909", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "open_app", "target": "chrome"}
+{"timestamp": "2026-06-21T14:43:42.198046", "level": "INFO", "logger": "core.command_parser", "message": "Action: parse_intent", "action": "parse_intent", "intent": "web_search", "target": "python programming"}
+{"timestamp": "2026-06-21T14:43:42.200197", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "FileOpenPlugin"}
+{"timestamp": "2026-06-21T14:43:42.200197", "level": "INFO", "logger": "core.plugin_manager", "message": "Action: plugin_loaded", "action": "plugin_loaded", "name": "URLPlugin"}
+{"timestamp": "2026-06-21T14:43:42.202849", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:43:42.254501", "level": "INFO", "logger": "core.vector_memory", "message": "FAISS index loaded from C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory_index.faiss (5 vectors)"}
+{"timestamp": "2026-06-21T14:43:42.255911", "level": "INFO", "logger": "services.ai_service", "message": "Vector memory initialised (FAISS RAG active)."}
+{"timestamp": "2026-06-21T14:43:42.255911", "level": "INFO", "logger": "services.ai_service", "message": "Action: ai_service", "action": "ai_service", "status": "configured_ollama_only"}
+{"timestamp": "2026-06-21T14:43:42.256913", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:42.256913", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-21T14:43:42.257910", "level": "INFO", "logger": "core.memory", "message": "Database initialized at C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\memory.db"}
+{"timestamp": "2026-06-21T14:43:42.262516", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:42.263577", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 1/2 [navigate]: https://example.com"}
+{"timestamp": "2026-06-21T14:43:42.263577", "level": "INFO", "logger": "automation.browser_agent", "message": "Step 2/2 [scroll_down]: "}
+{"timestamp": "2026-06-21T14:43:42.265686", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:42.266232", "level": "INFO", "logger": "automation.browser_agent", "message": "Using fallback Google-search plan for goal: Test goal"}
+{"timestamp": "2026-06-21T14:43:42.271565", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:42.272657", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver initialised successfully."}
+{"timestamp": "2026-06-21T14:43:42.273795", "level": "INFO", "logger": "automation.browser_agent", "message": "Chrome WebDriver closed."}
+{"timestamp": "2026-06-21T14:43:42.277568", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:42.277568", "level": "INFO", "logger": "automation.browser_agent", "message": "Requesting browser plan from Ollama for goal: Go to Github"}
+{"timestamp": "2026-06-21T14:43:42.278100", "level": "INFO", "logger": "automation.browser_agent", "message": "Parsed 1 browser steps from Ollama."}
+{"timestamp": "2026-06-21T14:43:42.292807", "level": "INFO", "logger": "automation.draw_engine", "message": "Attempt 1: attempting local outline rescue."}
+{"timestamp": "2026-06-21T14:43:42.296574", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Attempt 1/2"}
+{"timestamp": "2026-06-21T14:43:42.297093", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ Verified on attempt 1"}
+{"timestamp": "2026-06-21T14:43:42.301664", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-21T14:43:42.301664", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window found: 'Notepad'\" | screenshot='mock_path.png'"}
+{"timestamp": "2026-06-21T14:43:42.305306", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] Waiting up to 1s for window: 'notepad'"}
+{"timestamp": "2026-06-21T14:43:43.309717", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ❌ FAIL | conf=0.00 | msg=\"Timeout after 1s: no window matching 'notepad'\" | screenshot=''"}
+{"timestamp": "2026-06-21T14:43:43.312789", "level": "WARNING", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] pytesseract not available — falling back to window-title matching"}
+{"timestamp": "2026-06-21T14:43:43.312789", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=0.50 | msg=\"(fallback) Window-title match for 'Unique Title': found\" | screenshot=''"}
+{"timestamp": "2026-06-21T14:43:43.316042", "level": "INFO", "logger": "automation.feedback_loop", "message": "[FeedbackLoop] ✅ PASS | conf=1.00 | msg=\"Window 'Notepad' has content (800x600 px)\" | screenshot=''"}
+{"timestamp": "2026-06-21T14:43:46.404474", "level": "WARNING", "logger": "voice.speech_to_text", "message": "WhisperSTT raised an exception: Simulated Whisper failure — trying Google fallback."}
+{"timestamp": "2026-06-21T14:43:46.405018", "level": "INFO", "logger": "voice.speech_to_text", "message": "Google STT fallback produced a result."}
+{"timestamp": "2026-06-21T14:43:49.063987", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Initialized with agents: ['Planner', 'Coder', 'Executor', 'Verifier']"}
+{"timestamp": "2026-06-21T14:43:49.065056", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Starting plan for: 'build a small test app'"}
+{"timestamp": "2026-06-21T14:43:49.068844", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Plan has 1 step(s)."}
+{"timestamp": "2026-06-21T14:43:49.068844", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Step 1/1: Create main.py"}
+{"timestamp": "2026-06-21T14:43:49.069633", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Step 1 needs code — invoking CoderAgent."}
+{"timestamp": "2026-06-21T14:43:49.084281", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] ✅ Step 1: Create main.py — File created successfully"}
+{"timestamp": "2026-06-21T14:43:49.084281", "level": "INFO", "logger": "core.orchestrator", "message": "[Orchestrator] Finished. 1 step(s) executed."}
+{"timestamp": "2026-06-21T14:43:49.101187", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:49.101714", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-21T14:43:49.102759", "level": "INFO", "logger": "core.executor", "message": "Executing intent: screen_info on target: error"}
+{"timestamp": "2026-06-21T14:43:49.109615", "level": "INFO", "logger": "automation.browser_agent", "message": "BrowserAgent created. Screenshots directory: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\ai_assistant\\screenshots\\browser"}
+{"timestamp": "2026-06-21T14:43:49.110179", "level": "INFO", "logger": "automation.web_automation", "message": "WebAutomator initialised (BrowserAgent attached)."}
+{"timestamp": "2026-06-21T14:43:49.111097", "level": "INFO", "logger": "core.executor", "message": "Executing intent: screen_info on target: screen"}
+{"timestamp": "2026-06-21T14:43:49.120758", "level": "INFO", "logger": "core.vector_memory", "message": "Loading SentenceTransformer model 'all-MiniLM-L6-v2' …"}
+{"timestamp": "2026-06-21T14:44:03.285046", "level": "INFO", "logger": "core.vector_memory", "message": "SentenceTransformer model loaded."}
+{"timestamp": "2026-06-21T14:44:03.342761", "level": "INFO", "logger": "core.workflow_recorder", "message": "WorkflowRecorder initialised. Workflows dir: C:\\Users\\babul\\OneDrive\\Desktop\\os-controller\\workflows"}
+{"timestamp": "2026-06-21T14:44:03.348609", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording started. Perform your actions now."}
+{"timestamp": "2026-06-21T14:44:03.349677", "level": "INFO", "logger": "core.workflow_recorder", "message": "Recording stopped. Captured 0 events."}

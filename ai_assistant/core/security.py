@@ -5,6 +5,7 @@ logger = setup_logger(__name__)
 
 # Define allowed actions to prevent execution of unknown/dangerous commands
 ALLOWED_ACTIONS = {
+    # ── Original intents ──────────────────────────────────────────────
     "open_app",
     "close_app",
     "write_text",
@@ -18,14 +19,26 @@ ALLOWED_ACTIONS = {
     "open_website",
     "system_control",
     "automation_task",
-    "chat_response", # for casual conversation
+    "chat_response",
     "task",
     "read_file",
     "draw_shape",
+    "draw_local_image",
     "find_file",
     "screen_info",
     "none",
-    "error"
+    "error",
+    # ── Phase 1: Vision / OCR ─────────────────────────────────────────
+    "screen_click_text",      # Find text on screen via OCR and click it
+    # ── Phase 2: Browser Agent ────────────────────────────────────────
+    "browser_task",           # LLM-planned Selenium web automation
+    # ── Phase 4: Multi-Agent ─────────────────────────────────────────
+    "multi_agent_task",       # Complex goal → planner→coder→executor→verifier
+    # ── Teach Botbro: Workflow Recorder ──────────────────────────────
+    "record_workflow",        # Start macro recording
+    "stop_recording",         # Stop and save the recording
+    "replay_workflow",        # Replay a saved workflow by name
+    "list_workflows",         # Show all saved workflows
 }
 
 # Define blocked commands or paths (e.g., system directories)

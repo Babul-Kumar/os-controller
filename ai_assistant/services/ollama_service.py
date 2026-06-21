@@ -3,6 +3,7 @@ import os
 from types import ModuleType
 from typing import Optional
 
+from config.settings import OLLAMA_MODEL, OLLAMA_BASE_URL
 from utils.helpers import setup_logger
 
 logger = setup_logger(__name__)
@@ -28,7 +29,14 @@ Available intents:
 - system_control  : ONLY for shutdown/restart/sleep/lock
 - draw_shape      : draw ANYTHING visual in MS Paint (animal, object, landscape, person, symbol, flag, etc.)
 - find_file       : search the PC for a file
-- screen_info     : take a screenshot and describe the screen
+- screen_info     : capture a screenshot to read, explain, or troubleshoot what is on the screen (target = what the user is asking about, e.g. "error", "compile issue", "screen"; content = user's exact question)
+- screen_click_text : click a button or element visible on screen by its text label
+- browser_task    : automate a website task (LinkedIn, Kaggle, GitHub, forms, job search)
+- multi_agent_task: execute a complex multi-step goal (build an app, create a project, set up a website)
+- record_workflow : start recording a repeatable workflow (user demonstrates the steps)
+- stop_recording  : stop recording and save the current workflow
+- replay_workflow : replay a previously recorded workflow by name
+- list_workflows  : list all saved workflows
 - chat_response   : answer a general conversational question (target = the answer text)
 
 JSON schema:
@@ -51,17 +59,56 @@ Trigger draw_shape for ALL of these types of requests:
   - "illustrate a rose"         → draw_shape: rose
   - "give me a picture of a dog"→ draw_shape: dog
   - "I want a cat image"        → draw_shape: cat
-  - "sketch a house"            → draw_shape: house
-  - "doodle a star"             → draw_shape: star
-  - "draw me a cat"             → draw_shape: cat
-  - "put a tree in paint"       → draw_shape: tree
-  - "can you draw a fish?"      → draw_shape: fish
-  - "visually show me a fox"    → draw_shape: fox
-  - "i'd like to see a wolf"    → draw_shape: wolf
-  - "robot"                     → draw_shape: robot (if no other clear action)
-  - "horse please"              → draw_shape: horse (if no other clear action)
 
 For draw_shape: target = the EXACT subject the user mentioned. Copy the noun VERBATIM. NEVER change it.
+
+
+--- BROWSER TASK RULES ---
+
+Use browser_task when the user wants to interact with a website in a meaningful way:
+  - "apply for ML internships on LinkedIn"           → browser_task
+  - "search Kaggle for NLP competitions"             → browser_task
+  - "book a train ticket to Delhi"                   → browser_task
+  - "find Python jobs on Indeed"                     → browser_task
+  - "fill the contact form on example.com"           → browser_task
+  - "download the first PDF from Google search"      → browser_task
+
+Do NOT use browser_task for simple web_search (use web_search for that).
+Use browser_task when multi-step website interaction is needed.
+
+
+--- MULTI-AGENT TASK RULES ---
+
+Use multi_agent_task when the user wants to BUILD or CREATE something complex:
+  - "create a Flask portfolio website"         → multi_agent_task
+  - "build a todo app in Python"               → multi_agent_task
+  - "set up a React project"                   → multi_agent_task
+  - "develop a REST API for a blog"            → multi_agent_task
+  - "make a calculator in JavaScript"          → multi_agent_task
+
+Use multi_agent_task for goals that require: creating multiple files, running commands, opening an IDE.
+Do NOT use multi_agent_task for simple single-file creation (use create_file for that).
+
+
+--- TEACH BOTBRO (WORKFLOW) RULES ---
+
+  - "watch me do this"                  → record_workflow: my_workflow
+  - "start recording"                   → record_workflow: my_workflow
+  - "teach you how to do X"             → record_workflow: X
+  - "record my workflow"                → record_workflow: my_workflow
+  - "stop recording"                    → stop_recording: current
+  - "replay X"                          → replay_workflow: X
+  - "repeat the invoice process"        → replay_workflow: invoice process
+  - "show my workflows"                 → list_workflows: all
+
+
+--- SCREEN CLICK RULES ---
+
+Use screen_click_text when the user wants to click something visible on screen:
+  - "click the OK button"               → screen_click_text: OK
+  - "click on Accept"                   → screen_click_text: Accept
+  - "press the Submit button"           → screen_click_text: Submit
+  - "click Yes in the dialog"           → screen_click_text: Yes
 
 
 --- EXAMPLES ---
@@ -75,32 +122,47 @@ Output: {"intent": "draw_shape", "target": "cat", "confidence": 0.99}
 Input: show me a lion
 Output: {"intent": "draw_shape", "target": "lion", "confidence": 0.98}
 
-Input: i want to see a dragon
-Output: {"intent": "draw_shape", "target": "dragon", "confidence": 0.98}
+Input: search for python jobs on LinkedIn
+Output: {"intent": "browser_task", "target": "search for python jobs on LinkedIn", "confidence": 0.97}
 
-Input: can you make a tiger
-Output: {"intent": "draw_shape", "target": "tiger", "confidence": 0.97}
+Input: apply for ML internships on LinkedIn
+Output: {"intent": "browser_task", "target": "apply for ML internships on LinkedIn", "confidence": 0.97}
 
-Input: give me a picture of a butterfly
-Output: {"intent": "draw_shape", "target": "butterfly", "confidence": 0.97}
+Input: book a train ticket to Mumbai
+Output: {"intent": "browser_task", "target": "book a train ticket to Mumbai", "confidence": 0.96}
 
-Input: make an elephant
-Output: {"intent": "draw_shape", "target": "elephant", "confidence": 0.97}
+Input: create a Flask portfolio website
+Output: {"intent": "multi_agent_task", "target": "create a Flask portfolio website", "confidence": 0.97}
 
-Input: paint a mountain landscape
-Output: {"intent": "draw_shape", "target": "mountain landscape", "confidence": 0.96}
+Input: build a todo app in Python
+Output: {"intent": "multi_agent_task", "target": "build a todo app in Python", "confidence": 0.96}
 
-Input: illustrate a rose
-Output: {"intent": "draw_shape", "target": "rose", "confidence": 0.97}
+Input: watch me do this task
+Output: {"intent": "record_workflow", "target": "my_workflow", "confidence": 0.94}
 
-Input: open paint and draw indian national flag
-Output: {"intent": "draw_shape", "target": "indian national flag", "confidence": 0.99}
+Input: stop recording
+Output: {"intent": "stop_recording", "target": "current", "confidence": 0.99}
 
-Input: draw a dog
-Output: {"intent": "draw_shape", "target": "dog", "confidence": 0.99}
+Input: replay the invoice process
+Output: {"intent": "replay_workflow", "target": "invoice process", "confidence": 0.95}
 
-Input: draw an anime girl
-Output: {"intent": "draw_shape", "target": "anime girl", "confidence": 0.95}
+Input: show my saved workflows
+Output: {"intent": "list_workflows", "target": "all", "confidence": 0.98}
+
+Input: what is on my screen
+Output: {"intent": "screen_info", "target": "screen", "content": "what is on my screen", "confidence": 0.96}
+
+Input: what is this error?
+Output: {"intent": "screen_info", "target": "error", "content": "what is this error?", "confidence": 0.98}
+
+Input: explain the compile warning on my screen
+Output: {"intent": "screen_info", "target": "compile warning", "content": "explain the compile warning on my screen", "confidence": 0.97}
+
+Input: why is this python script failing?
+Output: {"intent": "screen_info", "target": "python script failure", "content": "why is this python script failing?", "confidence": 0.96}
+
+Input: create a file hello.py and write python code in vscode
+Output: {"intent": "create_file", "target": "hello.py", "editor": "vscode", "content": "print('Hello, World!')", "confidence": 0.98}
 
 Input: what is the capital of France
 Output: {"intent": "chat_response", "target": "The capital of France is Paris.", "confidence": 0.99}
@@ -111,20 +173,8 @@ Output: {"intent": "chat_response", "target": "I'm doing great and ready to help
 Input: write an essay on friendship in notepad
 Output: {"intent": "write_text", "target": "notepad", "content": "Friendship is one of the most beautiful relationships in human life. A true friend stands by you in times of joy and sorrow.", "confidence": 0.97}
 
-Input: search for python tutorials
-Output: {"intent": "web_search", "target": "python tutorials", "confidence": 0.98}
-
-Input: open youtube.com
-Output: {"intent": "open_website", "target": "https://youtube.com", "confidence": 0.99}
-
 Input: shutdown my pc
 Output: {"intent": "system_control", "target": "shutdown", "confidence": 0.99}
-
-Input: what is on my screen
-Output: {"intent": "screen_info", "target": "screen", "confidence": 0.96}
-
-Input: create a file hello.py and write python code in vscode
-Output: {"intent": "create_file", "target": "hello.py", "editor": "vscode", "content": "print('Hello, World!')", "confidence": 0.98}
 
 Input: find my resume
 Output: {"intent": "find_file", "target": "resume", "confidence": 0.97}
@@ -135,6 +185,8 @@ Output: {"intent": "find_file", "target": "resume", "confidence": 0.97}
 - For draw_shape, target MUST be the exact noun the user said. Never change or substitute it.
 - Use chat_response for greetings, questions, and general conversation.
 - When in doubt whether to draw or chat: if the user mentions ANY concrete visual subject (animal, object, place, person), use draw_shape.
+- Use multi_agent_task for complex BUILD/CREATE/DEVELOP goals, NOT simple file creation.
+- Use browser_task for interactive website goals, NOT simple searches (use web_search for those).
 """
 
 _ollama_module: Optional[ModuleType] = None
@@ -162,18 +214,42 @@ def _get_ollama() -> Optional[ModuleType]:
         return None
 
 
-def call_ollama(prompt):
+def call_ollama(prompt: str) -> Optional[str]:
+    """Call Ollama with the standard Botbro system prompt."""
+    return call_ollama_with_context(prompt, memory_context="")
+
+
+def call_ollama_with_context(prompt: str, memory_context: str = "") -> Optional[str]:
+    """
+    Call Ollama with optional memory context injected into the system prompt.
+
+    Args:
+        prompt: The user's command / text to process.
+        memory_context: Optional recalled memories / user preferences to inject.
+                        When provided, prepended to the system prompt so the LLM
+                        can reference past context (e.g., known project paths, IDE).
+    """
     ollama = _get_ollama()
     if ollama is None:
         return None
 
+    # Build system prompt — inject memory context when available
+    system = SYSTEM_PROMPT
+    if memory_context and memory_context.strip():
+        system = (
+            "--- USER CONTEXT & MEMORY ---\n"
+            + memory_context.strip()
+            + "\n\n"
+            + SYSTEM_PROMPT
+        )
+
     try:
         response = ollama.chat(
-            model="phi3",
+            model=OLLAMA_MODEL,
             messages=[
                 {
                     "role": "system",
-                    "content": SYSTEM_PROMPT,
+                    "content": system,
                 },
                 {
                     "role": "user",
@@ -184,5 +260,5 @@ def call_ollama(prompt):
 
         return response["message"]["content"]
     except Exception as exc:
-        logger.error(f"Ollama error: {exc}")
+        logger.error(f"Ollama error (model={OLLAMA_MODEL}): {exc}")
         return None

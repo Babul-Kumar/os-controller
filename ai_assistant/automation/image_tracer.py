@@ -37,14 +37,25 @@ import os
 import pickle
 import threading
 import time
-from ctypes import wintypes
 from enum import Enum, auto
 from typing import List, Optional, Tuple
 
 import cv2
 import numpy as np
-import win32con
-import win32gui
+
+# ── Windows-only imports ──────────────────────────────────────────────────── #
+# These are only available on Windows. On macOS/Linux the module still loads
+# but drawing-related functions will raise a clear RuntimeError.
+try:
+    from ctypes import wintypes
+    import win32con
+    import win32gui
+    _HAS_WIN32 = True
+except ImportError:
+    wintypes = None   # type: ignore
+    win32con = None   # type: ignore
+    win32gui = None   # type: ignore
+    _HAS_WIN32 = False
 
 # optional imports – graceful degradation if missing
 try:
@@ -79,20 +90,24 @@ except Exception:
     logger = logging.getLogger(__name__)
 
 # --------------------------------------------------------------------------- #
-# DPI awareness
+# DPI awareness (Windows-only)
 # --------------------------------------------------------------------------- #
-try:
-    ctypes.windll.user32.SetProcessDPIAware()
-except Exception:
-    pass
+if _HAS_WIN32:
+    try:
+        ctypes.windll.user32.SetProcessDPIAware()
+    except Exception:
+        pass
 
 # --------------------------------------------------------------------------- #
-# Compatibility typedefs
+# Compatibility typedefs (Windows-only)
 # --------------------------------------------------------------------------- #
-if ctypes.sizeof(ctypes.c_void_p) == 8:
-    ULONG_PTR = ctypes.c_ulonglong
+if _HAS_WIN32:
+    if ctypes.sizeof(ctypes.c_void_p) == 8:
+        ULONG_PTR = ctypes.c_ulonglong
+    else:
+        ULONG_PTR = ctypes.c_ulong
 else:
-    ULONG_PTR = ctypes.c_ulong
+    ULONG_PTR = ctypes.c_ulong  # unused on non-Windows; placeholder to avoid NameError
 
 
 # --------------------------------------------------------------------------- #
@@ -159,6 +174,10 @@ class _MouseController:
     _MAX_EVENTS_PER_SEC = 1_000
 
     def __init__(self) -> None:
+        if not _HAS_WIN32:
+            raise RuntimeError(
+                "_MouseController requires Windows (win32 / wintypes not available on this OS)."
+            )
         _MouseController._INPUT_UNION._fields_ = [
             ('mi', _MouseController.MOUSEINPUT),
             ('ki', _MouseController.KEYBDINPUT),
@@ -1105,6 +1124,13 @@ class ImageTracer:
         Draw the image inside MS Paint.
         Returns True on success, False on error or ESC-abort.
         """
+        if not _HAS_WIN32:
+            logger.error(
+                "trace_image: MS Paint drawing requires Windows. "
+                "win32gui / win32con are not available on this OS."
+            )
+            return False
+
         logger.info(f'trace_image: {image_path}')
 
         try:
@@ -1174,8 +1200,8 @@ class ImageTracer:
             # ---------------------------------------------------------------- #
             total_contours = len(ordered)
             for idx, contour in enumerate(ordered):
-                # ESC abort (FIX 4 / original FIX)
-                if ctypes.windll.user32.GetAsyncKeyState(0x1B) & 0x8000:
+                # ESC abort (FIX 4 / original FIX) – Windows only
+                if _HAS_WIN32 and ctypes.windll.user32.GetAsyncKeyState(0x1B) & 0x8000:
                     logger.info('Esc – aborting.')
                     _mouse.mouse_up()
                     return False

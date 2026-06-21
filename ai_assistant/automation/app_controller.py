@@ -2,8 +2,17 @@ import os
 import re
 import asyncio
 import subprocess
-import winreg
+import sys
 import psutil
+
+# winreg is Windows-only — import conditionally so the module can be loaded
+# on macOS / Linux for non-registry code paths.
+try:
+    import winreg as _winreg  # type: ignore
+    _WINREG_AVAILABLE = True
+except ImportError:
+    _winreg = None  # type: ignore
+    _WINREG_AVAILABLE = False
 from typing import List, Dict, Any, Optional, Tuple
 
 import pygetwindow as gw
@@ -112,23 +121,29 @@ class AppController:
 
     @staticmethod
     def _find_app_in_registry(app_name: str) -> Optional[str]:
+        """Search Windows Registry for an installed application path.
+        Returns None immediately on non-Windows platforms.
+        """
+        if not _WINREG_AVAILABLE or _winreg is None:
+            return None
+
         search_keys = [
-            (winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
-            (winreg.HKEY_CURRENT_USER, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths")
+            (_winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
+            (_winreg.HKEY_CURRENT_USER, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"),
         ]
         for root, sub_key in search_keys:
             try:
-                with winreg.OpenKey(root, sub_key) as base_key:
+                with _winreg.OpenKey(root, sub_key) as base_key:
                     i = 0
                     while True:
                         try:
-                            subkey_name = winreg.EnumKey(base_key, i)
+                            subkey_name = _winreg.EnumKey(base_key, i)
                         except OSError:
                             break
                         i += 1
                         if AppController.normalize_name(app_name) in AppController.normalize_name(subkey_name):
-                            with winreg.OpenKey(base_key, subkey_name) as subkey:
-                                path, _ = winreg.QueryValueEx(subkey, "")
+                            with _winreg.OpenKey(base_key, subkey_name) as subkey:
+                                path, _ = _winreg.QueryValueEx(subkey, "")
                                 if os.path.isfile(path):
                                     return path
             except FileNotFoundError:

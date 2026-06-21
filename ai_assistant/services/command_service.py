@@ -29,36 +29,77 @@ class CommandService:
         logger.info(f"CommandService processing: {command}")
         
         await EventBus.emit("command_received", {"command": command})
-
-        # 1. Plugin Pass
-        plugin_res = await self.plugin_manager.execute_all(command)
-        if plugin_res:
-            self._log_history("plugin", command, plugin_res)
-            return plugin_res.get("message", "Plugin executed successfully.")
-
-        # 2. AI Parsing (Intent extraction)
-        intent_data = await self.ai_service.process_intent(command)
         
-        # 3. Task Route
-        if intent_data.get("intent") == "task" and intent_data.get("task"):
-            task_name = intent_data["task"].lower()
-            if task_name in self.TASKS:
-                responses = []
-                for sub_cmd in self.TASKS[task_name]:
-                    responses.append(await self.process_command(sub_cmd))
-                self._log_history("task", task_name, {"status": "success"})
-                return f"Executed task '{task_name}': " + " | ".join(responses)
-            else:
-                return f"Unknown task: {task_name}"
+        import time
+        from core.metrics_store import get_store
+        start_time = time.perf_counter()
+        
+        action = "none"
+        success = True
+        error_msg = ""
+        response_msg = ""
+        
+        try:
+            # 1. Plugin Pass
+            plugin_res = await self.plugin_manager.execute_all(command)
+            if plugin_res:
+                self._log_history("plugin", command, plugin_res)
+                action = "plugin"
+                response_msg = plugin_res.get("message", "Plugin executed successfully.")
+                success = not (response_msg.startswith("❌") or response_msg.startswith("⚠️") or response_msg.lower().startswith("error"))
+                error_msg = "" if success else response_msg
+                return response_msg
 
-        # 4. Execute via Brain Router
-        response_msg = await self.executor.execute_intent(intent_data)
-        
-        # 5. Log & Return
-        self._log_history(intent_data.get("intent", "none"), command, {"status": "executed", "response": response_msg})
-        await EventBus.emit("command_completed", {"command": command, "response": response_msg, "intent": intent_data})
-        
-        return response_msg
+            # 2. AI Parsing (Intent extraction)
+            intent_data = await self.ai_service.process_intent(command)
+            action = intent_data.get("intent", "none")
+            
+            # 3. Task Route
+            if intent_data.get("intent") == "task" and intent_data.get("task"):
+                task_name = intent_data["task"].lower()
+                action = f"task:{task_name}"
+                if task_name in self.TASKS:
+                    responses = []
+                    for sub_cmd in self.TASKS[task_name]:
+                        responses.append(await self.process_command(sub_cmd))
+                    self._log_history("task", task_name, {"status": "success"})
+                    response_msg = f"Executed task '{task_name}': " + " | ".join(responses)
+                    success = True
+                    return response_msg
+                else:
+                    response_msg = f"Unknown task: {task_name}"
+                    success = False
+                    error_msg = response_msg
+                    return response_msg
+
+            # 4. Execute via Brain Router
+            response_msg = await self.executor.execute_intent(intent_data)
+            
+            # 5. Log & Return
+            self._log_history(action, command, {"status": "executed", "response": response_msg})
+            await EventBus.emit("command_completed", {"command": command, "response": response_msg, "intent": intent_data})
+            
+            success = not (response_msg.startswith("❌") or response_msg.startswith("⚠️") or response_msg.lower().startswith("error") or response_msg.startswith("Unsupported intent") or response_msg.startswith("Execution error"))
+            error_msg = "" if success else response_msg
+            return response_msg
+            
+        except Exception as exc:
+            success = False
+            error_msg = str(exc)
+            response_msg = f"❌ System Error: {exc}"
+            raise
+        finally:
+            latency_ms = (time.perf_counter() - start_time) * 1000.0
+            try:
+                get_store().log_command(
+                    raw_input=command,
+                    action=action,
+                    success=success,
+                    latency_ms=latency_ms,
+                    error_msg=error_msg,
+                )
+            except Exception as store_exc:
+                logger.error(f"Failed to log command metrics: {store_exc}")
 
     def _log_history(self, action: str, target: str, result: dict):
         entry = {

@@ -1,6 +1,7 @@
 import sqlite3
 import json
 import datetime
+from typing import List
 from config.settings import DB_PATH
 from utils.helpers import setup_logger
 
@@ -38,6 +39,17 @@ class MemoryManager:
                 )
             ''')
             
+            # Create vector memory entries table (Phase 3 — RAG Memory)
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS memory_entries (
+                    id           TEXT PRIMARY KEY,
+                    content      TEXT,
+                    metadata     TEXT,
+                    embedding_id INTEGER,
+                    timestamp    TEXT
+                )
+            ''')
+
             conn.commit()
             conn.close()
             logger.info(f"Database initialized at {self.db_path}")
@@ -151,3 +163,108 @@ class MemoryManager:
         except Exception as e:
             logger.error(f"Failed to suggest next app: {e}")
             return None
+
+    # ── Phase 3: Vector memory CRUD ──────────────────────────────────────────
+
+    def store_memory_entry(
+        self,
+        id: str,
+        content: str,
+        metadata: dict,
+        embedding_id: int,
+    ) -> None:
+        """Persist a vector memory entry to the memory_entries table."""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            timestamp = datetime.datetime.now().isoformat()
+            cursor.execute(
+                """
+                INSERT OR REPLACE INTO memory_entries
+                    (id, content, metadata, embedding_id, timestamp)
+                VALUES (?, ?, ?, ?, ?)
+                """,
+                (id, content, json.dumps(metadata), embedding_id, timestamp),
+            )
+            conn.commit()
+            conn.close()
+        except Exception as e:
+            logger.error(f"Failed to store memory entry: {e}")
+
+    def get_memory_entries_by_type(self, entry_type: str) -> List[dict]:
+        """
+        Return all memory entries whose metadata JSON contains
+        ``'type': entry_type``.
+        """
+        results: List[dict] = []
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            cursor.execute(
+                "SELECT id, content, metadata, embedding_id, timestamp FROM memory_entries"
+            )
+            rows = cursor.fetchall()
+            conn.close()
+            for row in rows:
+                try:
+                    meta = json.loads(row[2]) if row[2] else {}
+                except json.JSONDecodeError:
+                    meta = {}
+                if meta.get("type") == entry_type:
+                    results.append({
+                        "id":           row[0],
+                        "content":      row[1],
+                        "metadata":     meta,
+                        "embedding_id": row[3],
+                        "timestamp":    row[4],
+                    })
+        except Exception as e:
+            logger.error(f"Failed to get memory entries by type: {e}")
+        return results
+
+    def get_all_memory_entries(self, limit: int = 200) -> List[dict]:
+        """Return up to *limit* memory entries ordered by most recent first."""
+        results: List[dict] = []
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                SELECT id, content, metadata, embedding_id, timestamp
+                FROM memory_entries
+                ORDER BY timestamp DESC
+                LIMIT ?
+                """,
+                (limit,),
+            )
+            rows = cursor.fetchall()
+            conn.close()
+            for row in rows:
+                try:
+                    meta = json.loads(row[2]) if row[2] else {}
+                except json.JSONDecodeError:
+                    meta = {}
+                results.append({
+                    "id":           row[0],
+                    "content":      row[1],
+                    "metadata":     meta,
+                    "embedding_id": row[3],
+                    "timestamp":    row[4],
+                })
+        except Exception as e:
+            logger.error(f"Failed to get all memory entries: {e}")
+        return results
+
+    def delete_memory_entry(self, entry_id: str) -> None:
+        """Remove a single memory entry by its ID."""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            cursor.execute(
+                "DELETE FROM memory_entries WHERE id = ?", (entry_id,)
+            )
+            conn.commit()
+            conn.close()
+            logger.debug(f"Deleted memory entry {entry_id}")
+        except Exception as e:
+            logger.error(f"Failed to delete memory entry {entry_id}: {e}")

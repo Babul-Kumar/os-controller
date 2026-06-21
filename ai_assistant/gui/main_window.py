@@ -6,6 +6,8 @@ Key improvements:
   • Full-window drag-and-drop acceptance (setAcceptDrops on QMainWindow)
   • Cleaner, modern dark-mode look with subtle glass-morphism accents
   • Better typography, spacing and bubble styling
+  • 🔴 Record button for Teach Botbro macro recording
+  • Agent progress streaming for multi-step task execution
 """
 
 import os
@@ -151,12 +153,48 @@ _SCROLL_STYLE = """
 """
 
 
+# Record button style
+_RECORD_BTN_STYLE_IDLE = """
+    QPushButton {
+        background-color: #1e1e2e;
+        color: #cc4444;
+        border: 1.5px solid #2a2a3d;
+        border-radius: 18px;
+        font-size: 16px;
+        padding: 0px;
+    }
+    QPushButton:hover {
+        background-color: #2a1a1a;
+        border-color: #ff4444;
+        color: #ff6666;
+    }
+    QPushButton:pressed {
+        background-color: #1a0808;
+    }
+"""
+
+_RECORD_BTN_STYLE_ACTIVE = """
+    QPushButton {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 #cc0000, stop:1 #880000);
+        color: white;
+        border-radius: 18px;
+        font-size: 16px;
+        border: none;
+    }
+    QPushButton:hover {
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 #ff2222, stop:1 #aa0000);
+    }
+"""
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Signals
 # ─────────────────────────────────────────────────────────────────────────────
 class Signals(QObject):
     update_chat = pyqtSignal(str, str)
     status_update = pyqtSignal(str)
+    agent_progress = pyqtSignal(str, str, float)  # step_text, agent_name, progress (0-1)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -169,14 +207,17 @@ class BotbroGUI(QMainWindow):
         self.voice_callback = voice_callback
         self.signals = Signals()
         self._is_dragging = False
+        self._is_recording = False
 
         self.signals.update_chat.connect(self._append_message)
         self.signals.status_update.connect(self._update_status)
+        self.signals.agent_progress.connect(self._on_agent_progress)
 
         # Enable full-window drag-and-drop
         self.setAcceptDrops(True)
 
         self.init_ui()
+        self._subscribe_to_agent_events()
 
     # ──────────────────────────────────────────────────────────────────────
     # UI construction
@@ -267,11 +308,20 @@ class BotbroGUI(QMainWindow):
 
         # Text input
         self.text_input = QLineEdit()
-        self.text_input.setPlaceholderText("Message BotBro…  (or attach 📎 / drop an image)")
+        self.text_input.setPlaceholderText("Message BotBro…  (📎 image · 🎤 voice · 🔴 record workflow)")
         self.text_input.setStyleSheet(_INPUT_STYLE)
         self.text_input.setMinimumHeight(44)
         self.text_input.returnPressed.connect(self.handle_text_submit)
         input_row.addWidget(self.text_input, 1)
+
+        # 🔴 Record button (Teach Botbro)
+        self.record_btn = QPushButton("🔴")
+        self.record_btn.setFixedSize(40, 40)
+        self.record_btn.setStyleSheet(_RECORD_BTN_STYLE_IDLE)
+        self.record_btn.setToolTip("Teach Botbro: Record a workflow by demonstration")
+        self.record_btn.setCursor(Qt.PointingHandCursor)
+        self.record_btn.clicked.connect(self.handle_record_click)
+        input_row.addWidget(self.record_btn)
 
         # 🎤 Voice button
         self.voice_btn = QPushButton("🎤")
@@ -381,6 +431,44 @@ class BotbroGUI(QMainWindow):
         self.text_input.setEnabled(enabled)
         self.voice_btn.setEnabled(enabled)
         self.attach_btn.setEnabled(enabled)
+        # Record button stays enabled always (toggle during recording)
+
+    def _on_agent_progress(self, step_text: str, agent_name: str, progress: float):
+        """Display real-time agent pipeline progress in the chat."""
+        icon = {"Planner": "🗺️", "Coder": "💻", "Executor": "⚡", "Verifier": "✔️", "Orchestrator": "🤖"}.get(agent_name, "→")
+        msg = f"{icon} [{agent_name}] {step_text}"
+        if progress >= 1.0:
+            msg = f"✅ {step_text}"
+        bubble = ChatBubble("Agent", msg)
+        self.chat_content_layout.addWidget(bubble)
+        sb = self.scroll_area.verticalScrollBar()
+        sb.setValue(sb.maximum())
+        if progress >= 1.0:
+            self._update_status("Ready")
+        else:
+            pct = int(progress * 100)
+            self._update_status(f"Agent working… {pct}%")
+
+    def _subscribe_to_agent_events(self):
+        """Subscribe to EventBus agent_progress events (thread-safe via Qt signals)."""
+        try:
+            from core.event_bus import EventBus
+
+            def _on_event(data):
+                if not data:
+                    return
+                step = data.get("step", "")
+                agent = data.get("agent", "Agent")
+                progress = float(data.get("progress", 0.0))
+                # Emit Qt signal (thread-safe cross-thread GUI update)
+                try:
+                    self.signals.agent_progress.emit(step, agent, progress)
+                except RuntimeError:
+                    pass  # window already closed
+
+            EventBus.on("agent_progress", _on_event)
+        except Exception:
+            pass  # EventBus not available — non-fatal
 
     # ──────────────────────────────────────────────────────────────────────
     # Text submit
@@ -398,6 +486,38 @@ class BotbroGUI(QMainWindow):
         except Exception as err:
             self._append_message("System Error", str(err))
             self._update_status("Ready")
+
+    # ──────────────────────────────────────────────────────────────────────
+    # Record (Teach Botbro)
+    # ──────────────────────────────────────────────────────────────────────
+    def handle_record_click(self):
+        """Toggle macro recording on/off."""
+        if not self._is_recording:
+            # Start recording
+            self._is_recording = True
+            self.record_btn.setStyleSheet(_RECORD_BTN_STYLE_ACTIVE)
+            self.record_btn.setToolTip("Click to STOP recording and save workflow")
+            self._append_message("You", "🔴 Start recording workflow")
+            self._update_status("Recording… perform your actions")
+            try:
+                self.process_callback("record_workflow")
+            except Exception as err:
+                self._append_message("System Error", str(err))
+                self._is_recording = False
+                self.record_btn.setStyleSheet(_RECORD_BTN_STYLE_IDLE)
+                self._update_status("Ready")
+        else:
+            # Stop recording
+            self._is_recording = False
+            self.record_btn.setStyleSheet(_RECORD_BTN_STYLE_IDLE)
+            self.record_btn.setToolTip("Teach Botbro: Record a workflow by demonstration")
+            self._append_message("You", "⏹️ Stop recording")
+            self._update_status("Saving workflow…")
+            try:
+                self.process_callback("stop recording")
+            except Exception as err:
+                self._append_message("System Error", str(err))
+                self._update_status("Ready")
 
     # ──────────────────────────────────────────────────────────────────────
     # Voice

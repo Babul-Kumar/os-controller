@@ -2,6 +2,7 @@ import sys
 import os
 import asyncio
 import unittest
+from unittest.mock import patch
 
 # Ensure the parent directory is in sys.path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -42,7 +43,11 @@ class TestBotbroCore(unittest.TestCase):
         self.assertIsNotNone(service.ai_service)
         self.assertIsNotNone(service.executor)
 
-    def test_async_command_processing(self):
+    @patch("services.ai_service.call_ollama")
+    @patch("services.ai_service.call_ollama_with_context")
+    def test_async_command_processing(self, mock_call_with_context, mock_call):
+        mock_call.return_value = '{"intent": "open_app", "target": "calculator"}'
+        mock_call_with_context.return_value = '{"intent": "open_app", "target": "calculator"}'
         service = CommandService()
         
         async def mock_execute(intent_data):

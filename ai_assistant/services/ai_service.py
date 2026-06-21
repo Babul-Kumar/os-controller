@@ -5,7 +5,8 @@ from utils.helpers import setup_logger, json_log
 from core.command_parser import CommandParser
 from core.memory import MemoryManager
 from core.pii_engine import PIIEngine
-from services.ollama_service import call_ollama
+from config.settings import DB_PATH
+from services.ollama_service import call_ollama, call_ollama_with_context
 
 logger = setup_logger(__name__)
 
@@ -138,6 +139,23 @@ def _detect_draw_intent_locally(text: str):
 class AIService:
     def __init__(self):
         self.memory = MemoryManager()
+
+        # Phase 3: RAG Memory — initialise VectorMemory and PreferenceLearner
+        # Both are optional; if dependencies are missing the service degrades
+        # gracefully and skips memory context injection.
+        try:
+            from core.vector_memory import VectorMemory
+            from core.preference_learner import PreferenceLearner
+            self.vector_memory     = VectorMemory()
+            self.preference_learner = PreferenceLearner(self.vector_memory, DB_PATH)
+            self._memory_available  = True
+            logger.info("Vector memory initialised (FAISS RAG active).")
+        except Exception as e:
+            logger.warning(f"Vector memory unavailable: {e}")
+            self.vector_memory      = None
+            self.preference_learner = None
+            self._memory_available  = False
+
         json_log(logger, "ai_service", status="configured_ollama_only")
 
     async def process_intent(self, user_text: str) -> Dict[str, Any]:
@@ -178,6 +196,8 @@ class AIService:
             elif text_lower.startswith("run command ") or text_lower.startswith("execute command "):
                 cmd = text_lower[12:].strip() if text_lower.startswith("run command ") else text_lower[16:].strip()
                 return {"intent": "execute_command", "target": cmd, "confidence": 0.5}
+            elif any(kw in text_lower for kw in ("what is this error", "explain this error", "help with this error", "why is this failing", "what is on my screen", "read my screen", "explain my screen", "describe my screen")):
+                return {"intent": "screen_info", "target": "screen", "content": text, "confidence": 0.6}
             
             # Local create_file detection (higher priority than write_text)
             local_cf = _detect_create_file_intent_locally(text)
@@ -196,12 +216,33 @@ class AIService:
 
         try:
             logger.info("Using Ollama")
-            
+
             # PII Tokenization Phase
             engine = PIIEngine()
             safe_text, pii_context = engine.tokenize(user_text)
 
-            ollama_raw = await loop.run_in_executor(None, call_ollama, safe_text)
+            # ── Phase 3: Memory context injection ────────────────────────────
+            # Recall semantically similar past interactions and the user's
+            # behavioural profile to give Ollama richer context.
+            memory_context = ""
+            if self._memory_available and self.vector_memory:
+                try:
+                    recalled = self.vector_memory.recall(user_text, top_k=3)
+                    if recalled:
+                        memory_context = self.vector_memory.format_for_prompt(recalled)
+                    profile = self.preference_learner.get_user_profile_summary()
+                    if profile:
+                        memory_context = profile + "\n" + memory_context
+                except Exception as e:
+                    logger.debug(f"Memory recall failed: {e}")
+
+            # Use context-aware Ollama call when memory context is available
+            if memory_context:
+                ollama_raw = await loop.run_in_executor(
+                    None, call_ollama_with_context, safe_text, memory_context
+                )
+            else:
+                ollama_raw = await loop.run_in_executor(None, call_ollama, safe_text)
 
             if ollama_raw:
                 # PII Restoration Phase
@@ -281,10 +322,47 @@ class AIService:
                             logger.info(f"Corrected draw target to: '{local_draw['target']}'")
                             return local_draw
 
+                # ── Phase 3: Store successful interaction ─────────────────────
+                # Remember what the user asked and update preference learner.
+                if self._memory_available and self.vector_memory:
+                    try:
+                        self.vector_memory.remember(
+                            f"User said: {user_text}",
+                            {
+                                "type":   "conversation",
+                                "intent": parsed.get("intent"),
+                                "target": parsed.get("target"),
+                            },
+                        )
+                        self.preference_learner.learn_from_command(
+                            intent  = parsed.get("intent", ""),
+                            target  = parsed.get("target", ""),
+                            content = parsed.get("content", ""),
+                        )
+                    except Exception as e:
+                        logger.debug(f"Memory store failed: {e}")
+
                 return parsed
 
             logger.error("Ollama failed to return response. Falling back to offline parser.")
-            return _naive_fallback(user_text)
+            fallback = _naive_fallback(user_text)
+
+            # ── Phase 3: Store interaction in vector memory ───────────────────
+            # Even on fallback we remember what the user asked.
+            if self._memory_available and self.vector_memory:
+                try:
+                    self.vector_memory.remember(
+                        f"User said: {user_text}",
+                        {
+                            "type":   "conversation",
+                            "intent": fallback.get("intent"),
+                            "target": fallback.get("target"),
+                        },
+                    )
+                except Exception as e:
+                    logger.debug(f"Memory store failed: {e}")
+
+            return fallback
 
         except Exception as e:
             logger.error(f"Ollama failed with error: {e}")
